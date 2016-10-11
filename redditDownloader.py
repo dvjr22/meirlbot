@@ -60,7 +60,7 @@ for submission in submissions:
                 imageFile = imageUrl[imageUrl.rfind('/') + 1: imageUrl.rfind('?')]
             else:
                 imageFile = imageUrl[imageUrl.rfind('/') + 1:]
-            localFileName = 'reddit_%s_%s_album_%s_imgur_%s' % (targetSubreddit,submission.id, albumId, imageFile)
+            localFileName = './images/reddit_%s_%s_album_%s_imgur_%s' % (targetSubreddit,submission.id, albumId, imageFile)
             downloadImage('http:' + match['href'], localFileName)
 
     elif 'http://i.imgur.com/' in submission.url:
@@ -73,7 +73,7 @@ for submission in submissions:
             # The regex doesn't catch a "?" at the end of the filename so we remvoe it here
             imgurFilename = imgurFilename[:imgurFilename.find('?')]
 
-        localFileName = 'reddit_%s_%s_album_None_imgur_%s' % (targetSubreddit, submission.id, imgurFilename)
+        localFileName = './images/reddit_%s_%s_album_None_imgur_%s' % (targetSubreddit, submission.id, imgurFilename)
         downloadImage(submission.url, localFileName)
 
     elif 'http://imgur.com/' in submission.url:
@@ -81,16 +81,17 @@ for submission in submissions:
         print('Downloading a single image page')
         htmlSource = requests.get(submission.url).text # download the image's page
         soup = BeautifulSoup(htmlSource,"lxml")
-        imageUrl = soup.select('link')[0]['href']
+        print(soup.select('img')[0]['src'])
+        imageUrl = soup.select('img')[0]['src']
         if imageUrl.startswith('//'):
             # if no schema is supplied in the url, prepend 'http:' to it
             imageUrl = 'http:' + imageUrl
         imageId = imageUrl[imageUrl.rfind('/') + 1:imageUrl.rfind('.')]
-
+        print(imageId)
         if '?' in imageUrl:
             imageFile = imageUrl[imageUrl.rfind('/') + 1:imageUrl.rfind('?')]
         else:
             imageFile = imageUrl[imageUrl.rfind('/') + 1:]
 
-        localFileName = 'reddit_%s_%s_album_None_imgur_%s' % (targetSubreddit, submission.id, imageFile)
+        localFileName = './images/reddit_%s_%s_album_None_imgur_%s' % (targetSubreddit, submission.id, imageFile)
         downloadImage(imageUrl, localFileName)
