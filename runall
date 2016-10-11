@@ -1,0 +1,16 @@
+#!/bin/bash
+# Script to run all the python stuff
+
+# Clean out the images directory
+rm -r images/*
+
+########################## Reddit Downloader ###########################
+python redditDownloader.py me_irl
+
+
+########################## Keyword Gatherer ############################
+for file in images/*.jpg
+do
+  echo ${file##*/}
+  python keywordGatherer.py $file
+done
