@@ -15,6 +15,14 @@ do
   python keywordGatherer.py $file
 done
 
+image="$(ls ./images/ | sort -n | head -1)"
+
+image="./images/$image"
+
+echo "IMAGE: $image"
+
+python memeCreator.py $image "ME TOO" "THANKS"
+
 ~/Downloads/si/runsikulix -r ~/_Code/meirlbot/redditPost.skl
 
 echo "COMPELETE"
