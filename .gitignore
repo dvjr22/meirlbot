@@ -92,3 +92,5 @@ ENV/
 *.jpg
 *css
 *.png
+./createdMemes
+*.gif
