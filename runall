@@ -14,3 +14,7 @@ do
   echo ${file##*/}
   python keywordGatherer.py $file
 done
+
+~/Downloads/si/runsikulix -r ~/_Code/meirlbot/redditPost.skl
+
+echo "COMPELETE"
