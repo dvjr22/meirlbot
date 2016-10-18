@@ -20,18 +20,30 @@ def main(photo_file):
                 },
                 'features': [{
                     'type': 'LABEL_DETECTION',
-                    'maxResults': 1
+                    'maxResults': 5
                 }]
             }]
         })
         response = service_request.execute()
-        label = response['responses'][0]['labelAnnotations'][0]['description']
-        print('Found label: %s for %s' % (label, photo_file))
-        with open("keywords.txt", "a") as myfile:
-            if(label != 'text'):
-                myfile.write("\n" + label)
-            else:
-                print('TEXT')
+
+        for res in response['responses'][0]['labelAnnotations']:
+            label = res['description']
+            print(label)
+            print('Found label: %s for %s' % (label,photo_file))
+            with open("keywords.txt", "a") as myfile:
+                if(label != 'text'):
+                    myfile.write("\n" + label)
+                else:
+                    print('TEXT')
+            print "BREAK\n"
+
+    #    label = response['responses'][0]['labelAnnotations'][0]['description']
+#        print('Found label: %s for %s' % (label, photo_file))
+#        with open("keywords.txt", "a") as myfile:
+#            if(label != 'text'):
+#                myfile.write("\n" + label)
+#            else:
+#                print('TEXT')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

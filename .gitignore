@@ -94,3 +94,6 @@ ENV/
 *.png
 ./createdMemes
 *.gif
+
+# Ignore the keywords files
+*.txt
