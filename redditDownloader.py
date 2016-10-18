@@ -36,7 +36,7 @@ def downloadImage(imageUrl, localFileName):
 
 # Connect to reddit and download the subreddit front page
 r = praw.Reddit(user_agent='tmoonisthebest')
-submissions = r.get_subreddit(targetSubreddit).get_hot(limit=100)
+submissions = r.get_subreddit(targetSubreddit).get_hot(limit=1000)
 
 # Process all the submissions
 for submission in submissions:

@@ -5,24 +5,34 @@
 rm -r images/*
 
 ########################## Reddit Downloader ###########################
-python redditDownloader.py me_irl
+# Download images from me_irl
+python redditDownloader.py dankmemes
 
 
 ########################## Keyword Gatherer ############################
+# For each downloaded image gather the keywords from Google
 for file in images/*.jpg
 do
   echo ${file##*/}
   python keywordGatherer.py $file
 done
 
-image="$(ls ./images/ | sort -n | head -1)"
+########################## Keyword Condenser ###########################
+# Find the most common keyword in the keywords.txt file
+python keywordCondenser.py
 
-image="./images/$image"
 
-echo "IMAGE: $image"
+######################### Google Downloader ############################
+# Download an image using the top keyword
+python googleDownloader.py
 
-python memeCreator.py $image "ME TOO" "THANKS"
+######################### Meme Creator #################################
+# Create that spicy meme
+python memeCreator.py "./createdMemes/000001.jpg" "ME TOO" "THANKS"
 
-#~/Downloads/si/runsikulix -r ~/_Code/meirlbot/redditPost.skl
+
+######################### Reddit Upload ###############################
+# Upload to me_irl through a GUI script
+~/Downloads/si/runsikulix -r ~/_Code/meirlbot/redditPost.skl
 
 echo "COMPELETE"

@@ -45,7 +45,7 @@ def make_meme(topString, bottomString, filename):
 	draw.text(topTextPosition, topString, (255,255,255), font=font)
 	draw.text(bottomTextPosition, bottomString, (255,255,255), font=font)
 
-	img.save("./images/temp.png")
+	img.save("./createdMemes/000001.png")
 
 def get_upper(somedata):
 	'''

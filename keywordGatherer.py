@@ -28,7 +28,10 @@ def main(photo_file):
         label = response['responses'][0]['labelAnnotations'][0]['description']
         print('Found label: %s for %s' % (label, photo_file))
         with open("keywords.txt", "a") as myfile:
-            myfile.write("\n" + label)
+            if(label != 'text'):
+                myfile.write("\n" + label)
+            else:
+                print('TEXT')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
