@@ -1,12 +1,14 @@
 #!/bin/bash
 # Script to run all the python stuff
-
 # Clean out the images directory
 rm -r images/*
+rm keywordsCondensed.txt
+rm keywords.txt
+rm -r createdMemes/*
 
 ########################## Reddit Downloader ###########################
 # Download images from me_irl
-python redditDownloader.py dankmemes
+python redditDownloader.py $1
 
 
 ########################## Keyword Gatherer ############################
@@ -26,13 +28,20 @@ python keywordCondenser.py
 # Download an image using the top keyword
 python googleDownloader.py
 
+sleep .5
+
 ######################### Meme Creator #################################
 # Create that spicy meme
-python memeCreator.py "./createdMemes/000001.jpg" "ME TOO" "THANKS"
+source keywordsCondensed.txt
+echo $FIRSTCOMMON
+echo $SECONDCOMMON
+python memeCreator.py "./createdMemes/000001.jpg" $FIRSTCOMMON $SECONDCOMMON
 
 
 ######################### Reddit Upload ###############################
 # Upload to me_irl through a GUI script
-~/Downloads/si/runsikulix -r ~/_Code/meirlbot/redditPost.skl
+#~/Downloads/si/runsikulix -r ~/_Code/meirlbot/redditPost.skl
+
+open createdMemes/000001.png
 
 echo "COMPELETE"

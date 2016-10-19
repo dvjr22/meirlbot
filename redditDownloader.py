@@ -9,6 +9,7 @@ import re, praw, requests, os, glob, sys
 from bs4 import BeautifulSoup
 
 MIN_SCORE = 100 # Submittions below this score will not be downloaded
+LIMIT = 10000
 
 # sys.argv holds the command line arguments for python
 if len(sys.argv) < 2:
@@ -19,8 +20,8 @@ if len(sys.argv) < 2:
 elif len(sys.argv) >= 2:
     targetSubreddit = sys.argv[1] # The subreddit to download from
     if len(sys.argv) >= 3:
-        # This means that the optional argument to change the MIN_SCORE has been set
-        MIN_SCORE = int(sys.argv[2])
+        # This means that the optional argument to change the LIMIT has been set
+        LIMIT = int(sys.argv[2])
 
 # Regex pattern for imgur links
 imgurUrlPattern = re.compile(r'(http://i.imgur.com/(.*))(\?.*)?')
@@ -36,7 +37,7 @@ def downloadImage(imageUrl, localFileName):
 
 # Connect to reddit and download the subreddit front page
 r = praw.Reddit(user_agent='tmoonisthebest')
-submissions = r.get_subreddit(targetSubreddit).get_hot(limit=1000)
+submissions = r.get_subreddit(targetSubreddit).get_hot(limit=LIMIT)
 
 # Process all the submissions
 for submission in submissions:
