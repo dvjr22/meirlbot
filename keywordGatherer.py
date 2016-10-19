@@ -31,7 +31,7 @@ def main(photo_file):
             print(label)
             print('Found label: %s for %s' % (label,photo_file))
             with open("keywords.txt", "a") as myfile:
-                if(label != 'text'):
+                if(label != 'text' and label != 'brand' and label != 'product'):
                     myfile.write("\n" + label)
                 else:
                     print('TEXT')

@@ -1,7 +1,7 @@
 from icrawler.examples import GoogleImageCrawler
 
 kwd = ""
-with open('keywords.txt') as my_file:
+with open('keywordsCondensed.txt') as my_file:
     for line in my_file:
         print(line.rstrip())
         kwd = line.rstrip()
