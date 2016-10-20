@@ -2,9 +2,9 @@ from icrawler.examples import GoogleImageCrawler
 
 kwd = ""
 with open('keywordsCondensed.txt') as my_file:
-    for line in my_file:
-        print(line.rstrip())
-        kwd = line.rstrip()
+    kwd = my_file.readline()
+    kwd = kwd.replace('FIRSTCOMMON=','')
+    print kwd
 
 google_crawler = GoogleImageCrawler('createdMemes')
 google_crawler.crawl(keyword=kwd, offset=0, max_num=1,
