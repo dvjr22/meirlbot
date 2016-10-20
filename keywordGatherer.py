@@ -31,19 +31,19 @@ def main(photo_file):
             print(label)
             print('Found label: %s for %s' % (label,photo_file))
             with open("keywords.txt", "a") as myfile:
-                if(label != 'text' and label != 'brand' and label != 'product'):
+                if(checkBlacklist(label)):
                     myfile.write("\n" + label)
                 else:
-                    print('TEXT')
+                    print('Skipping %s due to the blacklist' % label)
             print "BREAK\n"
 
-    #    label = response['responses'][0]['labelAnnotations'][0]['description']
-#        print('Found label: %s for %s' % (label, photo_file))
-#        with open("keywords.txt", "a") as myfile:
-#            if(label != 'text'):
-#                myfile.write("\n" + label)
-#            else:
-#                print('TEXT')
+def checkBlacklist(word):
+    with open("blacklistKeywords.txt",'r') as my_file:
+        for line in my_file:
+            if line.rstrip() == word:
+                print('is in blacklist')
+                return False
+        return True
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
