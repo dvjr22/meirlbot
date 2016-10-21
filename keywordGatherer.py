@@ -1,51 +1,74 @@
+############################################################
+#                      Keyword Gatherer                    #
+# Creator: Tyler Moon                                      #
+# Contributors:                                            #
+# Purpose: This script takes in an image file as a         #
+# parameter and runs that image through the                #
+# Google Image API to determine keywords describing the    #
+# image                                                    #
+############################################################
 import argparse
 import base64
 
+# Connection to the Google Vision API
 from googleapiclient import discovery
+# GoogleCredentials authentication library
 from oauth2client.client import GoogleCredentials
 
 
 def main(photo_file):
-    """Run a label request on a single image"""
-
+    # Load the credentials for the Google Vision API from the path variable $GOOGLE_APPLICATION_CREDENTIALS
     credentials = GoogleCredentials.get_application_default()
     service = discovery.build('vision', 'v1', credentials=credentials)
 
+    # Open the image file as passed in the parameter
     with open(photo_file, 'rb') as image:
+        # Encode the image to 64 bit
         image_content = base64.b64encode(image.read())
+        # Parameters to pass to the Google Vision API
         service_request = service.images().annotate(body={
             'requests': [{
                 'image': {
+                    # Image to load
                     'content': image_content.decode('UTF-8')
                 },
                 'features': [{
+                    # Type of response
                     'type': 'LABEL_DETECTION',
-                    'maxResults': 5
+                    # Number of results to return
+                    'maxResults': 10
                 }]
             }]
         })
         response = service_request.execute()
-
+        # Parse the response from the API
         for res in response['responses'][0]['labelAnnotations']:
             label = res['description']
-            print(label)
             print('Found label: %s for %s' % (label,photo_file))
+            # Write keywords to a textfile
             with open("keywords.txt", "a") as myfile:
+                # If the keyword is in the blacklistKeywords.txt file then dont write it
                 if(checkBlacklist(label)):
-                    myfile.write("\n" + label)
+                    myfile.write(label + " ")
                 else:
                     print('Skipping %s due to the blacklist' % label)
             print "BREAK\n"
+        # Write a newline character after all the keywords for one image has been found
+        with open("keywords.txt","a") as myfile:
+            myfile.write('\n')
 
+# Check the blacklist file for a match with the parameter word
 def checkBlacklist(word):
     with open("blacklistKeywords.txt",'r') as my_file:
         for line in my_file:
+            # The .rstrip() removes the newline or whitespace characters
             if line.rstrip() == word:
                 print('is in blacklist')
                 return False
         return True
 
 if __name__ == '__main__':
+    # Get the parameter from the commandline
     parser = argparse.ArgumentParser()
     parser.add_argument('image_file', help='The image you\'d like to label.')
     args = parser.parse_args()

@@ -4,3 +4,14 @@
 And if that didn't convince you then:
 
 This is a python program for analyzing meme usage on reddit's me_irl subreddit and creating relevent memes for posting
+
+
+## Installation
+* Clone this repo
+* Setup a Google Vision Credentials
+* Set the GOOGLE_APPLICATION_CREDENTIALS variable to the path to the JSON file from the previous step
+* Make sure there are read and write privileges to the images and createdMemes directory
+
+## Run Project
+* Use the following command to start the project
+  - ./zMeIrlBot <reddit subreddit name>

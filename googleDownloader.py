@@ -1,3 +1,12 @@
+############################################################
+#                    Google Downloader                     #
+# Creator: Tyler Moon                                      #
+# Contributors:                                            #
+# Purpose: This script uses the most common keywords in    #
+# the keywordsCondensed.txt file and scrapes Google Images #
+# webpage. Once an image has been found it downloads it    #
+# into the createdMemes directory                          #
+############################################################
 from icrawler.examples import GoogleImageCrawler
 
 kwd = ""

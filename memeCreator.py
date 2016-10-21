@@ -1,3 +1,15 @@
+############################################################
+#                       Meme Creator                       #
+# Creator: Tyler Moon                                      #
+# Contributors:                                            #
+# Purpose: This script takes in an image, a string for the #
+# top text, and a string for the bottom text. Out of these #
+# three things a simple meme is generate and saved to the  #
+# createdMemes directory                                   #
+############################################################
+
+# These PIL libraries are the Python Image Library which allows for the
+# image manipulation
 import PIL
 from PIL import ImageFont
 from PIL import Image
@@ -5,14 +17,15 @@ from PIL import ImageDraw
 
 import sys
 
-
+# This method creates the meme :)
 def make_meme(topString, bottomString, filename):
-
+	# Open the image and get its size
 	img = Image.open(filename)
 	imageSize = img.size
 
 	# find biggest font size that works
-	fontSize = int(imageSize[1]/5)
+	fontSize = int(imageSize[1]/4)
+	# Use the Impact font because its the best font
 	font = ImageFont.truetype("/Library/Fonts/Impact.ttf", fontSize)
 	topTextSize = font.getsize(topString)
 	bottomTextSize = font.getsize(bottomString)
@@ -32,6 +45,7 @@ def make_meme(topString, bottomString, filename):
 	bottomTextPositionY = imageSize[1] - bottomTextSize[1]
 	bottomTextPosition = (bottomTextPositionX, bottomTextPositionY)
 
+	# Draw the image with the text on it
 	draw = ImageDraw.Draw(img)
 
 	# draw outlines
@@ -45,12 +59,12 @@ def make_meme(topString, bottomString, filename):
 	draw.text(topTextPosition, topString, (255,255,255), font=font)
 	draw.text(bottomTextPosition, bottomString, (255,255,255), font=font)
 
+	# Save the image
 	img.save("./createdMemes/000001.png")
 
 def get_upper(somedata):
-	'''
-	Handle Python 2/3 differences in argv encoding
-	'''
+
+	# Handle Python 2/3 differences in argv encoding
 	result = ''
 	try:
 		result = somedata.decode("utf-8").upper()
@@ -59,9 +73,8 @@ def get_upper(somedata):
 	return result
 
 def get_lower(somedata):
-	'''
-	Handle Python 2/3 differences in argv encoding
-	'''
+
+	# Handle Python 2/3 differences in argv encoding
 	result = ''
 	try:
 		result = somedata.decode("utf-8").lower()
@@ -78,6 +91,8 @@ if __name__ == '__main__':
 	topString = ''
 	meme = 'standard'
 
+
+	# Get the arguments from the python call
 	if args_len == 1:
 		# no args except the launch of the script
 		print('args plz')
