@@ -26,22 +26,22 @@ python keywordCondenser.py
 
 ######################### Google Downloader ############################
 # Download an image using the top keyword
-python googleDownloader.py
+#python googleDownloader.py
 
-sleep .5
+#sleep .5
 
 ######################### Meme Creator #################################
 # Create that spicy meme
-source keywordsCondensed.txt
-echo $FIRSTCOMMON
-echo $SECONDCOMMON
-python memeCreator.py "./createdMemes/000001.jpg" $FIRSTCOMMON $SECONDCOMMON
+#source keywordsCondensed.txt
+#echo $FIRSTCOMMON
+#echo $SECONDCOMMON
+#python memeCreator.py "./createdMemes/000001.jpg" "Me Too" "Thanks"
 
 
 ######################### Reddit Upload ###############################
 # Upload to me_irl through a GUI script
 #~/Downloads/si/runsikulix -r ~/_Code/meirlbot/redditPost.skl
 
-open createdMemes/000001.png
+#open createdMemes/000001.png
 
-echo "COMPELETE"
+echo "COMPELETE with $(ls -l ./images | wc -l) images used"

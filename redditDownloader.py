@@ -41,12 +41,13 @@ submissions = r.get_subreddit(targetSubreddit).get_hot(limit=LIMIT)
 
 # Process all the submissions
 for submission in submissions:
+    print("CHECKING %s" % submission.url)
     # Check for all the cases where we would want to skip a submission
-    if "imgur.com/" not in submission.url:
+    #if "imgur.com/" not in submission.url:
         # TODO: Will need to allow reddit image submissions at some point
-        continue # skip non-imgur submissions
-    if submission.score < MIN_SCORE:
-        continue # Skip those low score memes nobody cares about
+    #    continue # skip non-imgur submissions
+    #if submission.score < MIN_SCORE:
+#        continue # Skip those low score memes nobody cares about
     if 'http://imgur.com/a/' in submission.url:
         # The /a denotes an album
         print('Downloading an album')
@@ -63,7 +64,16 @@ for submission in submissions:
                 imageFile = imageUrl[imageUrl.rfind('/') + 1:]
             localFileName = './images/reddit_%s_%s_album_%s_imgur_%s' % (targetSubreddit,submission.id, albumId, imageFile)
             downloadImage('http:' + match['href'], localFileName)
-
+    elif 'https://i.redd.it/' in submission.url:
+        # This is a reddit upload page
+        print('Downloading from i.redd.it')
+        localFileName = './images/reddit_%s_%s_album_%s_reddit_%s' % (targetSubreddit,submission.id, "", "")
+        downloadImage(submission.url, localFileName)
+    elif 'https://i.reddituploads.com/' in submission.url:
+        # This is a reddit upload page
+        print('Downloading from i.reddituploads.com')
+        localFileName = './images/reddit_%s_%s_album_%s_reddit_%s' % (targetSubreddit,submission.id, "", "")
+        downloadImage(submission.url, localFileName)
     elif 'http://i.imgur.com/' in submission.url:
         # The URL is a direct link to the imageFile
         print('Downloading a direct link')

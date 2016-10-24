@@ -93,7 +93,7 @@ ENV/
 *css
 *.png
 ./createdMemes
+./images/*
 *.gif
 
 # Ignore the keywords files
-*.txt
