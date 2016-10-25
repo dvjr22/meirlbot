@@ -91,26 +91,23 @@ if __name__ == '__main__':
 	topString = ''
 	meme = 'standard'
 
-
+	print args_len
 	# Get the arguments from the python call
 	if args_len == 1:
 		# no args except the launch of the script
 		print('args plz')
-
 	elif args_len == 2:
 		# only one argument, use standard meme
-		bottomString = get_upper(sys.argv[-1])
-
+		bottomString = get_upper(sys.argv[1])
 	elif args_len == 3:
 		# args give meme and one line
-		bottomString = get_upper(sys.argv[-1])
 		meme = get_lower(sys.argv[1])
-
+		bottomString = get_upper(sys.argv[2])
 	elif args_len == 4:
 		# args give meme and two lines
-		topString = get_upper(sys.argv[-2])
-		bottomString = get_upper(sys.argv[-1])
 		meme = get_lower(sys.argv[1])
+		bottomString = get_upper(sys.argv[3])
+		topString = get_upper(sys.argv[2])
 	else:
 		# so many args
 		# what do they mean
