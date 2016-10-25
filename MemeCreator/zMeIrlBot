@@ -19,10 +19,6 @@ do
   python keywordGatherer.py $file
 done
 
-########################## Keyword Condenser ###########################
-# Find the most common keyword in the keywords.txt file
-python keywordCondenser.py
-
 
 ######################### Google Downloader ############################
 # Download an image using the top keyword
@@ -35,18 +31,18 @@ python googleDownloader.py
 #source keywordsCondensed.txt
 #echo $FIRSTCOMMON
 #echo $SECONDCOMMON
-python memeCreator.py "./createdMemes/000001.jpg" "Me Too" "Thanks"
+python memeCreator.py
 
 
 ######################### Reddit Upload ###############################
 # Upload to me_irl through a GUI script
 #~/Downloads/si/runsikulix -r ~/_Code/meirlbot/redditPost.skl
 
-open createdMemes/000001.png
+open createdMemes/
 
 
 ######################## Update Flag Reset ############################
 # Reset all the update flags in the database to false
-python resetUpdateFlags.py
+#python resetUpdateFlags.py
 
 echo "COMPELETE with $(ls -l ./images | wc -l) images used"
