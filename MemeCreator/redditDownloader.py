@@ -53,18 +53,21 @@ def parseImage(submission):
                 imageFile = imageUrl[imageUrl.rfind('/') + 1:]
             localFileName = './images/reddit_%s_%s_album_%s_imgur_%s' % (targetSubreddit,submission.id, albumId, imageFile)
             downloadImage('http:' + match['href'], localFileName)
+            print 'returning %s' % localFileName
             return localFileName
     elif 'https://i.redd.it/' in submission.url:
         # This is a reddit upload page
         print('Downloading from i.redd.it %s' % submission.url)
         localFileName = './images/reddit_%s_%s_album_%s_reddit_%s' % (targetSubreddit,submission.id, "", ".jpg")
         downloadImage(submission.url, localFileName)
+        print 'returning %s' % localFileName
         return localFileName
     elif 'https://i.reddituploads.com/' in submission.url:
         # This is a reddit upload page
         print('Downloading from i.reddituploads.com')
         localFileName = './images/reddit_%s_%s_album_%s_reddit_%s' % (targetSubreddit,submission.id, "", ".jpg")
         downloadImage(submission.url, localFileName)
+        print 'returning %s' % localFileName
         return localFileName
     elif 'http://i.imgur.com/' in submission.url:
         # The URL is a direct link to the imageFile
@@ -78,6 +81,7 @@ def parseImage(submission):
 
         localFileName = './images/reddit_%s_%s_album_None_imgur_%s' % (targetSubreddit, submission.id, imgurFilename)
         downloadImage(submission.url, localFileName)
+        print 'returning %s' % localFileName
         return localFileName
 
     elif 'http://imgur.com/' in submission.url:
@@ -99,6 +103,7 @@ def parseImage(submission):
 
         localFileName = './images/reddit_%s_%s_album_None_imgur_%s' % (targetSubreddit, submission.id, imageFile)
         downloadImage(imageUrl, localFileName)
+        print 'returning %s' % localFileName
         return localFileName
 
 
