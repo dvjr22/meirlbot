@@ -27,32 +27,33 @@ def setup(query, current):
 
     writeCounter = 0;
     def writeImage(ActualImages, index, current):
-        (img, Type) = ActualImages[index]
-        try:
-            req = urllib2.Request(img, headers={'User-Agent' : header})
-            raw_img = urllib2.urlopen(req).read()
+        if index > 3:
+            (img, Type) = ActualImages[index]
+            try:
+                req = urllib2.Request(img, headers={'User-Agent' : header})
+                raw_img = urllib2.urlopen(req).read()
 
-            cntr = len([i for i in os.listdir(DIR) if image_type in i]) + 1
-            print cntr
-            path = ""
-            if len(Type)==0:
-                path = str(os.path.join(DIR , image_type + "_"+ str(cntr)+".jpg"))
-            else:
-                path = os.path.join(DIR , image_type + "_"+ str(cntr)+"."+Type)
+                cntr = len([i for i in os.listdir(DIR) if image_type in i]) + 1
+                print cntr
+                path = ""
+                if len(Type)==0:
+                    path = str(os.path.join(DIR , image_type + "_"+ str(cntr)+".jpg"))
+                else:
+                    path = os.path.join(DIR , image_type + "_"+ str(cntr)+"."+Type)
 
-            f = open(path, 'wb')
-            f.write(raw_img)
-            f.close()
-            print "Downloaded a meme"
-            updatePost = {
-                'createdMemeFlag': True,
-                'createdMemeFile': path,
-            }
-            rposts.update_one({"_id": current["_id"]},{"$set": updatePost})
-        except Exception as e:
-            print "could not load : "+img
-            print e
-            writeImage(ActualImages, (index + 1),current)
+                f = open(path, 'wb')
+                f.write(raw_img)
+                f.close()
+                print "Downloaded a meme"
+                updatePost = {
+                    'createdMemeFlag': True,
+                    'createdMemeFile': path,
+                }
+                rposts.update_one({"_id": current["_id"]},{"$set": updatePost})
+            except Exception as e:
+                print "could not load : "+img
+                print e
+                writeImage(ActualImages, (index + 1),current)
 
 
     #query = raw_input("query image")# you can change the query for the image  here

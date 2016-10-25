@@ -13,11 +13,7 @@ python redditDownloader.py
 
 ########################## Keyword Gatherer ############################
 # For each downloaded image gather the keywords from Google
-for file in ./images/*
-do
-  echo ${file##*/}
-  python keywordGatherer.py $file
-done
+python captionFinder.py
 
 
 ######################### Google Downloader ############################
