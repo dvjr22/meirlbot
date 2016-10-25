@@ -14,14 +14,21 @@ import base64
 from googleapiclient import discovery
 # GoogleCredentials authentication library
 from oauth2client.client import GoogleCredentials
+# MongoDB Connection
+from pymongo import MongoClient
+
+# Global database objects
+client = MongoClient('mongodb://localhost:27017')
+db = client['meirlbot_mongodb']
+rposts = db.redditposts
 
 
-
-def main(photo_file):
+def main(currentPost):
     # Load the credentials for the Google Vision API from the path variable $GOOGLE_APPLICATION_CREDENTIALS
     credentials = GoogleCredentials.get_application_default()
     service = discovery.build('vision', 'v1', credentials=credentials)
 
+    photo_file = currentPost['localFile']
     # Open the image file as passed in the parameter
     with open(photo_file, 'rb') as image:
         # Encode the image to 64 bit
@@ -48,8 +55,12 @@ def main(photo_file):
         # Parse the response from the API
         text = response['responses'][0]['textAnnotations'][0]['description'].replace('\n',' ')
         print 'TEXT %s' % text
-        with open("keywords.txt", "a") as myfile:
-            myfile.write(text + "\n")
+        print 'Updating Database'
+        updatePost = {
+                        'captionText': text,
+                     }
+        rposts.update_one({"_id": current['_id']}, { "$set" : updatePost})
+
 
 
 
@@ -79,8 +90,7 @@ def checkBlacklist(word):
         return True
 
 if __name__ == '__main__':
-    # Get the parameter from the commandline
-    parser = argparse.ArgumentParser()
-    parser.add_argument('image_file', help='The image you\'d like to label.')
-    args = parser.parse_args()
-    main(args.image_file)
+    for current in rposts.find():
+        # If the updateFlag is true then the image has been downloaded
+        if current['updateFlag']:
+            main(current)

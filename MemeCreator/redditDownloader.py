@@ -17,19 +17,7 @@ rposts = db.redditposts
 
 MIN_SCORE = 100 # Submittions below this score will not be downloaded
 LIMIT = 10000
-
-# sys.argv holds the command line arguments for python
-if len(sys.argv) < 2:
-    # There were no command line arguments set
-    print('Usage: ')
-    print('   python %s subreddit [minimum score]' % (sys.argv[0]))
-    sys.exit()
-elif len(sys.argv) >= 2:
-    targetSubreddit = sys.argv[1] # The subreddit to download from
-    if len(sys.argv) >= 3:
-        # This means that the optional argument to change the LIMIT has been set
-        LIMIT = int(sys.argv[2])
-
+targetSubreddit = "me_irl"
 # Regex pattern for imgur links
 imgurUrlPattern = re.compile(r'(http://i.imgur.com/(.*))(\?.*)?')
 
@@ -65,16 +53,19 @@ def parseImage(submission):
                 imageFile = imageUrl[imageUrl.rfind('/') + 1:]
             localFileName = './images/reddit_%s_%s_album_%s_imgur_%s' % (targetSubreddit,submission.id, albumId, imageFile)
             downloadImage('http:' + match['href'], localFileName)
+            return localFileName
     elif 'https://i.redd.it/' in submission.url:
         # This is a reddit upload page
-        print('Downloading from i.redd.it')
-        localFileName = './images/reddit_%s_%s_album_%s_reddit_%s' % (targetSubreddit,submission.id, "", "")
+        print('Downloading from i.redd.it %s' % submission.url)
+        localFileName = './images/reddit_%s_%s_album_%s_reddit_%s' % (targetSubreddit,submission.id, "", ".jpg")
         downloadImage(submission.url, localFileName)
+        return localFileName
     elif 'https://i.reddituploads.com/' in submission.url:
         # This is a reddit upload page
         print('Downloading from i.reddituploads.com')
-        localFileName = './images/reddit_%s_%s_album_%s_reddit_%s' % (targetSubreddit,submission.id, "", "")
+        localFileName = './images/reddit_%s_%s_album_%s_reddit_%s' % (targetSubreddit,submission.id, "", ".jpg")
         downloadImage(submission.url, localFileName)
+        return localFileName
     elif 'http://i.imgur.com/' in submission.url:
         # The URL is a direct link to the imageFile
         print('Downloading a direct link')
@@ -87,6 +78,7 @@ def parseImage(submission):
 
         localFileName = './images/reddit_%s_%s_album_None_imgur_%s' % (targetSubreddit, submission.id, imgurFilename)
         downloadImage(submission.url, localFileName)
+        return localFileName
 
     elif 'http://imgur.com/' in submission.url:
         # This is an Imgur page with a single image.
@@ -107,6 +99,8 @@ def parseImage(submission):
 
         localFileName = './images/reddit_%s_%s_album_None_imgur_%s' % (targetSubreddit, submission.id, imageFile)
         downloadImage(imageUrl, localFileName)
+        return localFileName
+
 
 # Connect to reddit and download the subreddit front page
 r = praw.Reddit(user_agent='tmoonisthebest')
@@ -129,6 +123,15 @@ for current in rposts.find():
     # Only download the image if the change is sufficient
     if(value > 100.0):
         print 'Parsing Image'
-        parseImage(submission)
+        localFileName = parseImage(submission)
+        print 'Updating Database'
+        # Add the local file path to the database and update the upvotes
+        updatePost = {
+                        'localFile': localFileName,
+                        'upvotes': newUpvotes,
+                        'url': submission.url,
+                        'updateFlag': True,
+                     }
+        rposts.update_one({"redditId": current['redditId']}, { "$set" : updatePost})
     else:
         print 'Not Parsing Image'

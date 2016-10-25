@@ -8,12 +8,12 @@ rm -r createdMemes/*
 
 ########################## Reddit Downloader ###########################
 # Download images from me_irl
-python redditDownloader.py $1
+python redditDownloader.py
 
 
 ########################## Keyword Gatherer ############################
 # For each downloaded image gather the keywords from Google
-for file in images/*.jpg
+for file in ./images/*
 do
   echo ${file##*/}
   python keywordGatherer.py $file
@@ -26,7 +26,7 @@ python keywordCondenser.py
 
 ######################### Google Downloader ############################
 # Download an image using the top keyword
-#python googleDownloader.py
+python googleDownloader.py
 
 #sleep .5
 
@@ -35,13 +35,18 @@ python keywordCondenser.py
 #source keywordsCondensed.txt
 #echo $FIRSTCOMMON
 #echo $SECONDCOMMON
-#python memeCreator.py "./createdMemes/000001.jpg" "Me Too" "Thanks"
+python memeCreator.py "./createdMemes/000001.jpg" "Me Too" "Thanks"
 
 
 ######################### Reddit Upload ###############################
 # Upload to me_irl through a GUI script
 #~/Downloads/si/runsikulix -r ~/_Code/meirlbot/redditPost.skl
 
-#open createdMemes/000001.png
+open createdMemes/000001.png
+
+
+######################## Update Flag Reset ############################
+# Reset all the update flags in the database to false
+python resetUpdateFlags.py
 
 echo "COMPELETE with $(ls -l ./images | wc -l) images used"
