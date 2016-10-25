@@ -1,11 +1,12 @@
 ############################################################
-#                      Keyword Gatherer                    #
+#                      Caption Finder                      #
 # Creator: Tyler Moon                                      #
 # Contributors:                                            #
-# Purpose: This script takes in an image file as a         #
-# parameter and runs that image through the                #
-# Google Image API to determine keywords describing the    #
-# image                                                    #
+# Purpose: This script takes all the images where the      #
+# updateFlag is true in the database, runs the images      #
+# through the Google Image API to determine the captions   #
+# of the images. These captions are then saved to the      #
+# database                                                 #
 ############################################################
 import argparse
 import base64
@@ -29,6 +30,7 @@ def main(currentPost):
     service = discovery.build('vision', 'v1', credentials=credentials)
 
     photo_file = currentPost['localFile']
+    print "PHOTO_FILE %s " % photo_file
     # Open the image file as passed in the parameter
     with open(photo_file, 'rb') as image:
         # Encode the image to 64 bit

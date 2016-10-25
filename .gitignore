@@ -97,4 +97,4 @@ images/
 *.gif
 
 # Ignore MongoDB Database
-MongoDB/
+MongoDB/data/

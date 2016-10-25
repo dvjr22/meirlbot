@@ -15,6 +15,12 @@ from PIL import ImageFont
 from PIL import Image
 from PIL import ImageDraw
 
+# MongoDb database
+from pymongo import MongoClient
+client = MongoClient('mongodb://localhost:27017/')
+db = client['meirlbot_mongodb']
+rposts = db.redditposts
+
 import sys
 
 # This method creates the meme :)
@@ -60,7 +66,7 @@ def make_meme(topString, bottomString, filename):
 	draw.text(bottomTextPosition, bottomString, (255,255,255), font=font)
 
 	# Save the image
-	img.save("./createdMemes/000001.png")
+	img.save(str("createdMemes/" + "meme_" + filename.replace('createdMemes/','')))
 
 def get_upper(somedata):
 
@@ -86,34 +92,10 @@ def get_lower(somedata):
 
 
 if __name__ == '__main__':
-
-	args_len = len(sys.argv)
-	topString = ''
-	meme = 'standard'
-
-	print args_len
-	# Get the arguments from the python call
-	if args_len == 1:
-		# no args except the launch of the script
-		print('args plz')
-	elif args_len == 2:
-		# only one argument, use standard meme
-		bottomString = get_upper(sys.argv[1])
-	elif args_len == 3:
-		# args give meme and one line
-		meme = get_lower(sys.argv[1])
-		bottomString = get_upper(sys.argv[2])
-	elif args_len == 4:
-		# args give meme and two lines
-		meme = get_lower(sys.argv[1])
-		bottomString = get_upper(sys.argv[3])
-		topString = get_upper(sys.argv[2])
-	else:
-		# so many args
-		# what do they mean
-		# too intense
-		print('to many argz')
-
-	print(meme)
-	filename = str(meme)#+'.jpg'
-	make_meme(topString, bottomString, filename)
+	for current in rposts.find():
+		if current['updateFlag'] and current['createdMemeFlag']:
+			print 'creating a meme'
+			text = current['captionText']
+			filename = current['createdMemeFile']
+			topString, bottomString = text[:len(text)/2], text[len(text)/2:]
+			make_meme(topString, bottomString, filename)
