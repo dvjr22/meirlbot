@@ -7,6 +7,13 @@
 ############################################################
 import re, praw, requests, os, glob, sys
 from bs4 import BeautifulSoup
+from pymongo import MongoClient
+
+# MongoDB connection
+client = MongoClient('mongodb://localhost:27017')
+db = client['meirlbot_mongodb']
+rposts = db.redditposts
+
 
 MIN_SCORE = 100 # Submittions below this score will not be downloaded
 LIMIT = 10000
@@ -35,20 +42,13 @@ def downloadImage(imageUrl, localFileName):
             for chunk in response.iter_content(4096):
                 fo.write(chunk)
 
-# Connect to reddit and download the subreddit front page
-r = praw.Reddit(user_agent='tmoonisthebest')
-submissions = r.get_subreddit(targetSubreddit).get_hot(limit=LIMIT)
-
-# Process all the submissions
-for submission in submissions:
-    print("Sub: " + submission.id)
-    print("CHECKING %s" % submission.url)
+def parseImage(submission):
     # Check for all the cases where we would want to skip a submission
     #if "imgur.com/" not in submission.url:
         # TODO: Will need to allow reddit image submissions at some point
     #    continue # skip non-imgur submissions
     #if submission.score < MIN_SCORE:
-#        continue # Skip those low score memes nobody cares about
+    #        continue # Skip those low score memes nobody cares about
     if 'http://imgur.com/a/' in submission.url:
         # The /a denotes an album
         print('Downloading an album')
@@ -107,3 +107,28 @@ for submission in submissions:
 
         localFileName = './images/reddit_%s_%s_album_None_imgur_%s' % (targetSubreddit, submission.id, imageFile)
         downloadImage(imageUrl, localFileName)
+
+# Connect to reddit and download the subreddit front page
+r = praw.Reddit(user_agent='tmoonisthebest')
+
+
+# Process all the submissions
+#for submission in submissions:
+for current in rposts.find():
+    submission = r.get_submission(submission_id=current['redditId'])
+    oldUpvotes = current['upvotes'] # Upvotes of the saved state in the database
+    newUpvotes = submission.ups     # Upvotes of the current post
+
+    print("Reddit ID: " + submission.id)
+    print("Old Upvotes: " + str(oldUpvotes))
+    print("New Upvotes: " + str(newUpvotes))
+    print("Difference: " + str(abs(newUpvotes - oldUpvotes)))
+    value = (float(newUpvotes) / oldUpvotes) * 100
+    print("Percent of New Upvotes: " + str(value))
+
+    # Only download the image if the change is sufficient
+    if(value > 100.0):
+        print 'Parsing Image'
+        parseImage(submission)
+    else:
+        print 'Not Parsing Image'
