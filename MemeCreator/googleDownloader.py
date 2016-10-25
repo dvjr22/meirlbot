@@ -23,10 +23,12 @@ rposts = db.redditposts
 
 def setup(query, current):
     def get_soup(url,header):
+        print 'in get_soup'
         return BeautifulSoup(urllib2.urlopen(urllib2.Request(url,headers=header)),'html.parser')
 
     writeCounter = 0;
     def writeImage(ActualImages, index, current):
+        print 'in writeImage'
         if index > 3:
             (img, Type) = ActualImages[index]
             try:
@@ -54,6 +56,8 @@ def setup(query, current):
                 print "could not load : "+img
                 print e
                 writeImage(ActualImages, (index + 1),current)
+        else:
+            writeImage(ActualImages, (index + 1), current)
 
 
     #query = raw_input("query image")# you can change the query for the image  here
