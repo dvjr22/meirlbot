@@ -92,8 +92,9 @@ ENV/
 *.jpg
 *css
 *.png
-./createdMemes
-./images/*
+createdMemes/
+images/
 *.gif
 
-# Ignore the keywords files
+# Ignore MongoDB Database
+MongoDB/
