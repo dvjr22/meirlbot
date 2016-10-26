@@ -35,26 +35,31 @@ def checkDatabase():
     # Process all the submissions
     #for submission in submissions:
     for current in rposts.find():
-        submission = r.get_submission(submission_id=current['redditId'])
-        oldUpvotes = current['upvote'] # Upvotes of the saved state in the database
-        newUpvotes = submission.ups     # Upvotes of the current post
-        print "Current Upvotes %s for id %s" % (newUpvotes,current['redditId'])
-        if newUpvotes > oldUpvotes + EXITVALUE:
-            print "Updating Value for id %s" % current['redditId']
-            updatePost = {
-                'upvoteTrend': current['upvoteTrend'] + 1,
-                'upvote': newUpvotes,
-                }
-            rposts.update_one({"_id": current["_id"]}, {"$set": updatePost})
-        elif newUpvotes < oldUpvotes - EXITVALUE:
-            print "Downgrading Value for id %s" % current['redditId']
-            value = current['upvoteTrend']
-            if value > 0:
-                value = 0
-            updatePost = {
-                'upvoteTrend': value - 1
-                }
-            rposts.update_one({"_id": current["_id"]}, {"$set": updatePost})
+        if current['upvoteTrend'] < -5:
+            print "Deleting document due to low upvoteTrend"
+            rposts.delete_one({"_id":current["_id"]})
+        else:
+            submission = r.get_submission(submission_id=current['redditId'])
+            oldUpvotes = current['upvote'] # Upvotes of the saved state in the database
+            newUpvotes = submission.ups     # Upvotes of the current post
+            print "Current Upvotes %s for id %s" % (newUpvotes,current['redditId'])
+
+            if newUpvotes > oldUpvotes + EXITVALUE:
+                print "Updating Value for id %s" % current['redditId']
+                updatePost = {
+                    'upvoteTrend': current['upvoteTrend'] + 1,
+                    'upvote': newUpvotes,
+                    }
+                rposts.update_one({"_id": current["_id"]}, {"$set": updatePost})
+            elif newUpvotes < oldUpvotes - EXITVALUE:
+                print "Downgrading Value for id %s" % current['redditId']
+                value = current['upvoteTrend']
+                if value > 0:
+                    value = 0
+                updatePost = {
+                    'upvoteTrend': value - 1
+                    }
+                rposts.update_one({"_id": current["_id"]}, {"$set": updatePost})
 
 def loadFromReddit():
     submissions = r.get_subreddit("me_irl").get_new(limit=20)
