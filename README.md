@@ -18,11 +18,11 @@ The purpose of the MemeCreator Bot is to generate new spicy memes. Using a Mongo
 * Run "mongod" to start an instance of the database
 * Run "./zMeIrlBot" from the MemeCreator directory to start the MemeCreator bot
 
-### Run Project
+### Run Bot
 * Use the following command to start the project
   - ./zMeIrlBot <reddit subreddit name>
 
-### Explanation of Project Parts
+### Explanation of Bot Parts
 MEIRLBOT is split into five different parts with each part using a different technology. The majority of the project is written in the Python scripting language with a bash script to start it all. 
 
 | Part Name       | File Name     | Use                              | Main Technology       | Language       |
@@ -50,25 +50,25 @@ This project stores data in a MongoDB nonrelational database. There is one datab
 ```
 
 ## MemeTrend Bot
-The purpose of the MemeTrend Bot is to continually check me_irl's new page and try to determine if a new meme will become popular. When a meme is found then the redditId and the current upvote total is saved to the MongoDB database and the MemeCreator Bot is started. Currently this bot is only theoretical and no work has been done on it as of yet. Great work is to come!
+The purpose of the MemeTrend Bot is to continually check me_irl's new page and try to determine if a new meme will become popular. When a meme is found then the redditId and the current upvote total is saved to the MongoDB database and the MemeCreator Bot is started.
+
+### Installation
+There is not installation needed currently for the MemeTrend Bot. Simply pull down the code and run the start command which is specified in the next section
+
+### Run Bot
+* Use the following command to start the MemeTrend Bot (Note. This project will continue to run at a 5 min interval until the ctl-c KeyboardInterrupt command is issued)
+  - python upvoteChecker.py
+  
+### Explanation of Bot Parts
+This bot multi-threads two different parts. One part is the loadFromReddit method which pulls upvote information from me_irl's new page. The second part is the checkDatabase method which checks all the posts in the upvoteposts collection for a change in upvotes.
 
 ## Feature Roadmap
 This project started from a simple goal of figuring out how to download spicy memes from meirl. It has now grown to a much larger project with new ideas and sub projects added all the time. The plan for meirlbot as of 10/25/2016 is as follows:
 
 1. Finish MemeCreator Bot
 
-  a. [Figure out file not found exceptions in the keywordGatherer.py file](https://github.com/tmoon8730/meirlbot/issues/12)
-  
-  b. [Determine why some generated memes turn into a weird trippy mess](https://github.com/tmoon8730/meirlbot/issues/13)
-  
-  c. [Cut the caption text by spaces to keep the words together](https://github.com/tmoon8730/meirlbot/issues/14)
-  
-  d. [Determine better value for the upvote exit condition](https://github.com/tmoon8730/meirlbot/issues/15)
-  
 2. Create MemeTrend Bot
  
-  a. More details when the plan is solidified
-
 3. Integrate meirlbot project in with the [MemeExchange](https://github.com/tmoon8730/MemeExchange) project
 
 ## Contributions
