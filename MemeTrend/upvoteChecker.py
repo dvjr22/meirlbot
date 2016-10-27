@@ -21,6 +21,7 @@ EXITVALUE = 0
 client = MongoClient('mongodb://localhost:27017')
 db = client['meirlbot_mongodb']
 rposts = db.upvoteposts
+r2posts = db.redditposts
 
 # Connect to reddit and download the subreddit front page
 r = praw.Reddit(user_agent='tmoonisthebest')
@@ -30,12 +31,34 @@ def alreadyExists(newID):
 
 def getCurrentTime():
     return strftime("%Y-%m-%d %I:%m:%S")
+def checkExit(sub,current):
+    if((current['upvoteTrend'] > 2) and (sub.ups > 5)):
+        return True
+    else:
+        return False
 
 def checkDatabase():
     # Process all the submissions
     #for submission in submissions:
     for current in rposts.find():
-        if current['upvoteTrend'] < -5:
+        sub = r.get_submission(submission_id=current['redditId'])
+        if checkExit(sub,current):
+            print 'Found a meme and inserting it into the redditposts collection %s' % sub.url
+            insertPost = {
+                'url': sub.url,
+                'upvotes': sub.ups,
+                'redditId': sub.id,
+                'localFile': ' ',
+                'captionText': ' ',
+                'updateFlag': False,
+                'createdMemeFlag': False,
+                'upvoteTrend': 1
+            }
+            r2posts.update_one({'redditId': sub.id},{"$set": insertPost},True)
+            print 'Inserted document into redditposts'
+            rposts.delete_one({'redditId':sub.id})
+            print 'Removed document from upvoteposts'
+        elif current['upvoteTrend'] < -5:
             print "Deleting document due to low upvoteTrend"
             rposts.delete_one({"_id":current["_id"]})
         else:
