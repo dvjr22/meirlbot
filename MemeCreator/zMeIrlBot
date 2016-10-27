@@ -34,6 +34,6 @@ open createdMemes/
 
 ######################## Update Flag Reset ############################
 # Reset all the update flags in the database to false
-#python resetUpdateFlags.py
+python resetUpdateFlags.py
 
 echo "COMPELETE with $(ls -l ./images | wc -l) images used"

@@ -1,0 +1,23 @@
+#!/bin/bash
+echo "MEIRLBOT STATUS CHECK"
+echo " "
+echo "####################"
+if [[ $(ps ax | grep meteor) ]]; then
+  echo "# meteor UP        #"
+else
+  echo "# meteor DOWN      #" 
+fi
+
+if [[ $(ps ax | grep mongo) ]]; then
+  echo "# mongodb UP       #"
+else
+  echo "# mongodb DOWN     #"
+fi
+
+if [[ $(ps ax | grep upvote) ]]; then
+  echo "# upvoteChecker UP #"
+else
+  echo "#upvoteChecker DOWN#"
+fi
+echo "####################"
+echo " "
