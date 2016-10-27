@@ -85,7 +85,7 @@ def checkDatabase():
                 rposts.update_one({"_id": current["_id"]}, {"$set": updatePost})
 
 def loadFromReddit():
-    submissions = r.get_subreddit("me_irl").get_new(limit=20)
+    submissions = r.get_subreddit("me_irl").get_new(limit=100)
     for sub in submissions:
         if not alreadyExists(sub.id):
             upvoteTrend = 0
