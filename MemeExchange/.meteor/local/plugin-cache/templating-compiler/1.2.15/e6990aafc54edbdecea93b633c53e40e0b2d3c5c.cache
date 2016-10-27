@@ -1,1 +1,0 @@
-{"head":"","body":"","js":"\nTemplate.__checkName(\"searchForm\");\nTemplate[\"searchForm\"] = new Template(\"Template.searchForm\", (function() {\n  var view = this;\n  return HTML.Raw('<form>\\n    <input type=\"text\" name=\"playerName\">\\n    <input type=\"submit\" value=\"Add Player\">\\n  </form>');\n}));\n","bodyAttrs":{}}

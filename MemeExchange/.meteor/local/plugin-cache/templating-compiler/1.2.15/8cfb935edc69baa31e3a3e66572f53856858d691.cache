@@ -1,1 +1,0 @@
-{"head":"","body":"","js":"\nTemplate.__checkName(\"navigation\");\nTemplate[\"navigation\"] = new Template(\"Template.navigation\", (function() {\n  var view = this;\n  return HTML.Raw(\"<h1>\\n  this is a navigation\\n  </h1>\");\n}));\n","bodyAttrs":{}}
