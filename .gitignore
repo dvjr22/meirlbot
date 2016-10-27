@@ -98,3 +98,8 @@ images/
 
 # Ignore MongoDB Database
 MongoDB/data/
+
+# Ignore ssh keyfile
+*.pem
+
+*.csv
