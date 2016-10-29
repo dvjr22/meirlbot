@@ -76,7 +76,6 @@ def checkExit(sub,current):
     else:
         return False
 
-
 # The checkDatabase function loops through all the documents in the upvoteposts collection.
 # If the document meets the exit conditions laid out in checkExit then the document
 # is moved from the upvotepost colleciton to the redditposts collection for the
