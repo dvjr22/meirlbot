@@ -14,12 +14,20 @@ import re
 import os
 import cookielib
 import json
+import logging
+from logging.config import fileConfig
 from pymongo import MongoClient
 
 # Mongo database
 client = MongoClient('mongodb://localhost:27017')
 db = client['meirlbot_mongodb']
 rposts = db.redditposts
+
+# Configure the logger
+fileConfig('../logging_config.ini')
+logger = logging.getLogger()
+handler = logging.handlers.RotatingFileHandler('../logs/memecreator.log')
+logger.addHandler(handler)
 
 def setup(query, current):
     def get_soup(url,header):

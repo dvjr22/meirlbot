@@ -4,7 +4,7 @@
 # created: 10/11/2016                                      #
 # purpose: This python program will download               #
 #          the top images from a given reddit subreddit    #
-############################################################ˇ
+############################################################
 import re, praw, requests, os, glob, sys, logging
 from logging.config import fileConfig
 from bs4 import BeautifulSoup
@@ -15,11 +15,8 @@ client = MongoClient('mongodb://localhost:27017')
 db = client['meirlbot_mongodb']
 rposts = db.redditposts
 
-# Configure the logger
-fileConfig('../logging_config.ini')
-logger = logging.getLogger()
-handler = logging.handlers.RotatingFileHandler('../logs/memecreator.log')
-logger.addHandler(handler)
+# Configure the logging
+logging.basicConfig(filename='../logs/memecreator.log', level=logging.DEBUG)
 
 MIN_SCORE = 100 # Submittions below this score will not be downloaded
 LIMIT = 10000
@@ -31,7 +28,7 @@ imgurUrlPattern = re.compile(r'(http://i.imgur.com/(.*))(\?.*)?')
 def downloadImage(imageUrl, localFileName):
     response = requests.get(imageUrl)
     if response.status_code == 200:
-        logger.info('Downloading %s...' % (localFileName))
+        logging.info('Downloading %s...' % (localFileName))
         with open(localFileName, 'wb') as fo:
             for chunk in response.iter_content(4096):
                 fo.write(chunk)
@@ -113,7 +110,7 @@ def parseImage(submission):
 # Connect to reddit and download the subreddit front page
 r = praw.Reddit(user_agent='tmoonisthebest')
 
-
+logging.info('Reddit Downloader started')
 # Process all the submissions
 #for submission in submissions:
 for current in rposts.find():
@@ -137,3 +134,4 @@ for current in rposts.find():
         rposts.update_one({"redditId": current['redditId']}, { "$set" : updatePost})
     else:
         logging.error ('Not Parsing Image %s due to too low of a change in upvotes' % submission.id)
+logging.info('Reddit Downloader finished')
