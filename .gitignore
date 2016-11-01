@@ -101,5 +101,7 @@ MongoDB/data/
 
 # Ignore ssh keyfile
 *.pem
-
 *.csv
+
+# Ignore log files
+logs/

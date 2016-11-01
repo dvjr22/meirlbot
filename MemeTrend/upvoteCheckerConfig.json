@@ -1,0 +1,6 @@
+{
+  "upvoteTrendExitCondition": 5,
+  "upvoteTrendNegativeCutoff": -5,
+  "upvoteExitCondition": 10,
+  "exitvalue": 1
+}

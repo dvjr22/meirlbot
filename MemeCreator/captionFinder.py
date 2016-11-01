@@ -10,18 +10,28 @@
 ############################################################
 import argparse
 import base64
-
+import logging
+import os
 # Connection to the Google Vision API
 from googleapiclient import discovery
 # GoogleCredentials authentication library
 from oauth2client.client import GoogleCredentials
 # MongoDB Connection
 from pymongo import MongoClient
+# Logging config
+from logging.config import fileConfig
+
 
 # Global database objects
 client = MongoClient('mongodb://localhost:27017')
 db = client['meirlbot_mongodb']
 rposts = db.redditposts
+
+# Configure the logger
+fileConfig('../logging_config.ini')
+logger = logging.getLogger()
+handler = logging.handlers.RotatingFileHandler('../logs/memecreator.log')
+logger.addHandler(handler)
 
 
 def main(currentPost):
@@ -29,70 +39,48 @@ def main(currentPost):
     credentials = GoogleCredentials.get_application_default()
     service = discovery.build('vision', 'v1', credentials=credentials)
 
+    # Get the path to the download image as specified in the database
     photo_file = currentPost['localFile']
-    print "PHOTO_FILE %s " % photo_file
-    # Open the image file as passed in the parameter
-    with open(photo_file, 'rb') as image:
-        # Encode the image to 64 bit
-        image_content = base64.b64encode(image.read())
-        # Parameters to pass to the Google Vision API
-        service_request = service.images().annotate(body={
-            'requests': [{
-                'image': {
-                    # Image to load
-                    'content': image_content.decode('UTF-8')
-                },
-                'features': [{
-                    # Type of response
-                    'type': 'TEXT_DETECTION',
-                    # Number of results to return
-                    'maxResults': 1
+    logger.debug('Searching for image %s' % photo_file)
+    # Open the image file as passed in the parameter if it exists
+    if (photo_file != None) and os.path.isfile(photo_file):
+        with open(photo_file, 'rb') as image:
+            # Encode the image to 64 bit
+            image_content = base64.b64encode(image.read())
+            # Parameters to pass to the Google Vision API
+            service_request = service.images().annotate(body={
+                'requests': [{
+                    'image': {
+                        # Image to load
+                        'content': image_content.decode('UTF-8')
+                    },
+                    'features': [{
+                        # Type of response
+                        'type': 'TEXT_DETECTION',
+                        # Number of results to return
+                        'maxResults': 1
+                    }]
                 }]
-            }]
-        })
-        response = service_request.execute()
-        print response
-        print '\n'
-        print response['responses'][0]['textAnnotations'][0]['description']
-        # Parse the response from the API
-        text = response['responses'][0]['textAnnotations'][0]['description'].replace('\n',' ')
-        print 'TEXT %s' % text
-        print 'Updating Database'
-        updatePost = {
-                        'captionText': text,
-                     }
-        rposts.update_one({"_id": current['_id']}, { "$set" : updatePost})
+            })
+            # Get the json response from the API
+            response = service_request.execute()
+            logger.debug('Response from Google Vision API for image %s is %s' % (photo_file,response))
+            # Parse the response from the API to pull out only the caption
+            try:
+                captionText = response['responses'][0]['textAnnotations'][0]['description'].replace('\n',' ')
+                logger.debug('Parsed out %s as a caption for %s' % (captionText, photo_file))
+                updatePost = {
+                                'captionText': captionText,
+                             }
+                logger.debug('Updating database with %s' % updatePost)
+                rposts.update_one({"_id": current['_id']}, { "$set" : updatePost})
+            except KeyError as ke:
+                logger.error('There was an error parsing the API response %s' % ke)
 
-
-
-
-# This code parses multiple response
-        #for res in response['responses'][0]['textAnnotations']:
-        #    label = res['description']
-    #        print('Found label: %s for %s' % (label.replace('\n',' '),photo_file))
-    #        # Write keywords to a textfile
-    #        with open("keywords.txt", "a") as myfile:
-    #            # If the keyword is in the blacklistKeywords.txt file then dont write it
-    #            if(checkBlacklist(label)):
-    #                myfile.write(label.replace('\n',' ') + " ")
-    #            else:
-    #                print('Skipping %s due to the blacklist' % label)
-    #        print "BREAK\n"
-    #        with open("keywords.txt", "a") as myfile:
-    #            myfile.write('\n')
-
-# Check the blacklist file for a match with the parameter word
-def checkBlacklist(word):
-    with open("blacklistKeywords.txt",'r') as my_file:
-        for line in my_file:
-            # The .rstrip() removes the newline or whitespace characters
-            if line.rstrip() == word:
-                print('is in blacklist')
-                return False
-        return True
+    else:
+        logger.error('The file %s that is referenced in the database does not exist or cannot be opened' % photo_file)
 
 if __name__ == '__main__':
-    for current in rposts.find():
-        # If the updateFlag is true then the image has been downloaded
-        if current['updateFlag']:
-            main(current)
+    for current in rposts.find({"updateFlag": True}):
+        logger.debug('Searching for captions in %s' % current)
+        main(current)
