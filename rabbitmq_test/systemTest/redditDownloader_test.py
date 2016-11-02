@@ -44,7 +44,6 @@ def callback(ch, method, properties, body):
     callGoogleDownloader(body)
 channel.basic_consume(callback, queue=queue_name,no_ack=True)
 
-#produceDatabase()
 
 #channel.start_consuming()
 
@@ -60,7 +59,6 @@ response = None
 def on_response(ch, method, props, body):
     global response
     response = body
-    print('  [x] Got a response of: %r' % body)
 
 
 
@@ -78,8 +76,11 @@ def call(n):
     return response
 findChannel.basic_consume(on_response, no_ack=True, queue=callback_queue)
 query = {
-    "redditId": "595tr7"
+    "redditId": "595tr8"
 }
 print('  [x] Requesting %r' % query)
 response = call(query)
 print('  [.] Got %r' % response)
+
+
+produceDatabase()

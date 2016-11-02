@@ -70,10 +70,14 @@ def findData(query):
     return rposts.find(json.loads(query))
 
 def on_request(ch, method, props, body):
-    print('  [/] Received: %s' % type(json.loads(body)))
+    logHandler.publishMsg('  [x] (databaseHandler) Received: %s' % json.loads(body))
     response = findData(body)
-    json_response = json.dumps(response[0], default=json_util.default)
-    print('  [/] Returning response: %r' % json_response)
+    json_response = "Error"
+    try:
+        json_response = json.dumps(response[0], default=json_util.default)
+    except:
+        logHandler.publishMsg('  [x] (databaseHandler) Error parsing json')
+    logHandler.publishMsg('  [x] (databaseHandler) Returning response: %r' % json_response)
     ch.basic_publish(exchange='',routing_key=props.reply_to, properties=pika.BasicProperties(correlation_id=props.correlation_id),body=json_response)
 
     ch.basic_ack(delivery_tag = method.delivery_tag)
