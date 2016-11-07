@@ -3,13 +3,14 @@ import json
 from pymongo import MongoClient
 import pymongo
 from bson import BSON
-from bson import json_util
+from bson.json_util import dumps
 from RabbitMQ.RabbitMQHandler import RabbitMQHandler
 
 # MongoDB connection
 client = MongoClient('mongodb://localhost:27017')
 db = client['meirlbot_mongodb']
 rposts = db.redditposts
+uposts = db.upvoteposts
 
 # RabbitMQ connection
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
@@ -43,7 +44,7 @@ updateChannel = connection.channel()
 updateChannel.exchange_declare(exchange='database',type='direct')
 result = updateChannel.queue_declare(exclusive=True)
 queue_name = result.method.queue
-updateChannel.queue_bind(exchange='database', queue=queue_name, routing_key='update')
+updateChannel.queue_bind(exchange='database', queue=queue_name, routing_key='redditposts')
 print('  [*] Waiting for database instructions. To exit press CTRL+C')
 def updateCallback(ch, method, properties, body):
     print("  [x] Received: %r" % body)
@@ -61,6 +62,28 @@ def updateCallback(ch, method, properties, body):
         print('Error %s' % e)
 updateChannel.basic_consume(updateCallback, queue=queue_name,no_ack=True)
 
+# Database Update
+updateChannel = connection.channel()
+updateChannel.exchange_declare(exchange='database',type='direct')
+result = updateChannel.queue_declare(exclusive=True)
+queue_name = result.method.queue
+updateChannel.queue_bind(exchange='database', queue=queue_name, routing_key='upvoteposts')
+print('  [*] Waiting for database instructions. To exit press CTRL+C')
+def updateCallback(ch, method, properties, body):
+    print("  [x] Received: %r" % body)
+    data = json.loads(body)
+    redditID = ""
+    try:
+        # Database updating here
+        redditID = data['redditId']
+        uposts.update_one({"redditId": redditID}, { '$set': data})
+        # Publish to the log queue that the database was updated
+        logHandler.publishMsg('  [x] (databaseHandler) Updated the database with %r' % body)
+    except Exception as e:
+        # Publish any exceptions encountered
+        logHandler.publishMsg('  [x] (databaseHandler) Error in databaseHandler update: %s' % e)
+        print('Error %s' % e)
+updateChannel.basic_consume(updateCallback, queue=queue_name,no_ack=True)
 
 # Database Find
 # Using an RPC architecture to return data to the calling process
@@ -68,14 +91,16 @@ updateChannel.basic_consume(updateCallback, queue=queue_name,no_ack=True)
 findChannel = connection.channel()
 findChannel.queue_declare(queue='database_fetch_queue')
 def findData(query):
-    return rposts.find(json.loads(query))
+    print("JSON QUERY: %s" % json.loads(query))
+    return dumps(rposts.find(json.loads(query)))
+    #return dumps(rposts.find())
 
 def on_request(ch, method, props, body):
-    logHandler.publishMsg('  [x] (databaseHandler) Received: %s' % json.loads(body))
+    logHandler.publishMsg('  [x] (databaseHandler) Received: %s' % str(body))
     response = findData(body)
-    json_response = "Error"
+    json_response = None
     try:
-        json_response = json.dumps(response[0], default=json_util.default)
+        json_response = response
     except:
         logHandler.publishMsg('  [x] (databaseHandler) Error parsing json')
     logHandler.publishMsg('  [x] (databaseHandler) Returning response: %r' % json_response)

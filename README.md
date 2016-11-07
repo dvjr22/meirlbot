@@ -1,29 +1,52 @@
 # MEIRLBOT
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
+
 And if that didn't convince you then:
 
 This is a python program for analyzing meme usage on reddit's me_irl subreddit and creating relevent memes for posting
 
-## MemeCreator Bot
-The purpose of the MemeCreator Bot is to generate new spicy memes. Using a MongoDB database with memes that have been found by the MemeTrend Bot to be new hot memes, the MemeCreator Bot attempts to create a new meme using a similar image and caption and then post that meme to the me_irl subreddit. This project is a work in progress and has new features planned faster than the original plan can be completed. The MemeCreator Bot is primarily written in Python and currently is started by a Bash Script.
-
-### Installation
+## Installation
 * Clone this repo
-* Setup a Google Vision Credentials
 * Set the GOOGLE_APPLICATION_CREDENTIALS variable to the path to the JSON file from the previous step
 * Make sure there are read and write privileges to the images and createdMemes directory
 * Run "pip install -r requirements.txt" to install all the python libraries needed
 * Setup a [MongoDB](https://www.mongodb.com/) database
+* Setup a [RabbitMQ](https://www.rabbitmq.com/download.html) messaging server
 * Run "mongod" to start an instance of the database
-* Run "./zMeIrlBot" from the MemeCreator directory to start the MemeCreator bot
+* Run "rabbitmq-server start" to start the messaging server
+
+Currently there is no clean way of starting the components of the project as they are still being developed. There are two components which need to be running to start any other components. Those are:
+* Run "python MongoDBDatabase.py" from the MongoDB directory
+* Run "python logFileWriter.py" from the LogWriter directory
+
+These two components wait for RabbitMQ messages to write log files and update the database.
+
+From here you can run any of the other components by using
+
+* Run "python {component name}.py"
+
+
+## Project Pieces
+There are three main parts to the project as well as several utility parts
+
+### MemeCreator Bot
+  The purpose of the MemeCreator Bot is to generate new spicy memes. Using a MongoDB database with memes that have been found by the MemeTrend Bot to be new hot memes, the MemeCreator Bot attempts to create a new meme using a similar image and caption and then post that meme to the me_irl subreddit. This project is a work in progress and has new features planned faster than the original plan can be completed. The MemeCreator Bot is primarily written in Python and currently is started by a Bash Script.
+
+### MemeTrend Bot
+  The purpose of the MemeTrend Bot is to continually check me_irl's new page and try to determine if a new meme will become popular. When a meme is found then the redditId and the current upvote total is saved to the MongoDB database and the MemeCreator Bot is started.
+
+### MemeExchange Website
+The purpose of the MemeExchange website is to display the created memes as well as the current trends. It serves as the only GUI for the project. In the future user interaction pieces could be added. Also a admin panel will be added for allowing remote checking of system status's as well as changing the system parameters.
+
+
 
 ### Run Bot
 * Use the following command to start the project
   - ./zMeIrlBot <reddit subreddit name>
 
 ### Explanation of Bot Parts
-MEIRLBOT is split into five different parts with each part using a different technology. The majority of the project is written in the Python scripting language with a bash script to start it all. 
+MEIRLBOT is split into five different parts with each part using a different technology. The majority of the project is written in the Python scripting language with a bash script to start it all.
 
 | Part Name       | File Name     | Use                              | Main Technology       | Language       |
 | ------------- | ------------- | -------------------------------- | --------------------- | -------------- |
@@ -58,7 +81,7 @@ There is not installation needed currently for the MemeTrend Bot. Simply pull do
 ### Run Bot
 * Use the following command to start the MemeTrend Bot (Note. This project will continue to run at a 5 min interval until the ctl-c KeyboardInterrupt command is issued)
   - python upvoteChecker.py
-  
+
 ### Explanation of Bot Parts
 This bot multi-threads two different parts. One part is the loadFromReddit method which pulls upvote information from me_irl's new page. The second part is the checkDatabase method which checks all the posts in the upvoteposts collection for a change in upvotes.
 
@@ -68,7 +91,7 @@ This project started from a simple goal of figuring out how to download spicy me
 1. Finish MemeCreator Bot
 
 2. Create MemeTrend Bot
- 
+
 3. Integrate meirlbot project in with the [MemeExchange](https://github.com/tmoon8730/MemeExchange) project
 
 ## Contributions
