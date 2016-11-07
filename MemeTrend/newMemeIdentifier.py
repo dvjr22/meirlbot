@@ -1,3 +1,12 @@
+############################################################
+# file:    newMemeIdentifier.py                            #
+# author:  Tyler Moon                                      #
+# created: 11/07/2016                                      #
+# purpose: This script determines if a trending meme should#
+# be moved to the redditposts collection to be processed   #
+# into a meme by the MemeCreator Bot                       #
+############################################################
+# REVIEW: See if any of these imports are not being used
 import praw # praw stands for "Python Reddit API Wrapper"
 import time
 import Queue
@@ -14,6 +23,7 @@ from RabbitMQ.RabbitMQHandler import RabbitMQHandler
 from RabbitMQ.RabbitMQHandler import RabbitMQLogger
 from RabbitMQ.RabbitMQHandler import RabbitMQDatabase
 
+# NOTE: After all database queries are changed to rabbitmq messages then delete this connection
 # MongoDB connection
 client = MongoClient('mongodb://localhost:27017')
 db = client['meirlbot_mongodb']
@@ -30,7 +40,7 @@ exitapp = False
 logHandler = RabbitMQLogger()
 upvotepostsHandler = RabbitMQDatabase(collectionName='upvoteposts')
 #upvotepostsHandler = RabbitMQHandler(exchange='database', routing_key='upvotepostsupdate', queueType='direct')
-redditpostsHandler = RabbitMQHandler(exchange='database', routing_key='redditpostsupdate', queueType='direct')
+#redditpostsHandler = RabbitMQHandler(exchange='database', routing_key='redditpostsupdate', queueType='direct')
 
 # Simple function that returns a boolean for if the exit condition of a meme is found
 # A meme must have both the upvoteTrend greater than upvoteTrendExitCondition
@@ -66,6 +76,8 @@ try:
 except:
     logHandler.logMessage('(newMemeIdentifier) Could not load newMemeIdentifierConfig.json file!')
     raise
+
+# TODO: Update this comment with the message stuff
 # The checkDatabase function loops through all the documents in the upvoteposts collection.
 # If the document meets the exit conditions laid out in checkExit then the document
 # is moved from the upvotepost colleciton to the redditposts collection for the
@@ -101,18 +113,20 @@ def checkDatabase():
               "upvoteTrend": 1,
             }
             stringInsertPost = json.dumps(insertPost)
-            stringInsertPost.replace('"',"'")
+            stringInsertPost.replace('"',"'") # The json library does not allow for single quotes but requires double quotes
             # Upsert the document into the redditposts collection
-            upvotepostsHandler.databaseMessage(msg='[{\"redditId\": \"%s\"},{\"$set\": %s}]' % (sub.id, stringInsertPost))
-            logHandler.logMessage('(newMemeIdentifier) Inserted document into redditposts')
+            upvotepostsHandler.databaseMessage(msg=('[{\"redditId\": \"%s\"},{\"$set\": %s}]' % (sub.id, stringInsertPost)),operation="update") # Send a message to the database to update the stringInsertPost
+            logHandler.logMessage('(newMemeIdentifier) Inserted document into redditposts with redditId %s' % sub.id)
 
             # Remove the document from the upvoteposts collection
             upvotepostsCollection.delete_one({'redditId':sub.id})
-            logHandler.logMessage('(newMemeIdentifier) Removed document from upvoteposts')
+            logHandler.logMessage('(newMemeIdentifier) Removed document from upvoteposts with redditId %s' % sub.id)
 
         elif current['upvoteTrend'] < upvoteTrendNegativeCutoff:
             # If the upvoteTrend gets below -5 then delete the document and stop tracking it
             logHandler.logMessage('(newMemeIdentifier) Deleting document due to low upvoteTrend')
+
+            # TODO: Change this to a rabbitmq message
             upvotepostsCollection.delete_one({"_id":current["_id"]})
         else:
             oldUpvotes = current['upvote'] # Upvotes of the saved state in the database
@@ -127,6 +141,7 @@ def checkDatabase():
                     'upvote': newUpvotes,
                     }
                 logHandler.logMessage('(newMemeIdentifier) Updating document with id %s' % current["_id"])
+                # TODO: Change this update call to a rabbitmq message
                 upvotepostsCollection.update_one({"_id": current["_id"]}, {"$set": updatePost})
             # If the upvotes has decremented by more than the exitvalue variable then decrement the upvoteTrend
             elif newUpvotes < oldUpvotes - exitvalue:
@@ -135,7 +150,10 @@ def checkDatabase():
                     'upvoteTrend': current['upvoteTrend'] - 1
                     }
                 logHandler.logMessage('(newMemeIdentifier) Updating document with id %s' % current["_id"])
+                # TODO Change this update call to a rabbitmq message
                 upvotepostsCollection.update_one({"_id": current["_id"]}, {"$set": updatePost})
+
+# REVIEW: Find a better way of starting this script
 def main():
     logHandler.logMessage('(newMemeIdentifier) Starting main process')
     q = Queue.Queue()
