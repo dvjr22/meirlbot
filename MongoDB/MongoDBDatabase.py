@@ -58,8 +58,7 @@ queue_name = result.method.queue
 updateChannel.queue_bind(exchange='database', queue=queue_name, routing_key='redditposts.update')
 print('  [*] Waiting for database instructions. To exit press CTRL+C')
 def updateCallback(ch, method, properties, body):
-    # TODO: Change this print statement to a logHandler.publishMsg
-    print("  [x] Received: %r" % body)
+    logHander.logMessage("  [x] Received: %r" % body)
     data = json.loads(body)
     redditID = ""
     try:
@@ -71,8 +70,7 @@ def updateCallback(ch, method, properties, body):
     except Exception as e:
         # Publish any exceptions encountered
         logHandler.logMessage('  [x] (databaseHandler) Error in databaseHandler update: %s' % e)
-        # TODO: Change this print statement to a logHandler.publishMsg
-        print('Error %s' % e)
+        logHandler.logMessage('Error %s' % e)
 updateChannel.basic_consume(updateCallback, queue=queue_name,no_ack=True)
 
 
@@ -87,8 +85,7 @@ queue_name = result.method.queue
 updateChannel.queue_bind(exchange='database', queue=queue_name, routing_key='upvoteposts.update')
 print('  [*] Waiting for database instructions. To exit press CTRL+C')
 def updateCallback(ch, method, properties, body):
-    # TODO: Change this print statement to a logHandler.publishMsg
-    print("  [x] (upvoteposts) Received: %r" % body)
+    logHandler.logMessage("  [x] (upvoteposts) Received: %r" % body)
     data = ""
     redditID = ""
     try:

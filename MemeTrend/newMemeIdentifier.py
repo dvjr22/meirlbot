@@ -27,7 +27,7 @@ from RabbitMQ.RabbitMQHandler import RabbitMQDatabase
 # MongoDB connection
 client = MongoClient('mongodb://localhost:27017')
 db = client['meirlbot_mongodb']
-upvotepostsCollection = db.upvoteposts
+ = db.upvoteposts
 redditpostsCollection = db.redditposts
 
 # Connect to reddit and download the subreddit front page
@@ -153,8 +153,7 @@ def checkDatabase():
                 # TODO Change this update call to a rabbitmq message
                 upvotepostsCollection.update_one({"_id": current["_id"]}, {"$set": updatePost})
 
-# REVIEW: Find a better way of starting this script
-def main():
+if __name__ == '__main__':
     logHandler.logMessage('(newMemeIdentifier) Starting main process')
     q = Queue.Queue()
     while not exitapp:
@@ -163,11 +162,3 @@ def main():
         timer = 300
         logHandler.logMessage('(newMemeIdentifier) Waiting for %i seconds' % timer)
         time.sleep(300)
-
-
-if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-        exitapp = True
-        os.abort()
