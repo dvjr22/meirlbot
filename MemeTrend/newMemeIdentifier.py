@@ -15,6 +15,7 @@ import urllib2
 import os
 import logging
 import json
+import sys
 from logging.config import fileConfig
 from time import gmtime, strftime
 from pymongo import MongoClient
@@ -27,7 +28,7 @@ from RabbitMQ.RabbitMQHandler import RabbitMQDatabase
 # MongoDB connection
 client = MongoClient('mongodb://localhost:27017')
 db = client['meirlbot_mongodb']
- = db.upvoteposts
+rposts = db.upvoteposts
 redditpostsCollection = db.redditposts
 
 # Connect to reddit and download the subreddit front page
@@ -155,10 +156,15 @@ def checkDatabase():
 
 if __name__ == '__main__':
     logHandler.logMessage('(newMemeIdentifier) Starting main process')
-    q = Queue.Queue()
-    while not exitapp:
-        logHandler.logMessage('(newMemeIdentifier) Starting checkDatabase')
-        checkDatabase()
-        timer = 300
-        logHandler.logMessage('(newMemeIdentifier) Waiting for %i seconds' % timer)
-        time.sleep(300)
+    line = "  "
+    while line:
+        print 'running...'
+        if line == 'stop\n':
+            print 'Stopping newMemeIdentifier....'
+            sys.exit(0)
+        else:
+            logHandler.logMessage('(newMemeIdentifier) Starting checkDatabase')
+            checkDatabase()
+            timer = 10
+            logHandler.logMessage('(newMemeIdentifier) Waiting for %i seconds' % timer)
+            time.sleep(timer)

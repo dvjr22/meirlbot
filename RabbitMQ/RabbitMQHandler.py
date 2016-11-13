@@ -49,11 +49,11 @@ class RabbitMQDatabase(object):
         self.collectionName = collectionName
         self.logHandler = RabbitMQLogger()
         self.databaseHandler = RabbitMQHandler(exchange='database', queueType='topic')
-        logHandler.logMessage("  {/} routing_key = %s" % self.collectionName)
+        self.logHandler.logMessage("  {/} routing_key = %s" % self.collectionName)
     def databaseMessage(self,msg,operation):
-        logHandler.logMessage('  {/} sending msg %r' % msg)
+        self.logHandler.logMessage('  {/} sending msg %r' % msg)
         routingKey = self.collectionName + "." + operation
-        logHandler.logMessage('collectionName: %s and operation: %s makes routing_key: %s' % (self.collectionName, operation, routingKey))
+        self.logHandler.logMessage('collectionName: %s and operation: %s makes routing_key: %s' % (self.collectionName, operation, routingKey))
         self.logHandler.logMessage(msg)
         # Send the message to the database with the right routing key
         self.databaseHandler.publishMsg(msg,routingKey)

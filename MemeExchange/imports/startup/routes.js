@@ -8,6 +8,7 @@ import '../ui/layout/applicationLayout.js';
 import '../ui/pages/home.js';
 import '../ui/pages/about.js';
 import '../ui/pages/search.js';
+import '../ui/pages/admin.js';
 
 /*
  * Home Page
@@ -34,6 +35,19 @@ FlowRouter.route('/search', {
     // /imports/ui/pages/search.html
     BlazeLayout.render('applicationLayout', { main: 'search', title: 'Search Page' });
   }
+})
+
+/*
+ * Admin Page
+ */
+FlowRouter.route('/admin',{
+  action: function(){
+    console.log("In the Admin Page!")
+    // Render the admin page
+    // /imports/ui/pages/admin.html
+    BlazeLayout.render('applicationLayout', { main: 'admin', title: 'Admin Page' });
+  },
+  name: 'admin'
 })
 
 /*

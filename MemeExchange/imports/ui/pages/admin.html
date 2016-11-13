@@ -1,0 +1,55 @@
+<template name="admin">
+  <div class="row" style="background-color:#fff;">
+    <div class="col-md-12" >
+      <p>{{ responseText }}</p>
+      <button type="button" id="logButton">Start LogWriter</button>
+      <button type="button" id="newMemeIdentifierButton">Start NewMemeIdentifier</button>
+      <br />
+      <br />
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Process</th>
+            <th>Current Status</th>
+            <th>Last Log Line</th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Log Writer -->
+          <tr>
+            <td><strong>LogWriter</strong></td>
+            <td>{{ status_logWriter }}</td>
+            <td>{{ log_logWriter }}</td>
+            <td><button class="btn btn-success" type="button" id="startLogButton" disabled="{{ logDisabledStart }}">Start</button></td>
+            <td><button class="btn btn-danger" type="button" id="stopLogButton" disabled="{{ logDisabledStop }}">Stop</button></td>
+          </tr>
+          <!-- MongoDBDatabase -->
+          <tr>
+            <td><strong>MongoDBDatabase</strong></td>
+            <td>{{ status_mongoDBDatabase }}</td>
+            <td>{{ log_mongoDBDatabase }}</td>
+            <td><button class="btn btn-success" type="button" id="startMongoButton" disabled="{{ mongoDisabledStart }}">Start</button></td>
+            <td><button class="btn btn-danger" type="button" id="stopMongoButton" disabled="{{ mongoDisabledStop }}">Stop</button></td>
+          </tr>
+          <!-- Upvote Checker -->
+          <tr>
+            <td><strong>UpvoteChecker</strong></td>
+            <td>{{ status_upvoteChecker }}</td>
+            <td>{{ log_upvoteChecker }}</td>
+            <td><button class="btn btn-success" type="button" id="startUpvoteChecker" disabled="{{ upvoteCheckerStart }}">Start</button></td>
+            <td><button class="btn btn-danger" type="button" id="stopUpvoteChecker" disabled="{{ upvoteCheckerStop }}">Stop</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- End col-md-12 -->
+  </div><!-- End row -->
+  <div class="row" style="background-color:#fff;">
+    <div class="col-md-2">
+      <button class="btn btn-info" type="button" id="refreshButton">Refresh</button>
+    </div><!-- End col-md-2 -->
+    <div class="col-md-10">
+      <p>{{ logData }}</p>
+    </div><!-- End col-md-10 -->
+  </div><!-- End row -->
+</template>
