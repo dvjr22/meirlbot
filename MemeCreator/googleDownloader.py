@@ -24,11 +24,6 @@ db = client['meirlbot_mongodb']
 rposts = db.redditposts
 
 # Configure the logger
-fileConfig('../logging_config.ini')
-logger = logging.getLogger()
-handler = logging.handlers.RotatingFileHandler('../logs/memecreator.log')
-logger.addHandler(handler)
-
 def setup(query, current):
     def get_soup(url,header):
         print 'in get_soup'
