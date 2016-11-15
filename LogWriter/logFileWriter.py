@@ -2,6 +2,8 @@ import pika
 import logging
 from logging.config import fileConfig
 import sys
+import os
+
 
 # Define the connection globally so that the start_consuming can be called
 # outside of the main function

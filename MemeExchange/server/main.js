@@ -5,78 +5,28 @@ Meteor.startup(function () {
   var Future = Npm.require("fibers/future");
   // Load exec
   var exec = Npm.require("child_process").exec;
+  var request = Npm.require('request');
 
-  var PythonShell = require('python-shell');
-  // TODO: Remove the hard coded paths
-  var logOptions = {
-    scriptPath: '/Users/tmoon/_Code/meirlbot/LogWriter',
-  }
-  var upvoteOptions = {
-    scriptPath: '/Users/tmoon/_Code/meirlbot/MemeTrend',
-  }
-  var mongoOptions = {
-    scriptPath: '/Users/tmoon/_Code/meirlbot/MongoDB',
-  }
-
-  // Initialize the scripts to the running state on startup of the server
-  var logShell = new PythonShell('logFileWriter.py', logOptions);
-  //var newMemeShell = new PythonShell('newMemeIdentifier.py', newMemeOptions);
-  var mongoDBShell = new PythonShell('MongoDBDatabase.py', mongoOptions);
-
-  // Asynchronous Method.
-/*  Meteor.startup(function() {
-    console.log('starting up reading file');
-    var fs = Npm.require('fs');
-    // Log file saved to public/system.log
-    fs.readFile(process.cwd() + '/../web.browser/app/system.log','utf8',function(err,data){
-      if(err){
-        console.log('ERROR: ' + err);
-        return;
-      }
-      console.log(data);
-    });
-  });
-*/
   // Server methods
   Meteor.methods({
-    logWriter: function(startOrStop) {
-      if(startOrStop == 'stop'){
-        logShell.send('stop');
-        return 'stopped logFileWriter.py'
-      }else if(startOrStop == 'start'){
-        logShell = new PythonShell('logFileWriter.py',logOptions);
-        return 'started logFileWriter.py'
-      }
-    },
-    upvoteChecker: function(startOrStop){
-      if(startOrStop == 'stop'){
-        newMemeShell.send('stop');
-        return 'stopped upvoteChecker.py'
-      }else if(startOrStop == 'start'){
-        upvoteCheckerShell = new PythonShell('upvoteChecker.py',upvoteOptions)
-      }
-    },
-    mongoDBDatabase: function(startOrStop){
-      if(startOrStop == 'stop'){
-        mongoDBShell.send('stop');
-        return 'stopped MongoDBDatabase.py'
-      }else if(startOrStop == 'start'){
-        mongoDBShell = new PythonShell('MongoDBDatabase.py', mongoOptions);
-        return 'started MongoDBDatabase.py'
-      }
-    },
-    returnLogs: function(){
-      console.log('starting up reading file');
-      var fs = Npm.require('fs');
-      // Log file saved to public/system.log
-      fs.readFile(process.cwd() + '/../web.browser/app/system.log','utf8',function(err,data){
-        if(err){
-          console.log('ERROR: ' + err);
-          return;
+    pythonShell: function(startOrStop, directory, filename) {
+      request('http://localhost:5008/' + startOrStop + '/' + directory + '/' + filename, function(error, response, body){
+        if (!error && response.statusCode == 200){
+          console.log(body)
         }
-        console.log(data);
-        return data
+      })
+      return startOrStop + ' ' + filename + '.py'
+    },
+    logShell: function(){
+      var future = new Future();
+      HTTP.get('http://localhost:5008/log/return/', {}, function(error, response){
+        if( error ){
+          future.return(error);
+        }else{
+          future.return(response);
+        }
       });
+      return future.wait();
     }
   });
 });

@@ -22,7 +22,7 @@ class RabbitMQHandler(object):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(
                 host='localhost'))
         self.channel = self.connection.channel()
-        self.channel.exchange_declare(exchange=exchange, type=queueType)
+        self.channel.exchange_declare(exchange=exchange, exchange_type=queueType)
         print("  [q] Declared an exchanged %r of type %r" % (self.exchange,self.queueType))
     def publishMsg(self, msg, routing_key):
         #msg = ''.join(msg)

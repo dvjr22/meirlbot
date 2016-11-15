@@ -11,7 +11,6 @@
           <tr>
             <th>Process</th>
             <th>Current Status</th>
-            <th>Last Log Line</th>
             <th colspan="2">Actions</th>
           </tr>
         </thead>
@@ -20,7 +19,6 @@
           <tr>
             <td><strong>LogWriter</strong></td>
             <td>{{ status_logWriter }}</td>
-            <td>{{ log_logWriter }}</td>
             <td><button class="btn btn-success" type="button" id="startLogButton" disabled="{{ logDisabledStart }}">Start</button></td>
             <td><button class="btn btn-danger" type="button" id="stopLogButton" disabled="{{ logDisabledStop }}">Stop</button></td>
           </tr>
@@ -28,7 +26,6 @@
           <tr>
             <td><strong>MongoDBDatabase</strong></td>
             <td>{{ status_mongoDBDatabase }}</td>
-            <td>{{ log_mongoDBDatabase }}</td>
             <td><button class="btn btn-success" type="button" id="startMongoButton" disabled="{{ mongoDisabledStart }}">Start</button></td>
             <td><button class="btn btn-danger" type="button" id="stopMongoButton" disabled="{{ mongoDisabledStop }}">Stop</button></td>
           </tr>
@@ -36,9 +33,43 @@
           <tr>
             <td><strong>UpvoteChecker</strong></td>
             <td>{{ status_upvoteChecker }}</td>
-            <td>{{ log_upvoteChecker }}</td>
             <td><button class="btn btn-success" type="button" id="startUpvoteChecker" disabled="{{ upvoteCheckerStart }}">Start</button></td>
             <td><button class="btn btn-danger" type="button" id="stopUpvoteChecker" disabled="{{ upvoteCheckerStop }}">Stop</button></td>
+          </tr>
+          <!-- newMemeIdentifier -->
+          <tr>
+            <td><strong>NewMemeIdentifier</strong></td>
+            <td>{{ status_newMemeIdentifier }}</td>
+            <td><button class="btn btn-success" type="button" id="startNewMemeIdentifier" disabled="{{ newMemeIdentifierStart }}">Start</button></td>
+            <td><button class="btn btn-danger" type="button" id="stopNewMemeIdentifier" disabled="{{ newMemeIdentifierStop }}">Stop</button></td>
+          </tr>
+          <!-- redditDownloader -->
+          <tr>
+            <td><strong>RedditDownloader</strong></td>
+            <td>{{ status_redditDownloader }}</td>
+            <td><button class="btn btn-success" type="button" id="startRedditDownloader" disabled="{{ redditDownloaderStart }}">Start</button></td>
+            <td><button class="btn btn-danger" type="button" id="stopRedditDownloader" disabled="{{ redditDownloaderStop }}">Stop</button></td>
+          </tr>
+          <!-- captionFinder -->
+          <tr>
+            <td><strong>CaptionFinder</strong></td>
+            <td>{{ status_upvoteChecker }}</td>
+            <td><button class="btn btn-success" type="button" id="captionFinderChecker" disabled="{{ captionFinderStart }}">Start</button></td>
+            <td><button class="btn btn-danger" type="button" id="captionFinderChecker" disabled="{{ captionFinderStop }}">Stop</button></td>
+          </tr>
+          <!-- googleDownloader -->
+          <tr>
+            <td><strong>GoogleDownloader</strong></td>
+            <td>{{ status_googleDownloader }}</td>
+            <td><button class="btn btn-success" type="button" id="startGoogleDownloader" disabled="{{ googleDownloaderStart }}">Start</button></td>
+            <td><button class="btn btn-danger" type="button" id="stopGoogleDownloader" disabled="{{ googleDownloaderStop }}">Stop</button></td>
+          </tr>
+          <!-- memeCreator -->
+          <tr>
+            <td><strong>memeCreator</strong></td>
+            <td>{{ status_memeCreator }}</td>
+            <td><button class="btn btn-success" type="button" id="startMemeCreator" disabled="{{ memeCreatorStart }}">Start</button></td>
+            <td><button class="btn btn-danger" type="button" id="stopMemeCreator" disabled="{{ memeCreatorStop }}">Stop</button></td>
           </tr>
         </tbody>
       </table>
@@ -49,7 +80,7 @@
       <button class="btn btn-info" type="button" id="refreshButton">Refresh</button>
     </div><!-- End col-md-2 -->
     <div class="col-md-10">
-      <p>{{ logData }}</p>
+      <p style="font-size:11px">{{ logData }}</p>
     </div><!-- End col-md-10 -->
   </div><!-- End row -->
 </template>

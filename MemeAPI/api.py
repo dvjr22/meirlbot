@@ -1,21 +1,11 @@
 from flask import Flask, jsonify
+import json
 import os, subprocess, signal
 app = Flask(__name__)
 
-data = [
-    {
-        'id':1,
-        'title':'test'
-    },
-    {
-        'id':2,
-        'title':'test2'
-    }
-]
-
 @app.route('/',methods=['GET'])
 def hello():
-    return jsonify({'data': data})
+    return "The API is up and running!"
 
 @app.route('/<int:data_id>',methods=['GET'])
 def getData(data_id):
@@ -27,7 +17,7 @@ def getData(data_id):
 @app.route('/start/<string:directory>/<string:filename>',methods=['GET'])
 def startFile(filename,directory):
     try:
-        os.system("python ../%s/%s.py &" % (directory,filename))
+        os.system("python ../%s/%s.py > %soutput.txt &" % (directory,filename,filename))
     except e as Exception:
         print 'Error %s' % e
         abort(404)
@@ -46,6 +36,16 @@ def stopFile(filename,directory):
         print 'Error %s' % e
         abort(404)
     return "Stopped %s" % filename
+
+@app.route('/log/return/',methods=['GET'])
+def getLog():
+    with open('systemTest.log','r') as f:
+        f.seek(0,2) # Seek the EOF
+        fsize = f.tell() # get the size of the chunk
+        f.seek (max (fsize-1024,0),0) # Set position at last n chars
+        lines = f.readlines() # Read to the end
+    lines = lines[-20:] # Concatenate the last 20 together
+    return json.dumps(lines)
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5008, debug=True)

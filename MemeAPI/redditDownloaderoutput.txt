@@ -1,0 +1,1 @@
+Version 3.5.0 of praw is outdated. Version 3.6.0 was released 1 day ago.

@@ -61,7 +61,7 @@ exitvalue = 0
 # Load the json file for the config variables
 try:
     logHandler.logMessage('(newMemeIdentifier) Loading global variables from newMemeIdentifierConfig.json')
-    with open('newMemeIdentifierConfig.json') as config_file:
+    with open(os.path.dirname(os.path.realpath(__file__)) + '/newMemeIdentifierConfig.json') as config_file:
         data = json.load(config_file)
         try:
             upvoteTrendExitCondition = data["upvoteTrendExitCondition"]
@@ -74,8 +74,8 @@ try:
             logHandler.logMessage('(newMemeIdentifier) Loaded %s for exitvalue' % exitvalue)
         except:
             logHandler.logMessage('(newMemeIdentifier) Problem parsing variables from newMemeIdentifierConfig.json')
-except:
-    logHandler.logMessage('(newMemeIdentifier) Could not load newMemeIdentifierConfig.json file!')
+except Exception as e:
+    logHandler.logMessage('(newMemeIdentifier) Could not load newMemeIdentifierConfig.json file! Error: %s' % e)
     raise
 
 # TODO: Update this comment with the message stuff
