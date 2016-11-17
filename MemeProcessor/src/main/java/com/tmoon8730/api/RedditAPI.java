@@ -18,28 +18,35 @@ public class RedditAPI {
 		restTemplate = new RestTemplate();
 	}
 
-	public boolean getRedditPost(String redditId){
+	public RedditEmbedded getRedditPost(String redditId){
 		String url = APIURL + "search/findByRedditId?redditId=" + redditId;
 		log.info("using url " + url);
 		RedditEmbedded post = restTemplate.getForObject(url, RedditEmbedded.class);
 		if(post != null){
 			log.info(post.toString());
-			return true;
+			return post;
 		}
-		return false;
+		return null;
 	}
-	public boolean getRedditPost(){
+	public RedditEmbedded getRedditPost(){
 		RedditEmbedded post = restTemplate.getForObject("http://127.0.0.1:8080/redditpost/", RedditEmbedded.class);
 		if(post != null){
 			log.info(post.toString());
-			return true;
+			return post;
 		}
-		return false;
+		return null;
 	}
 	public void postRedditPost(RedditValue redditValue){
 		ClientHttpRequestFactory requestFactory = getClientHttpRequestFactory();
 		HttpEntity<RedditValue> request = new HttpEntity<>(redditValue);
 		RedditValue returnedValue = restTemplate.postForObject(APIURL, request, RedditValue.class);
+	}
+	public void deleteRedditPost(String redditId){
+		RedditEmbedded post = getRedditPost(redditId);
+		log.info("delete found the post: " + post.toString());
+		String url = post.get_embedded().getRedditpost()[0].get_links().getSelf().getHref();
+		log.info("deleteing with url: " + url);
+		restTemplate.delete(url);
 	}
 	
 	private ClientHttpRequestFactory getClientHttpRequestFactory(){

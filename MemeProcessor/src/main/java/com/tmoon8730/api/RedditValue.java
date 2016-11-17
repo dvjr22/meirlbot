@@ -1,5 +1,7 @@
 package com.tmoon8730.api;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -10,6 +12,7 @@ public class RedditValue {
 	private boolean memeFlag;
 	private String imageLocation;
 	private String memeLocation;
+	private Links _links;
 
     public RedditValue(String redditId, int upvotes, int upvoteTrend, boolean memeFlag, String imageLocation,
 			String memeLocation) {
@@ -109,14 +112,30 @@ public class RedditValue {
 		this.memeLocation = memeLocation;
 	}
 
+	/**
+	 * @return the _links
+	 */
+	public Links get_links() {
+		return _links;
+	}
+
+	/**
+	 * @param _links the _links to set
+	 */
+	public void set_links(Links _links) {
+		this._links = _links;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Value [redditId=" + redditId + ", upvotes=" + upvotes + ", upvoteTrend=" + upvoteTrend + ", memeFlag="
-				+ memeFlag + ", imageLocation=" + imageLocation + ", memeLocation=" + memeLocation + "]";
+		return "RedditValue [redditId=" + redditId + ", upvotes=" + upvotes + ", upvoteTrend=" + upvoteTrend
+				+ ", memeFlag=" + memeFlag + ", imageLocation=" + imageLocation + ", memeLocation=" + memeLocation
+				+ ", _links=" + _links + "]";
 	}
+
 
 
 }

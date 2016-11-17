@@ -30,7 +30,8 @@ public class MemeProcessorApplication {
 			RedditValue testPost = new RedditValue("5d943s",6469,0,false,"","");
 			log.info("putRedditPost " + testPost.toString());
 			redditAPI.postRedditPost(testPost);
-			
+			log.info("deletingPost " + testPost.getRedditId());
+			redditAPI.deleteRedditPost(testPost.getRedditId());
 		};
 	}
 }
