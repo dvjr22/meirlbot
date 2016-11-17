@@ -1,6 +1,5 @@
 package com.tmoon8730.api;
 
-import java.util.Arrays;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -10,17 +9,19 @@ public class RedditValue {
 	private int upvotes;
 	private int upvoteTrend;
 	private boolean memeFlag;
+	private String imageUrl;
 	private String imageLocation;
 	private String memeLocation;
 	private Links _links;
 
-    public RedditValue(String redditId, int upvotes, int upvoteTrend, boolean memeFlag, String imageLocation,
+    public RedditValue(String redditId, int upvotes, int upvoteTrend, boolean memeFlag, String imageUrl, String imageLocation,
 			String memeLocation) {
 		super();
 		this.redditId = redditId;
 		this.upvotes = upvotes;
 		this.upvoteTrend = upvoteTrend;
 		this.memeFlag = memeFlag;
+		this.setImageUrl(imageUrl);
 		this.imageLocation = imageLocation;
 		this.memeLocation = memeLocation;
 	}
@@ -85,6 +86,20 @@ public class RedditValue {
 	}
 
 	/**
+	 * @return the imageUrl
+	 */
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	/**
+	 * @param imageUrl the imageUrl to set
+	 */
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	/**
 	 * @return the imageLocation
 	 */
 	public String getImageLocation() {
@@ -132,9 +147,11 @@ public class RedditValue {
 	@Override
 	public String toString() {
 		return "RedditValue [redditId=" + redditId + ", upvotes=" + upvotes + ", upvoteTrend=" + upvoteTrend
-				+ ", memeFlag=" + memeFlag + ", imageLocation=" + imageLocation + ", memeLocation=" + memeLocation
-				+ ", _links=" + _links + "]";
+				+ ", memeFlag=" + memeFlag + ", imageUrl=" + imageUrl + ", imageLocation=" + imageLocation
+				+ ", memeLocation=" + memeLocation + ", _links=" + _links + "]";
 	}
+
+
 
 
 

@@ -8,6 +8,7 @@ public class RedditPost {
 	private int upvotes;
 	private int upvoteTrend;
 	private boolean memeFlag;
+	private String imageUrl;
 	private String imageLocation;
 	private String memeLocation;
 	
@@ -60,6 +61,18 @@ public class RedditPost {
 		this.memeFlag = memeFlag;
 	}
 	/**
+	 * @return the imageUrl
+	 */
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	/**
+	 * @param imageUrl the imageUrl to set
+	 */
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	/**
 	 * @return the imageLocation
 	 */
 	public String getImageLocation() {
@@ -82,6 +95,15 @@ public class RedditPost {
 	 */
 	public void setMemeLocation(String memeLocation) {
 		this.memeLocation = memeLocation;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "RedditPost [id=" + id + ", redditId=" + redditId + ", upvotes=" + upvotes + ", upvoteTrend="
+				+ upvoteTrend + ", memeFlag=" + memeFlag + ", imageUrl=" + imageUrl + ", imageLocation=" + imageLocation
+				+ ", memeLocation=" + memeLocation + "]";
 	}
 
 }

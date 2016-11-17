@@ -106,8 +106,9 @@ public class UpvoteChecker {
 					// The document does not exist to create a new one
 					int upvote = sub.getScore();
 					String redditId = sub.getId();
+					String imageUrl = sub.getUrl();
 					// String redditId, int upvotes, int upvoteTrend, boolean memeFlag, String imageLocation,String memeLocation
-					RedditValue postValue = new RedditValue(redditId,upvote,0,false,"","");
+					RedditValue postValue = new RedditValue(redditId,upvote,0,false,imageUrl,"","");
 					redditAPI.postRedditPost(postValue);
 					log.info("Posted: " + postValue.toString());
 				}

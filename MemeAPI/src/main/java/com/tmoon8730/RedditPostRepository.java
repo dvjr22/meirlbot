@@ -10,5 +10,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface RedditPostRepository extends MongoRepository<RedditPost, String> {
 
 	List<RedditPost> findByRedditId(@Param("redditId") String redditId);
-
+	List<RedditPost> findByMemeFlag(@Param("memeFlag") boolean memeFlag);
 }

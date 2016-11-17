@@ -1,12 +1,15 @@
 package com.tmoon8730;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
 import com.tmoon8730.api.*;
+import com.tmoon8730.creator.RedditDownloader;
 import com.tmoon8730.trend.*;
 
 @SpringBootApplication
@@ -24,20 +27,13 @@ public class MemeProcessorApplication {
 	@Bean
 	public CommandLineRunner run(RedditAPI redditAPI) throws Exception {
 		return args -> {
-			/*log.info("getRedditPost");
-			redditAPI.getRedditPost();
-			log.info("getRedditPost with id 5d37yh");
-			redditAPI.getRedditPost("5d37yh");
-			RedditValue testPost = new RedditValue("5d943s",6469,0,false,"","");
-			log.info("putRedditPost " + testPost.toString());
-			redditAPI.postRedditPost(testPost);
-			log.info("deletingPost " + testPost.getRedditId());
-			redditAPI.deleteRedditPost(testPost.getRedditId());*/
+		/*	UpvoteChecker upvoteChecker = new UpvoteChecker();
+			upvoteChecker.CheckUpvotes("me_irl");*/
 			
-			log.info("~~ Starting test of UpvoteChecker");
-			UpvoteChecker upvoteChecker = new UpvoteChecker();
-			upvoteChecker.CheckUpvotes("me_irl");
-			log.info("~~ Done testing UpvoteChecker");
+		//	String sourceUrl = "http://imgur.com/7AvrWSW";
+			RedditDownloader redditDownloader = new RedditDownloader();
+			redditDownloader.download();
+			
 		};
 	}
 }
