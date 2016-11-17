@@ -2,6 +2,10 @@ package com.tmoon8730.api;
 
 public class RedditEmbedded {
 	private RedditPost _embedded;
+	
+	public RedditEmbedded(){
+		_embedded = new RedditPost();
+	}
 	/**
 	 * @return the _embedded
 	 */

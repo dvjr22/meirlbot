@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/Users/tmoon/_Code/meirlbot/demo"/>
+		<item value="/Users/tmoon/_Code/meirlbot/MemeAPI"/>
+	</list>
 	<list key="installedFeatures">
 		<item value="com.ianbrandt.tools.m2e.mdp.feature:0.0.4.201409291703"/>
 		<item value="org.aspectj:1.8.9.201607291758"/>
 		<item value="org.eclipse.aether.maven.feature:3.1.0.20140706-2237"/>
 		<item value="org.eclipse.ajdt:2.2.4.201607291758"/>
-		<item value="org.eclipse.buildship:1.0.21.v20161010-1640"/>
 		<item value="org.eclipse.cft.server.core.feature:1.1.0.v201608300659"/>
 		<item value="org.eclipse.cft.server.ui.feature:1.0.6.v201608300659"/>
 		<item value="org.eclipse.datatools.common.doc.user:1.13.0.201603142002"/>

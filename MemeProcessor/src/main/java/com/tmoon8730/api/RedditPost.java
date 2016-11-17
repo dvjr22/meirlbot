@@ -10,6 +10,7 @@ public class RedditPost {
 	
 	
 	public RedditPost(){
+		redditpost = new RedditValue[0];
 	}
 	
 	/**

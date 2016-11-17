@@ -20,7 +20,7 @@ public class RedditAPI {
 
 	public RedditEmbedded getRedditPost(String redditId){
 		String url = APIURL + "search/findByRedditId?redditId=" + redditId;
-		log.info("using url " + url);
+		log.info("getting api url " + url);
 		RedditEmbedded post = restTemplate.getForObject(url, RedditEmbedded.class);
 		if(post != null){
 			log.info(post.toString());
@@ -41,10 +41,8 @@ public class RedditAPI {
 		HttpEntity<RedditValue> request = new HttpEntity<>(redditValue);
 		RedditValue returnedValue = restTemplate.postForObject(APIURL, request, RedditValue.class);
 	}
-	public void deleteRedditPost(String redditId){
-		RedditEmbedded post = getRedditPost(redditId);
-		log.info("delete found the post: " + post.toString());
-		String url = post.get_embedded().getRedditpost()[0].get_links().getSelf().getHref();
+	public void deleteRedditPost(RedditValue redditValue){
+		String url = redditValue.get_links().getSelf().getHref();
 		log.info("deleteing with url: " + url);
 		restTemplate.delete(url);
 	}

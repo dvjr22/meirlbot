@@ -1,9 +1,0 @@
-package hello;
-
-import java.util.List;
-import org.springframework.data.*;
-
-@RepositoryRestResource(collectionResourceRel = "people", path = "people")
-public class PersonRepository {
-	
-}

@@ -47,8 +47,18 @@
 	        <groupId>org.apache.httpcomponents</groupId>
 	        <artifactId>httpclient</artifactId>
     	</dependency>
+    	<dependency>
+    		<groupId>net.dean.jraw</groupId>
+    		<artifactId>JRAW</artifactId>
+    		<version>0.8.0</version>
+    	</dependency>
 	</dependencies>
-
+	<repositories>
+		<repository>
+			<id>net.dean.jraw</id>
+			<url>https://jcenter.bintray.com</url>
+		</repository>
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>
@@ -57,6 +67,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>

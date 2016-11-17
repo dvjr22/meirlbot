@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import com.tmoon8730.api.*;
+import com.tmoon8730.trend.*;
 
 @SpringBootApplication
 public class MemeProcessorApplication {
@@ -23,7 +24,7 @@ public class MemeProcessorApplication {
 	@Bean
 	public CommandLineRunner run(RedditAPI redditAPI) throws Exception {
 		return args -> {
-			log.info("getRedditPost");
+			/*log.info("getRedditPost");
 			redditAPI.getRedditPost();
 			log.info("getRedditPost with id 5d37yh");
 			redditAPI.getRedditPost("5d37yh");
@@ -31,7 +32,12 @@ public class MemeProcessorApplication {
 			log.info("putRedditPost " + testPost.toString());
 			redditAPI.postRedditPost(testPost);
 			log.info("deletingPost " + testPost.getRedditId());
-			redditAPI.deleteRedditPost(testPost.getRedditId());
+			redditAPI.deleteRedditPost(testPost.getRedditId());*/
+			
+			log.info("~~ Starting test of UpvoteChecker");
+			UpvoteChecker upvoteChecker = new UpvoteChecker();
+			upvoteChecker.CheckUpvotes("me_irl");
+			log.info("~~ Done testing UpvoteChecker");
 		};
 	}
 }
