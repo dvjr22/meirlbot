@@ -1,0 +1,9 @@
+package hello;
+
+import java.util.concurrent.atomic.*;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+public class GreetingController {
+
+}

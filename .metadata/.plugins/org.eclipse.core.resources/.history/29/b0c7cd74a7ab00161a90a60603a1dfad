@@ -1,0 +1,6 @@
+package com.tmoon8730;
+
+@RepositoryRestResource(collectionResourceRel = "redditPosts", path = "redditPosts")
+public interface RedditPostRepository extends MongoRepository<Person,String>{
+	List<RedditPost> findByRedditId(@Param("redditId") String redditId);
+}
