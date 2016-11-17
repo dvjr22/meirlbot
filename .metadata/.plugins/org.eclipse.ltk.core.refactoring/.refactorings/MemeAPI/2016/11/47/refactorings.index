@@ -13,3 +13,5 @@
 1479344821676	Encapsulate field 'memeFlag'
 1479344825742	Encapsulate field 'imageLocation'
 1479344829792	Encapsulate field 'memeLocation'
+1479346908414	Encapsulate field '_embedded'
+1479347015054	Move compilation unit
