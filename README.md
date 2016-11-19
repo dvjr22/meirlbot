@@ -6,7 +6,7 @@ And if that didn't convince you then:
 This is a python program for analyzing meme usage on reddit's me_irl subreddit and creating relevent memes for posting
 
 ## Wiki
-For more information and installation guides please check the meirlbot [wiki](https://github.com/tmoon8730/meirlbot/wiki)
+For more information and installation guides please check the meirlbot [wiki](https://github.com/tmoon8730/meirlbot/wiki/Java-Rewrite)
 
 ## Feature Roadmap
 This project started from a simple goal of figuring out how to download spicy memes from meirl. It has now grown to a much larger project with new ideas and sub projects added all the time. The plan for meirlbot as of 10/25/2016 is as follows:
