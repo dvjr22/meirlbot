@@ -12,6 +12,35 @@ public class RedditPost {
 	private String imageLocation;
 	private String memeLocation;
 	
+	public RedditPost(){
+		redditId = "";
+		upvotes = 0;
+		upvoteTrend = 0;
+		memeFlag = false;
+		imageUrl = "";
+		imageLocation = "";
+		memeLocation = "";
+	}
+	
+	
+	public RedditPost(String id, String redditId, int upvotes, int upvoteTrend, boolean memeFlag, String imageUrl,
+			String imageLocation, String memeLocation) {
+		super();
+		this.redditId = redditId;
+		this.upvotes = upvotes;
+		this.upvoteTrend = upvoteTrend;
+		this.memeFlag = memeFlag;
+		this.imageUrl = imageUrl;
+		this.imageLocation = imageLocation;
+		this.memeLocation = memeLocation;
+	}
+
+	public String getId(){
+		return id;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
 	/**
 	 * @return the redditId
 	 */

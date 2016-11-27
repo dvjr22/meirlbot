@@ -1,14 +1,13 @@
 package com.tmoon8730;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.repository.Repository;
 
-@RepositoryRestResource(collectionResourceRel = "redditpost", path = "redditpost")
-public interface RedditPostRepository extends MongoRepository<RedditPost, String> {
-
-	List<RedditPost> findByRedditId(@Param("redditId") String redditId);
-	List<RedditPost> findByMemeFlag(@Param("memeFlag") boolean memeFlag);
+interface RedditPostRepository extends Repository<RedditPost,String>{
+	void delete(RedditPost deleted);		  // Delete a document
+	List<RedditPost> findAll();               // Get all the documents
+	Optional<RedditPost> findOne(String redditId);  // Find one document with the id
+	RedditPost save(RedditPost saved); 		  // Save a document
 }
