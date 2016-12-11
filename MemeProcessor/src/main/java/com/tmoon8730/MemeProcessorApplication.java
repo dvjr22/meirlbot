@@ -19,21 +19,25 @@ public class MemeProcessorApplication {
 		SpringApplication.run(MemeProcessorApplication.class);
 	}
 	
-	@Bean
-	public RedditAPI redditAPI(){
-		return new RedditAPI();
-	}
 	
 	@Bean
-	public CommandLineRunner run(RedditAPI redditAPI) throws Exception {
+	public CommandLineRunner run() throws Exception {
 		return args -> {
-		/*	UpvoteChecker upvoteChecker = new UpvoteChecker();
-			upvoteChecker.CheckUpvotes("me_irl");*/
 			
-		//	String sourceUrl = "http://imgur.com/7AvrWSW";
-			RedditDownloader redditDownloader = new RedditDownloader();
-			redditDownloader.download();
+			RedditAPI redditapi = new RedditAPI();
+			RedditPost post = redditapi.getById("582e14acce436b0617aabb35");
+			System.out.println("Before put");
+			System.out.println(post.toString());
+			post.setMemeFlag(true);
+			redditapi.putByRedditPost(post);
+			post = redditapi.getById("582e14acce436b0617aabb35");
+			System.out.println("After put");
+			System.out.println(post.toString());
 			
+			/*RedditPost[] posts = redditapi.getAllPosts();
+			for(RedditPost p : posts){
+				System.out.println(p.toString());
+			}*/
 		};
 	}
 }

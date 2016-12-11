@@ -15,8 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.tmoon8730.api.RedditAPI;
-import com.tmoon8730.api.RedditEmbedded;
-import com.tmoon8730.api.RedditValue;
 
 
 public class RedditDownloader {
@@ -36,7 +34,7 @@ public class RedditDownloader {
 	 * 
 	 * tl;dr Download those memes brah
 	 */
-	public void download(){
+/*	public void download(){
 		// TODO: Change this to only use memes with a memeFlag of true
 		RedditEmbedded redditEmbedded = redditAPI.getRedditPost();
 		RedditValue[] redditPosts = redditEmbedded.get_embedded().getRedditpost();
@@ -52,7 +50,7 @@ public class RedditDownloader {
 			
 		}
 	}
-	
+	*/
 	private void parseInput(String sourceUrl) throws IOException{
 		// Download the image directly if the url contains png or jpg
 		if(sourceUrl.contains("png") || sourceUrl.contains("jpg")){

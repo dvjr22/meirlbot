@@ -5,9 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import com.tmoon8730.MemeProcessorApplication;
 import com.tmoon8730.api.RedditAPI;
-import com.tmoon8730.api.RedditEmbedded;
-import com.tmoon8730.api.RedditValue;
-
 import net.dean.jraw.RedditClient;
 import net.dean.jraw.fluent.FluentRedditClient;
 import net.dean.jraw.fluent.SubredditReference;
@@ -55,7 +52,7 @@ public class UpvoteChecker {
 	 * api to be added.
 	 * @param subreddit
 	 */
-	public void CheckUpvotes(String subreddit){
+	/*public void CheckUpvotes(String subreddit){
 		if(authData != null){
 			redditClient.authenticate(authData);
 			LoggedInAccount loggedInAccount = redditClient.me();
@@ -94,7 +91,7 @@ public class UpvoteChecker {
 					// If the meme passes the exit condition then set the memeFlag to true so the processor can run
 					redditValue.setMemeFlag(checkMemeStatus(redditValue));
 					try{
-						log.info("    [x] removing " + redditValue.get_links().getSelf().getHref());
+						log.info("    [x] removing " + redditValue.toString());
 						redditAPI.deleteRedditPost(redditValue);
 					}catch(Exception e){
 						e.printStackTrace();
@@ -108,37 +105,37 @@ public class UpvoteChecker {
 					String redditId = sub.getId();
 					String imageUrl = sub.getUrl();
 					// String redditId, int upvotes, int upvoteTrend, boolean memeFlag, String imageLocation,String memeLocation
-					RedditValue postValue = new RedditValue(redditId,upvote,0,false,imageUrl,"","");
+					RedditValue postValue = new RedditValue("12345",redditId,upvote,0,false,imageUrl,"",""); //TODO: Figure out the id situation
 					redditAPI.postRedditPost(postValue);
 					log.info("Posted: " + postValue.toString());
 				}
 			}// END: for(Submission sub...
 		}// END: if(authData...
 	}// END: public void CheckUpvotes...
-	
+	*/
 	/**
 	 * AlreadyExists will return true if a document with the specified redditId exists
 	 * and false if it does not exist
 	 * @param redditId
 	 */
-	private boolean alreadyExists(RedditEmbedded redditEmbedded){
+	/*private boolean alreadyExists(RedditEmbedded redditEmbedded){
 		if(redditEmbedded.get_embedded().getRedditpost().length == 0){
 			log.info("is empty");
 			return false;
 		}
 		return true;
 	}// END: private boolean alreadyExists...
-	
+	*/
 	/**
 	 * checkMemeStatus returns true if the RedditValue passes the upvote and upvotetrend exit conditions as defined
 	 * byt the constant values UPVOTEEXIT and UPVOTETRENDEXIT
 	 * @param redditValue
 	 * @return boolean
 	 */
-	private boolean checkMemeStatus(RedditValue redditValue){
+	/*private boolean checkMemeStatus(RedditValue redditValue){
 		if(redditValue.getUpvotes() >= UPVOTEEXIT && redditValue.getUpvoteTrend() >= UPVOTETRENDEXIT){
 			return true;
 		}
 		return false;
-	}
+	}*/
 }// END: public class UpvoteChecker...
