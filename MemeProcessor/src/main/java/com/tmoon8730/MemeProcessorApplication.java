@@ -24,8 +24,14 @@ public class MemeProcessorApplication {
 	public CommandLineRunner run() throws Exception {
 		return args -> {
 			
+			
+			
+			
 			RedditAPI redditapi = new RedditAPI();
-			RedditPost post = redditapi.getById("582e14acce436b0617aabb35");
+			System.out.println("  [x] Attempting to delete the new post 58507224154dcb049f787ad7");
+			redditapi.deletePost("58507224154dcb049f787ad7");
+			
+			/*RedditPost post = redditapi.getById("582e14acce436b0617aabb35");
 			System.out.println("Before put");
 			System.out.println(post.toString());
 			post.setMemeFlag(true);
@@ -33,7 +39,7 @@ public class MemeProcessorApplication {
 			post = redditapi.getById("582e14acce436b0617aabb35");
 			System.out.println("After put");
 			System.out.println(post.toString());
-			
+			*/
 			/*RedditPost[] posts = redditapi.getAllPosts();
 			for(RedditPost p : posts){
 				System.out.println(p.toString());

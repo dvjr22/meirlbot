@@ -29,6 +29,10 @@ public class RedditPostController {
 	RedditPost findById(@PathVariable("id") String id){
 		return service.findById(id);
 	}
+	@RequestMapping(value = "/redditId/{redditId}", method = RequestMethod.GET)
+	RedditPost findByRedditId(@PathVariable("redditId") String redditId){
+		return service.findByRedditId(redditId);
+	}
 	
 	// Delete Methods
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)

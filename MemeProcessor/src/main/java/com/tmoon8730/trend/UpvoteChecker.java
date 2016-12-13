@@ -52,7 +52,7 @@ public class UpvoteChecker {
 	 * api to be added.
 	 * @param subreddit
 	 */
-	/*public void CheckUpvotes(String subreddit){
+	public void CheckUpvotes(String subreddit){
 		if(authData != null){
 			redditClient.authenticate(authData);
 			LoggedInAccount loggedInAccount = redditClient.me();
@@ -70,7 +70,7 @@ public class UpvoteChecker {
 				log.info(sub.getUrl());
 				String subId = sub.getId();
 				
-				RedditEmbedded redditEmbedded = redditAPI.getRedditPost(subId);
+				RedditPost redditEmbedded = redditAPI.getRedditPost(subId);
 				log.info("    [x] Checking RedditEmbedded: " + redditEmbedded.toString());
 				
 				if(alreadyExists(redditEmbedded)){
@@ -112,30 +112,30 @@ public class UpvoteChecker {
 			}// END: for(Submission sub...
 		}// END: if(authData...
 	}// END: public void CheckUpvotes...
-	*/
+	
 	/**
 	 * AlreadyExists will return true if a document with the specified redditId exists
 	 * and false if it does not exist
 	 * @param redditId
 	 */
-	/*private boolean alreadyExists(RedditEmbedded redditEmbedded){
+	private boolean alreadyExists(RedditEmbedded redditEmbedded){
 		if(redditEmbedded.get_embedded().getRedditpost().length == 0){
 			log.info("is empty");
 			return false;
 		}
 		return true;
 	}// END: private boolean alreadyExists...
-	*/
+	
 	/**
 	 * checkMemeStatus returns true if the RedditValue passes the upvote and upvotetrend exit conditions as defined
 	 * byt the constant values UPVOTEEXIT and UPVOTETRENDEXIT
 	 * @param redditValue
 	 * @return boolean
 	 */
-	/*private boolean checkMemeStatus(RedditValue redditValue){
+	private boolean checkMemeStatus(RedditValue redditValue){
 		if(redditValue.getUpvotes() >= UPVOTEEXIT && redditValue.getUpvoteTrend() >= UPVOTETRENDEXIT){
 			return true;
 		}
 		return false;
-	}*/
+	}
 }// END: public class UpvoteChecker...

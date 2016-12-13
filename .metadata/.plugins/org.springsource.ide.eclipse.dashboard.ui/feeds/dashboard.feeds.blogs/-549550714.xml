@@ -5,7 +5,65 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-12-07T19:03:00Z</updated>
+  <updated>2016-12-13T09:37:51Z</updated>
+  <entry>
+    <title>This Week in Spring - December 13th, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/12/13/this-week-in-spring-december-13th-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-12-13:2729</id>
+    <updated>2016-12-13T09:37:51Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This year has &lt;em&gt;flown&lt;/em&gt; so quickly by! Can you beleive we&amp;rsquo;re less than 19 days until 2017? I&amp;rsquo;m utterly stunned. I suppose I shouldn&amp;rsquo;t be, though, given the breakneck speed of progress and new software releases from the Spring team and the community. What a good problem to have! &lt;/p&gt;
+&lt;p&gt;This week, after returning from Australia early Sunday morning, I hacked with my buddy &lt;a href="http://twitter.com/jmckenty"&gt;Josh McKenty&lt;/a&gt;, I spoke with my buddy &lt;a href="http://twitter.com/jbaruch"&gt;Baruch&lt;/a&gt; at the San Francisco Java User Group on Monday, will speak with my buddy &lt;a href="http://twitter.com/mraible"&gt;Matt Raible&lt;/a&gt; at the Denver Java User Group on Wednesday (don&amp;rsquo;t miss it!), and will speak in Saint Louis on Thursday and Hartford on Friday. It&amp;rsquo;s going to be a fun week and if you&amp;rsquo;re around, &lt;a href="http://twitter.com/starbuxman"&gt;don&amp;rsquo;t hesitate to say hi&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;As usual, we&amp;rsquo;ve got a &lt;em&gt;lot&lt;/em&gt; to cover this week so let&amp;rsquo;s get to it! &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The DISID corporation has announced &lt;a href="https://spring.io/blog/2016/12/12/spring-roo-2-0-0-m3-released"&gt;Spring Roo 2.0.0.M3&lt;/a&gt;. This release includes improved entity entity relationship support, master-detail views generation, easily-created DTOs, default queries using QueryDSL in custom Spring Data repositories, smarter security integration, renewed Spring Web Flow support, REST-API scaffolding, and so much more!&lt;/li&gt;
+  &lt;li&gt;Last week, continuing the Spring Tips series, &lt;a href="https://spring.io/blog/2016/12/07/spring-tips-bootiful-dashboards"&gt;I looked at two dashboard options for Spring Boot and Spring Cloud-based applications&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I liked &lt;a href="https://jaxenter.de/docker-paas-devops-49924"&gt;Bethan Brown&amp;rsquo;s talk&lt;/a&gt; comparing and contrasting opinionated platform vs unstructured platforms and how they are only part of a continuum of decisions to make in traditional organizations.&lt;/li&gt;
+  &lt;li&gt;I liked Spring community hero &lt;a href="http://info.michael-simons.eu/2016/12/10/java-2016-recap/"&gt;Michael Simon&amp;rsquo;s 2016 recap&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I dig this great talk by Stormpath&amp;rsquo;s Claire Hunsaker and Micah Silverman on building &lt;a href="https://www.youtube.com/watch?v=-7zBwk0N0Vk"&gt;secure multi-tenant Spring Boot applications&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Want a good startup to bet your career on? You should look into Pivotal, which made &lt;a href="http://www.businessinsider.com/51-enterprise-startups-to-bet-your-career-on-in-2017-2016-11"&gt;Business Insider&amp;rsquo;s 51 enterprise startups to bet your career on in 2017&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Mkyong had a very nice piece on &lt;a href="http://www.mkyong.com/spring-boot/spring-boot-jetty-as-embedded-server/"&gt;using Jetty as an embedded web server in a Spring Boot application&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Boot ninjas Brian Clozel and Stephane Nicoll&amp;rsquo;s talk, &lt;a href="https://www.infoq.com/presentations/spring-boot-dev-tools-productivity"&gt;&lt;em&gt;10 ways to get super productive with Spring Boot&lt;/em&gt;&lt;/a&gt;, is now available online.&lt;/li&gt;
+  &lt;li&gt;have you &lt;em&gt;seen&lt;/em&gt; all the cool new features in &lt;a href="https://www.jetbrains.com/help/idea/2016.3/spring-boot.html"&gt;IntelliJ for Spring and Spring Boot applications&lt;/a&gt;??&lt;/li&gt;
+  &lt;li&gt;Rafal Borowiec&amp;rsquo;s put together a nice post on &lt;a href="https://www.javacodegeeks.com/2016/12/spring-boot-thymeleaf-reload-templates-static-resources-without-restarting-application.html"&gt;reloading static resources and templates in a Spring Boot application&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Roo 2.0.0.M3 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/12/12/spring-roo-2-0-0-m3-released" />
+    <category term="news" label="News and Events" />
+    <author>
+      <name>Pieter Humphrey</name>
+    </author>
+    <id>tag:spring.io,2016-12-12:2728</id>
+    <updated>2016-12-12T13:00:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf on the Spring Roo team at &lt;a href="http://www.disid.com"&gt;DISID Corporation&lt;/a&gt;, I&amp;rsquo;m pleased to announce the third milestone of Spring Roo 2.0. This is the last milestone, from now on we&amp;rsquo;re going to work in the first release candidate.&lt;/p&gt;
+&lt;p&gt;M3 generates fully functional Spring applications, this release includes important changes in the architecture of the generated applications, that should be compatible with the improvements that the RC1 will introduce but it is not guaranteed, so the projects generated with the M3 might not been upgraded automatically by the RC1.&lt;/p&gt;
+&lt;p&gt;The significant new features since the &lt;a href="https://spring.io/blog/2016/05/18/spring-roo-2-0-0m2-released"&gt;second milestone&lt;/a&gt; are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Improved entity relationship support.&lt;/li&gt;
+  &lt;li&gt;Master-detail views generation for easier entity relationships management.&lt;/li&gt;
+  &lt;li&gt;Added support to create DTOs.&lt;/li&gt;
+  &lt;li&gt;Default queries are implemented using QueryDSL in custom Spring Data repositories.&lt;/li&gt;
+  &lt;li&gt;Added security commands to grant permissions easier.&lt;/li&gt;
+  &lt;li&gt;Spring Web Flow command lives again!&lt;/li&gt;
+  &lt;li&gt;Create Webservice endpoints and/or Webservice clients is easier than ever.&lt;/li&gt;
+  &lt;li&gt;Even easier is to scaffold your REST API.&lt;/li&gt;
+  &lt;li&gt;Support to send and receive emails added.&lt;/li&gt;
+  &lt;li&gt;Support to send and receive JMS messages added.&lt;/li&gt;
+  &lt;li&gt;Update dependencies: Thymeleaf 3.0, Spring Boot 1.4&lt;/li&gt;
+  &lt;li&gt;The Spring IDE Roo Support for Roo 2.0.0.M3 has been updated.&lt;/li&gt;
+  &lt;li&gt;Improved the Spring Roo Shell help system usability.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For a complete list of changes in 2.0.0.M3, see the &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10340&amp;version=15561"&gt;JIRA Release Notes&lt;/a&gt; for this milestone and the previous.&lt;/p&gt;
+&lt;p&gt;For more specific information about Spring Roo project visit the project page.&lt;/p&gt;
+&lt;p&gt;As always, you&amp;rsquo;ll also find Roo on Twitter - either follow &lt;a href="https://www.twitter.com/springroo"&gt;@SpringRoo&lt;/a&gt; or just include #SpringRoo in your tweets.&lt;/p&gt;
+&lt;p&gt;Thanks to all awesome users who came up with useful bug reports and suggestions.&lt;/p&gt;
+&lt;p&gt;Stay tuned to Spring Roo news!&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring Tips: Bootiful Dashboards</title>
     <link rel="alternate" href="https://spring.io/blog/2016/12/07/spring-tips-bootiful-dashboards" />
@@ -688,139 +746,5 @@ You can find executable examples for all of that in our examples repository.&lt;
 &lt;p&gt;Leader election allows application to work together with other applications to coordinate a cluster leadership via a third party system. A leader can then be used to provide global state or global ordering, generally without sacrificing availability. In this presentation we show how Spring Cloud Cluster provides a simple abstraction for leader election and how it is implemented using zookeeper, hazelcast and etcd. &lt;/p&gt;
 &lt;p&gt;Note that 1.0.1 release deprecates everything in favour of code that now lives in Spring Integration. &lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/jQiXQCaJkpE" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud Data Flow 1.1 GA released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/11/23/spring-cloud-data-flow-1-1-ga-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Mark Pollack</name>
-    </author>
-    <id>tag:spring.io,2016-11-23:2709</id>
-    <updated>2016-11-23T19:59:00Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the team, I am pleased to announce the GA release of Spring Cloud Data Flow 1.1.  Follow the links in the &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.1.0.RELEASE/reference/htmlsingle/#getting-started"&gt;getting started guide&lt;/a&gt; to download the local server implementation and shell to create Stream and Tasks.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;General highlights of the 1.1 GA Release include:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Builds upon Spring Boot 1.4, Spring Cloud Camden SR2, Spring Integration 4.3 and Spring Cloud Task 1.1 release improvements.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Adds &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.1.0.RELEASE/reference/htmlsingle/#configuration-security-ldap-authentication"&gt;LDAP&lt;/a&gt;, &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.1.0.RELEASE/reference/htmlsingle/#configuration-security-basic-authentication"&gt;Basic&lt;/a&gt; and &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.1.0.RELEASE/reference/htmlsingle/#configuration-security-file-based-authentication"&gt;File&lt;/a&gt; based backend authentication&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Improvements to &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.1.0.RELEASE/reference/htmlsingle/#configuration-security-oauth2"&gt;OAUTH backed authentication&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.1.0.RELEASE/reference/htmlsingle/#_ldap_transport_security"&gt;LDAP authentication&lt;/a&gt; is now supported with SSL&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Adds a form-based login page for non-OAUTH backend authentication methods such as the LDAP, Basic and File-based options&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Adds the ability to &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.1.0.RELEASE/reference/htmlsingle/#_inline_vs_file_reference_properties_2"&gt;pass application specific properties via YAML file&lt;/a&gt;.  This is particularly useful when deploying streams that require many deployment properties to be set.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Portable deployment properties for memory, disk and cpu are in place for support across various runtime implementations.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Documentation for the core &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.1.0.RELEASE/reference/htmlsingle/#api-guide"&gt;REST API&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Updated reference documentation showing how to integrate with &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.1.0.RELEASE/reference/htmlsingle/#_spring_boot_admin"&gt;Spring Boot Admin to visualize server metrics&lt;/a&gt; and how to &lt;a href="http://docs.spring.io/spring-cloud-dataflow/docs/1.1.0.RELEASE/reference/htmlsingle/#_monitoring_deployed_applications"&gt;export Stream/Task application metrics to external application monitoring tools&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;UI Highlights include:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Bulk import and registration of stream and task app-starters&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Bulk import support for Task definitions. This allows importing task definitions from a file or the ability to add multiple task-definitions using the Flo-editor&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="videoblock"&gt;
-&lt;div class="content"&gt;
-&lt;iframe src="https://www.youtube.com/embed/mBvGuKjKMPk?rel=0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Adds Flo’s visual representation of running streams&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Add visual representation for related streams. This representation also includes nested TAPs and the downstream processing nodes in an overall topology view.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="imageblock"&gt;
-&lt;div class="content"&gt;
-&lt;img src="https://raw.githubusercontent.com/spring-cloud/spring-cloud-dataflow/master/spring-cloud-dataflow-docs/src/main/asciidoc/images/dataflow-nested-tap-streams.png" alt="Visualization of Taps"&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;List pages now support sorting&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Server-side search support for stream and task list pages&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For the complete list of features, bug-fixes, and improvements, please refer to the &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/milestones?state=closed"&gt;closed 1.1 family of GitHub issues&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We welcome feedback and contributions! If you have any questions, comments or suggestions, please let us know via &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues"&gt;GitHub Issues&lt;/a&gt;, &lt;a href="http://stackoverflow.com/tags/spring-cloud-dataflow"&gt;StackOverflow&lt;/a&gt;, or using the #SpringCloudDataFlow hashtag on Twitter.&lt;/p&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>First milestone of next-generation Spring Data released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/11/23/first-milestone-of-next-generation-spring-data-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Oliver Gierke</name>
-    </author>
-    <id>tag:spring.io,2016-11-23:2708</id>
-    <updated>2016-11-23T13:42:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the Spring Data team, I’d like to announce the first milestone of the Kay release train. This is a special release train as it&amp;rsquo;s going to ship a new generation of Spring Data that will include a couple of breaking changes going forward.&lt;/p&gt;&lt;h2&gt;&lt;a href="#infrastructure-upgrades" class="anchor" name="infrastructure-upgrades"&gt;&lt;/a&gt;Infrastructure upgrades&lt;/h2&gt;
-&lt;p&gt;The first and most noticeable change is the upgrade to Java 8 as a minimum baseline (no JDK 6 compatibility anymore) and an upgrade to Spring 5 as framework foundation. In subsequent milestones we&amp;rsquo;re going to ship some significant internal rewrites that will also affect user facing API to make use of the new language features in JDK 8.&lt;/p&gt;&lt;h2&gt;&lt;a href="#support-for-reactive-data-access" class="anchor" name="support-for-reactive-data-access"&gt;&lt;/a&gt;Support for reactive data access&lt;/h2&gt;
-&lt;p&gt;The most significant additions that made it into the milestone is the addition of support for reactive data access for selected stores. This means: reactive Spring Data repositories and templates for MongoDB, Cassandra and Redis. Other stores are going to follow with subsequent milestones. The introduction of reactive data access support for MongoDB also required us to finally switch from the legacy &lt;code&gt;DBObject&lt;/code&gt; API to MongoDB&amp;rsquo;s current &lt;code&gt;Document&lt;/code&gt; one.&lt;/p&gt;
-&lt;p&gt;We have example projects ready for all of these stores:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-data-examples/tree/master/mongodb/reactive"&gt;Reactive examples for MongoDB&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-data-examples/tree/master/cassandra/reactive"&gt;Reactive examples for Cassandra&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-data-examples/tree/master/redis/reactive"&gt;Reactive examples for Redis&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;We consider this release a starting point to get early feedback from you guys. There are some gaps to be filled, support for additional stores to be added but we&amp;rsquo;d definitely like to hear from you already.&lt;/p&gt;
-&lt;p&gt;The Spring team is currently preparing a couple of reactive example projects to showcase the interplay of different projects. Also, a blog post covering the new reactive features in Spring Data is going to follow in a couple of days.&lt;/p&gt;&lt;h2&gt;&lt;a href="#the-laundry-list" class="anchor" name="the-laundry-list"&gt;&lt;/a&gt;The laundry list&lt;/h2&gt;
-&lt;p&gt;That said, let&amp;rsquo;s round this of with the formalities.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring Data Commons 2.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-commons/2.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/2.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/2.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/2.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data JPA 2.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-jpa/2.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/2.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/2.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/2.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data KeyValue 2.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-keyvalue/2.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/2.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/2.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/2.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data for Apache Cassandra 2.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-cassandra/2.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/2.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/2.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/2.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data for Apache Solr 3.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-solr/3.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/3.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/3.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/3.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Gemfire 2.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-gemfire/2.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/2.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/2.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/2.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Neo4j 5.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-neo4j/5.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/5.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/5.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/5.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data MongoDB 2.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-mongodb/2.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/2.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/2.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/2.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Envers 2.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-envers/2.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/envers/docs/2.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/envers/docs/2.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data REST 3.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-rest-webmvc/3.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/3.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/3.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/3.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Redis 2.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-redis/2.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/2.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/2.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/2.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Elasticsearch 3.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-elasticsearch/3.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/3.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/3.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/3.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Couchbase 3.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-couchbase/3.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/3.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/3.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/3.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Find a curated changelog in our &lt;a href="https://github.com/spring-projects/spring-data-commons/wiki/Release-Train-Kay"&gt;release train wiki&lt;/a&gt; or skim through a &lt;a href="https://jira.spring.io/issues/?filter=????"&gt;full list of changes in JIRA&lt;/a&gt;. Your feedback is welcome.&lt;/p&gt;</content>
   </entry>
 </feed>

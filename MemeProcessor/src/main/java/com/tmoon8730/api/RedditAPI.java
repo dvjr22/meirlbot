@@ -45,24 +45,42 @@ public class RedditAPI {
 		restTemplate = new RestTemplate();
 	}
 	
-	public void putByRedditPost(RedditPost post){
+	
+	// Post operation to create new post
+	public RedditPost createPost(RedditPost post){
 		System.out.println("  [x] Trying " + APIURL + post.getId());
-		
 		String uri = APIURL + "{id}";
-		
 		Map<String, String> params = new HashMap<String,String>();
 		params.put("id", post.getId());
-		
+		RedditPost returnedPost = restTemplate.postForObject(uri, post, RedditPost.class, params);
+		return returnedPost;
+	}
+	
+	// Put operation
+	public void updatePost(RedditPost post){
+		System.out.println("  [x] Trying " + APIURL + post.getId());
+		String uri = APIURL + "{id}";
+		Map<String, String> params = new HashMap<String,String>();
+		params.put("id", post.getId());
 		restTemplate.put(uri, post, params);
 	}
 	
-	public RedditPost getById(String id){
+	// Get operation for one entry
+	public RedditPost getPost(String id){
 		System.out.println("  [x] Trying " + APIURL + id);
 		return restTemplate.getForObject(APIURL + id, RedditPost.class);
 	}
+	
+	// Get operation for all entries
 	public RedditPost[] getAllPosts(){
 		System.out.println("  [x] Trying " + APIURL);
 		ResponseEntity<RedditPost[]> response = restTemplate.getForEntity(APIURL, RedditPost[].class);
 		return response.getBody();
+	}
+	
+	// Delete operation for one entry
+	public void deletePost(String id){
+		System.out.println("  [x] Tryign " + APIURL + id);
+		restTemplate.delete(APIURL + id);
 	}
 }

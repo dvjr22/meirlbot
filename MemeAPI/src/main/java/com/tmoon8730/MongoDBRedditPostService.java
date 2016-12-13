@@ -43,15 +43,21 @@ final class MongoDBRedditPostService implements RedditPostService {
 
 	@Override
 	public RedditPost update(RedditPost post) {
-		RedditPost updated = findRedditPostById(post.getRedditId());
-		updated = repository.save(updated);
-		return updated;
+		String id = post.getId();
+		if(repository.exists(id)){
+			// The element already exists so delete the existing element and add in the new element
+			RedditPost updated = findRedditPostById(post.getId());
+			repository.delete(updated);
+		}
+		post = repository.save(post);
+		System.out.println("  [x] Update operation changed id from " + id + " to " + post.getId());
+		return post;
 	}
 	
 	// Private methods
 	private RedditPost findRedditPostById(String id){
-		Optional<RedditPost> result = repository.findOne(id);
-		return result.orElseThrow(() -> new RedditPostNotFoundException(id));
+		RedditPost result = repository.findOne(id);
+		return result;
 	}
 	/*private RedditPost findRedditPost(String redditId){
 		Optional<RedditPost> result = repository.findById(redditId);
@@ -60,5 +66,11 @@ final class MongoDBRedditPostService implements RedditPostService {
 	@Override
 	public RedditPost findById(String redditId) {
 		return findRedditPostById(redditId);
+	}
+	
+	@Override
+	public RedditPost findByRedditId(String redditId){
+		List<RedditPost> posts = repository.findAll();
+		
 	}
 }

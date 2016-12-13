@@ -16,6 +16,15 @@ public class RedditPost {
 	private String memeLocation;
 	
 	public RedditPost(){
+		super();
+		this.id = "0a";
+		this.redditId = "0a";
+		this.upvotes = 0;
+		this.upvoteTrend = 0;
+		this.memeFlag = false;
+		this.imageUrl = "";
+		this.imageLocation = "";
+		this.memeLocation = "";
 	}
 	
 	public RedditPost(String id, String redditId, int upvotes, int upvoteTrend, boolean memeFlag, String imageUrl,
