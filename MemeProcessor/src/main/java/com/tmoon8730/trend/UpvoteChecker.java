@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 
 import com.tmoon8730.MemeProcessorApplication;
 import com.tmoon8730.api.RedditAPI;
+import com.tmoon8730.api.RedditPost;
+
 import net.dean.jraw.RedditClient;
 import net.dean.jraw.fluent.FluentRedditClient;
 import net.dean.jraw.fluent.SubredditReference;
@@ -18,7 +20,7 @@ import net.dean.jraw.models.LoggedInAccount;
 import net.dean.jraw.models.Submission;
 
 public class UpvoteChecker {
-	private static final Logger log = LoggerFactory.getLogger(MemeProcessorApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(UpvoteChecker.class);
 	
 	private UserAgent userAgent;
 	private RedditClient redditClient;
@@ -70,44 +72,33 @@ public class UpvoteChecker {
 				log.info(sub.getUrl());
 				String subId = sub.getId();
 				
-				RedditPost redditEmbedded = redditAPI.getRedditPost(subId);
-				log.info("    [x] Checking RedditEmbedded: " + redditEmbedded.toString());
+				RedditPost post = redditAPI.getPostForRedditId(subId);
 				
-				if(alreadyExists(redditEmbedded)){
-					RedditValue redditValue = redditEmbedded.get_embedded().getRedditpost()[0];
-					
-					
+				//RedditPost redditEmbedded = redditAPI.getPostForRedditId(subId);
+				log.info("Checking RedditPost: " + post.toString());
+				
+				if(alreadyExists(post)){
 					// The document already exists so update the upvote count
 					int newUpvote = sub.getScore();
-					
-					
 					// Set the new upvotes from the submission
-					redditValue.setUpvotes(newUpvote);
-					
+					post.setUpvotes(newUpvote);
 					// Increment the upvotetrend 
 					//TODO: Check if the upvotes are actaully trending up
-					redditValue.setUpvoteTrend(redditValue.getUpvoteTrend() + 1); 
-					
+					post.setUpvoteTrend(post.getUpvoteTrend() + 1); 
 					// If the meme passes the exit condition then set the memeFlag to true so the processor can run
-					redditValue.setMemeFlag(checkMemeStatus(redditValue));
-					try{
-						log.info("    [x] removing " + redditValue.toString());
-						redditAPI.deleteRedditPost(redditValue);
-					}catch(Exception e){
-						e.printStackTrace();
-					}
+					post.setMemeFlag(checkMemeStatus(post));
 					// Post the modified object to the REST API for database writing
-					redditAPI.postRedditPost(redditValue);
-					log.info("Updated: " + redditValue.toString());
+					redditAPI.updatePost(post);
+					log.info("Updated: " + post.toString());
 				}else{
 					// The document does not exist to create a new one
 					int upvote = sub.getScore();
 					String redditId = sub.getId();
 					String imageUrl = sub.getUrl();
 					// String redditId, int upvotes, int upvoteTrend, boolean memeFlag, String imageLocation,String memeLocation
-					RedditValue postValue = new RedditValue("12345",redditId,upvote,0,false,imageUrl,"",""); //TODO: Figure out the id situation
-					redditAPI.postRedditPost(postValue);
-					log.info("Posted: " + postValue.toString());
+					RedditPost postValue = new RedditPost("12345",redditId,upvote,0,false,imageUrl,"",""); //TODO: Figure out the id situation
+					redditAPI.createPost(postValue);
+					log.info("Created: " + postValue.toString());
 				}
 			}// END: for(Submission sub...
 		}// END: if(authData...
@@ -118,9 +109,9 @@ public class UpvoteChecker {
 	 * and false if it does not exist
 	 * @param redditId
 	 */
-	private boolean alreadyExists(RedditEmbedded redditEmbedded){
-		if(redditEmbedded.get_embedded().getRedditpost().length == 0){
-			log.info("is empty");
+	private boolean alreadyExists(RedditPost redditPost){
+		if(redditAPI.getPostForRedditId(redditPost.getRedditId()) != new RedditPost()){
+			log.info(redditPost.toString() + " is empty");
 			return false;
 		}
 		return true;
@@ -132,7 +123,7 @@ public class UpvoteChecker {
 	 * @param redditValue
 	 * @return boolean
 	 */
-	private boolean checkMemeStatus(RedditValue redditValue){
+	private boolean checkMemeStatus(RedditPost redditValue){
 		if(redditValue.getUpvotes() >= UPVOTEEXIT && redditValue.getUpvoteTrend() >= UPVOTETRENDEXIT){
 			return true;
 		}

@@ -3,6 +3,7 @@ package com.tmoon8730;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,18 +19,18 @@ public class MemeProcessorApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MemeProcessorApplication.class);
 	}
-	
+
 	
 	@Bean
 	public CommandLineRunner run() throws Exception {
 		return args -> {
+			UpvoteChecker upvoteChecker = new UpvoteChecker();
+			upvoteChecker.CheckUpvotes("me_irl");
 			
 			
-			
-			
-			RedditAPI redditapi = new RedditAPI();
-			System.out.println("  [x] Attempting to delete the new post 58507224154dcb049f787ad7");
-			redditapi.deletePost("58507224154dcb049f787ad7");
+			//RedditAPI redditapi = new RedditAPI();
+			//System.out.println("  [x] Attempting to delete the new post 58507224154dcb049f787ad7");
+			//redditapi.deletePost("58507224154dcb049f787ad7");
 			
 			/*RedditPost post = redditapi.getById("582e14acce436b0617aabb35");
 			System.out.println("Before put");

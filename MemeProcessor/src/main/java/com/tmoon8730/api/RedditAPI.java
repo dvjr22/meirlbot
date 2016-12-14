@@ -1,38 +1,11 @@
 package com.tmoon8730.api;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-class APITest{
-	private String id;
-	private String redditId;
-	
-	public String getId(){
-		return this.id;
-	}
-	public void setId(String id){
-		this.id = id;
-	}
-	public String getRedditId(){
-		return this.redditId;
-	}
-	public void setRedditId(String redditId){
-		this.redditId = redditId;
-	}
-}
 
 public class RedditAPI {
 	private static final Logger log = LoggerFactory.getLogger(RedditAPI.class);
@@ -69,6 +42,10 @@ public class RedditAPI {
 	public RedditPost getPost(String id){
 		System.out.println("  [x] Trying " + APIURL + id);
 		return restTemplate.getForObject(APIURL + id, RedditPost.class);
+	}
+	public RedditPost getPostForRedditId(String redditId){
+		System.out.println("  [x] Trying " + APIURL + "redditId/" + redditId);
+		return restTemplate.getForObject(APIURL + "redditId/" + redditId, RedditPost.class);
 	}
 	
 	// Get operation for all entries
