@@ -11,5 +11,4 @@ interface RedditPostRepository extends CrudRepository<RedditPost,String>{
 	RedditPost findOne(String redditId);  // Find one document with the id
 	RedditPost save(RedditPost saved); 		  // Save a document
 	boolean exists(String id); // Checks if an element exists or not
-	//RedditPost update(RedditPost update);
 }

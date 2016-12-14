@@ -2,7 +2,17 @@ package com.tmoon8730;
 
 import org.springframework.data.annotation.Id;
 
+/**
+ * Basic POJ class that represents one object in the MongoDB database
+ * @author tmoon
+ *
+ */
+/**
+ * @author tmoon
+ *
+ */
 public class RedditPost {
+	// Private instance variables
 	@Id private String id;
 	private String redditId;
 	private int upvotes;
@@ -12,6 +22,7 @@ public class RedditPost {
 	private String imageLocation;
 	private String memeLocation;
 	
+	// Default constructor with blank values
 	public RedditPost(){
 		redditId = "";
 		upvotes = 0;
@@ -22,7 +33,7 @@ public class RedditPost {
 		memeLocation = "";
 	}
 	
-	
+	// Parameterized constructor
 	public RedditPost(String id, String redditId, int upvotes, int upvoteTrend, boolean memeFlag, String imageUrl,
 			String imageLocation, String memeLocation) {
 		super();
@@ -34,10 +45,15 @@ public class RedditPost {
 		this.imageLocation = imageLocation;
 		this.memeLocation = memeLocation;
 	}
-
+	/**
+	 * @return the id
+	 */
 	public String getId(){
 		return id;
 	}
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(String id){
 		this.id = id;
 	}
