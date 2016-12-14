@@ -5,7 +5,20 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-12-13T09:37:51Z</updated>
+  <updated>2016-12-14T01:51:00Z</updated>
+  <entry>
+    <title>Spring Tips: Demystifying Bootiful Magic</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/12/14/spring-tips-demystifying-bootiful-magic" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-12-13:2730</id>
+    <updated>2016-12-14T01:51:00Z</updated>
+    <content type="html">&lt;p&gt;Speaker: &lt;a href="https://www.twitter.com/starbuxman"&gt;Josh Long&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Hi Spring fans! In this installment of Spring Tips we&amp;rsquo;ll pull back the curtain to reveal what&amp;rsquo;s happening in Spring Boot&amp;rsquo;s auto-configuration &amp;ldquo;magic&amp;rdquo; to make debugging approachable.&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Sw7I70vjN0E" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - December 13th, 2016</title>
     <link rel="alternate" href="https://spring.io/blog/2016/12/13/this-week-in-spring-december-13th-2016" />
@@ -732,19 +745,5 @@ You can find executable examples for all of that in our examples repository.&lt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne Platform 2016 Replay: Leadership Election with Spring Cloud Cluster</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/11/28/springone-platform-2016-replay-leadership-election-with-spring-cloud-cluster" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-11-30:2716</id>
-    <updated>2016-11-28T11:18:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne Platform 2016.&lt;br/&gt;Speaker: Dr. David Syer&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/leadership-election-with-spring-cloud-cluster"&gt;http://www.slideshare.net/SpringCentral/leadership-election-with-spring-cloud-cluster&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Leader election allows application to work together with other applications to coordinate a cluster leadership via a third party system. A leader can then be used to provide global state or global ordering, generally without sacrificing availability. In this presentation we show how Spring Cloud Cluster provides a simple abstraction for leader election and how it is implemented using zookeeper, hazelcast and etcd. &lt;/p&gt;
-&lt;p&gt;Note that 1.0.1 release deprecates everything in favour of code that now lives in Spring Integration. &lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/jQiXQCaJkpE" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
   </entry>
 </feed>

@@ -31,6 +31,7 @@ public class RedditPostController {
 	}
 	@RequestMapping(value = "/redditId/{redditId}", method = RequestMethod.GET)
 	RedditPost findByRedditId(@PathVariable("redditId") String redditId){
+		System.out.println("  [x] in the controller");
 		return service.findByRedditId(redditId);
 	}
 	

@@ -70,7 +70,21 @@ final class MongoDBRedditPostService implements RedditPostService {
 	
 	@Override
 	public RedditPost findByRedditId(String redditId){
+		System.out.println("  [x] In findByRedditId");
 		List<RedditPost> posts = repository.findAll();
-		
+		RedditPost returnValue = new RedditPost();
+		for(RedditPost p : posts){
+			System.out.println("  [x] Comparing " + p.getRedditId() + " " + redditId);
+			boolean exit = false;
+			if(p.getRedditId().equals(redditId))
+			{
+				returnValue = p;
+				System.out.println("  [x] Found an item for the redditId " + redditId + " with the id of " + p.getId());
+				exit = true;
+			}
+			if(exit)
+				break;
+		}
+		return returnValue;
 	}
 }
