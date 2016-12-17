@@ -2,18 +2,21 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="findRedditId" key="selection"/>
+		<item value="APITest" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="APITest"/>
+			<item value="debug"/>
 			<item value="findRedditId"/>
 			<item value="RedditPostDTO"/>
 			<item value="link"/>
 			<item value="Runner"/>
 		</list>
 		<list key="replacehistory">
+			<item value="info"/>
 			<item value="RedditPost"/>
 		</list>
 	</section>

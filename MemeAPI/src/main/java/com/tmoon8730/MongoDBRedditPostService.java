@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-final class MongoDBRedditPostService implements RedditPostService {
+class MongoDBRedditPostService implements RedditPostService {
 	
 	private static final Logger log = LoggerFactory.getLogger(MongoDBRedditPostService.class);
 	
@@ -61,7 +61,7 @@ final class MongoDBRedditPostService implements RedditPostService {
 	public List<RedditPost> findAll() {
 		log.info("In findAll");
 		// Get a list of all the entries by using the RedditPostRepository
-		List<RedditPost> redditEntries = repository.findAll();
+		List<RedditPost> redditEntries = findAllRedditPosts();
 		// Return the list
 		return redditEntries;
 	}
@@ -127,8 +127,12 @@ final class MongoDBRedditPostService implements RedditPostService {
 	}
 	
 	// Private methods
-	private RedditPost findRedditPostById(String id){
+	public RedditPost findRedditPostById(String id){
 		RedditPost result = repository.findOne(id);
 		return result;
+	}
+	public List<RedditPost> findAllRedditPosts(){
+		List<RedditPost> posts = repository.findAll();
+		return posts;
 	}
 }
