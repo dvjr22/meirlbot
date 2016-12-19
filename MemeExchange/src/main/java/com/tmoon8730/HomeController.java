@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ImagesController {
+public class HomeController {
 	
-	@RequestMapping("/images")
-	public String images(){
-		return "images";
+	@RequestMapping(value = "/")
+	public String index(){
+		return "index.html";
 	}
 }
