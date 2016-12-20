@@ -8,25 +8,33 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.tmoon8730.api.*;
 import com.tmoon8730.creator.RedditDownloader;
 import com.tmoon8730.trend.*;
 
 @SpringBootApplication
+@EnableScheduling
 public class MemeProcessorApplication {
 	private static final Logger log = LoggerFactory.getLogger(MemeProcessorApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(MemeProcessorApplication.class);
 	}
-
+	
+	/*private final UpvoteChecker upvoteChecker;
+	
+	public MemeProcessorApplication(UpvoteChecker upvoteChecker){
+		this.upvoteChecker = upvoteChecker;
+	}
 	
 	@Bean
 	public CommandLineRunner run() throws Exception {
 		return args -> {
+		*/	
 			
-			RedditDownloader rd = new RedditDownloader();
-			rd.download();
+			//RedditDownloader rd = new RedditDownloader();
+			//rd.download();
 			
 			/*RedditAPI api = new RedditAPI();
 			RedditPost p = api.getPostForRedditId("5j5eb1");
@@ -53,6 +61,6 @@ public class MemeProcessorApplication {
 			for(RedditPost p : posts){
 				System.out.println(p.toString());
 			}*/
-		};
-	}
+		//};
+//	}
 }

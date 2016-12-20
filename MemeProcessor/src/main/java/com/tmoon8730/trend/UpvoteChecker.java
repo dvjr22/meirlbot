@@ -1,9 +1,12 @@
 package com.tmoon8730.trend;
 
+import java.text.SimpleDateFormat;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
-import com.tmoon8730.MemeProcessorApplication;
 import com.tmoon8730.api.RedditAPI;
 import com.tmoon8730.api.RedditPost;
 
@@ -19,8 +22,11 @@ import net.dean.jraw.models.Listing;
 import net.dean.jraw.models.LoggedInAccount;
 import net.dean.jraw.models.Submission;
 
+@Component
 public class UpvoteChecker {
 	private static final Logger log = LoggerFactory.getLogger(UpvoteChecker.class);
+	
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 	
 	private UserAgent userAgent;
 	private RedditClient redditClient;
@@ -46,6 +52,20 @@ public class UpvoteChecker {
 		redditAPI = new RedditAPI();
 	}// END: public UpvoteChecker...
 	
+	@Scheduled(fixedDelay = 30000)
+	public void ScheduledUpvoteChecker(){
+		// TODO: Remove these hardcoded values
+		userAgent = UserAgent.of("desktop","net.tmoon8730","v0.1","yeahboi");
+		redditClient = new RedditClient(userAgent);
+		credentials = Credentials.script("bmeirl","meirlbot","9V5mrAQyleSHZw","pRjdSYjTsptnWoDM0RVlwSk38tY");
+		try {
+			authData = redditClient.getOAuthHelper().easyAuth(credentials);
+		} catch (NetworkException | OAuthException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		redditAPI = new RedditAPI();
+	}
 	/**
 	 * CheckUpvotes runs through all the hot posts on a subreddit and determines if each
 	 * submission is in the database already or not. If the submission is already in the
