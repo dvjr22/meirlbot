@@ -24,6 +24,11 @@ public class MemeProcessorApplication {
 	@Bean
 	public CommandLineRunner run() throws Exception {
 		return args -> {
+			
+			/*RedditAPI api = new RedditAPI();
+			RedditPost p = api.getPostForRedditId("5j5eb1");
+			log.info(p.toString());*/
+			
 			UpvoteChecker upvoteChecker = new UpvoteChecker();
 			upvoteChecker.CheckUpvotes("me_irl");
 			

@@ -71,7 +71,7 @@ public class UpvoteChecker {
 				
 				log.info(sub.getUrl());
 				String subId = sub.getId();
-				
+				log.info("subId equals " + subId);
 				RedditPost post = redditAPI.getPostForRedditId(subId);
 				
 				//RedditPost redditEmbedded = redditAPI.getPostForRedditId(subId);
@@ -110,10 +110,12 @@ public class UpvoteChecker {
 	 * @param redditId
 	 */
 	private boolean alreadyExists(RedditPost redditPost){
-		if(redditAPI.getPostForRedditId(redditPost.getRedditId()) != new RedditPost()){
-			log.info(redditPost.toString() + " is empty");
+		log.info("Id for alreadyExists is " + redditPost.getId());
+		if(redditPost.getId() == null){
+			log.info("Returning false");
 			return false;
 		}
+		log.info("Returning true");
 		return true;
 	}// END: private boolean alreadyExists...
 	

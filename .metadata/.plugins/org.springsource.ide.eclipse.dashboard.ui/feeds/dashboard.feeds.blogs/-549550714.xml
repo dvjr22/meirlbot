@@ -5,7 +5,57 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-12-16T15:19:54Z</updated>
+  <updated>2016-12-19T20:39:00Z</updated>
+  <entry>
+    <title>Spring Cloud Spinnaker 1.0.0.M2</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/12/19/spring-cloud-spinnaker-1-0-0-m2" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Greg Turnquist</name>
+    </author>
+    <id>tag:spring.io,2016-12-19:2739</id>
+    <updated>2016-12-19T20:39:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Greetings Spring community,&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I am happy to release the second milestone for &lt;a href="https://cloud.spring.io/spring-cloud-spinnaker/"&gt;Spring Cloud Spinnaker&lt;/a&gt;. Spring Cloud Spinnaker bundles up the &lt;a href="http://www.spinnaker.io/"&gt;continuous delivery Spinnaker platform&lt;/a&gt;, and provides a 1-click installer to let you install it to any &lt;a href="https://www.cloudfoundry.org/use/cloud-foundry-certified/"&gt;certified Cloud Foundry provider&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Key features included in this release:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Much more simplified way to login, select your org and space from dropdowns, etc., shooting for as simple an experience as possible.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ability to manage two CF spaces&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Support for Jenkins and Travis CI monitoring.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Configure email and slack notifications&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Move to hosted uber JARs, meaning installing the installer is no longer a bugbear&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Other enhancements regarding to Spinnaker itself include ability to clone server groups, an upgrade to our Reactor-based cf-java-client 2 library, and also enhance UX showing more CF information than ever.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If your team/meetup/JUG is interested in hearing more about Spinnaker, &lt;a href="https://spring.io/team/gturnquist"&gt;check in with me&lt;/a&gt; and we can arrange a Google Hangout.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Cheers,&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-cloud/spring-cloud-spinnaker"&gt;Source&lt;/a&gt; | &lt;a href="https://circleci.com/gh/spring-cloud/spring-cloud-spinnaker"&gt;PR CI&lt;/a&gt; | &lt;a href="https://jenkins.spring.io/view/All/job/spring-cloud-spinnaker/"&gt;Master CI&lt;/a&gt; | &lt;a href="http://www.spinnaker.io/docs"&gt;Docs&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spinnaker"&gt;Questions&lt;/a&gt; | &lt;a href="http://join.spinnaker.io/"&gt;Slack&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry>
     <title>Spring Session 1.3.0 Released</title>
     <link rel="alternate" href="https://spring.io/blog/2016/12/16/spring-session-1-3-0-released" />
@@ -531,17 +581,5 @@ Receiver.create(receiverOptions)                                        &lt;b cl
 &lt;/ul&gt;
 &lt;p&gt;Full changes as usual are available from &lt;a href="https://github.com/spring-projects/spring-statemachine/blob/master/docs/src/info/changelog.txt"&gt;changelog&lt;/a&gt;. We&amp;rsquo;re planning to fire up 1.2.0.RELEASE before xmas and possibly do a second release candicate if any major issues are found.&lt;/p&gt;
 &lt;p&gt;Thank you for all who have contributed in any way either via Stack Overflow, GitHub Issues or other channels. Driving force for changes really has been a community and requests from it.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Webinar Dec 8th: Awesome tools to level up your Spring Cloud architecture</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/12/01/webinar-dec-8th-awesome-tools-to-level-up-your-spring-cloud-architecture" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-12-01:2720</id>
-    <updated>2016-12-01T14:54:00Z</updated>
-    <content type="html">&lt;p&gt;Getting up and running with Spring Cloud is a breeze. But once the initial setup is done, it needs to be complemented with an ecosystem that can cope with the extra operational complexity and quality concerns. While running Spring Cloud in production for over a year, Pivotal has integrated some interesting tools for documentation, operations and testing. During this talk you will see a demo of an integrated platform based on Spring Cloud, including tools like Spring Cloud Contract, wiremock, saboteur, ELK, Spinnaker, Spring Boot Admin and more. One of these tools is a dashboard for visualising Pivotal’s Spring Cloud microservice architecture, which has recently been open sourced. Documenting, testing, troubleshooting, and monitoring highly distributed systems in microservice architectures are hard. Finding quality, complementary tools in the wilds of open source can be even harder. Join this webinar for a pragmatic look at taming some of the challenges of running microservices in production.&lt;/p&gt;
-&lt;p&gt;North America&lt;br/&gt;Thursday, December 8&lt;br/&gt;10:00am PST (UTC-8 hours)&lt;br/&gt;&lt;a href="http://connect.pivotal.io/OSS_Webinar_8-Tools-Spring-Cloud-Arch_Q416_8-Awesome-Tools-for-Spring-Cloud-Architecture.html"&gt;Register Now!&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>
