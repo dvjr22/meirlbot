@@ -25,12 +25,15 @@ public class MemeProcessorApplication {
 	public CommandLineRunner run() throws Exception {
 		return args -> {
 			
+			RedditDownloader rd = new RedditDownloader();
+			rd.download();
+			
 			/*RedditAPI api = new RedditAPI();
 			RedditPost p = api.getPostForRedditId("5j5eb1");
 			log.info(p.toString());*/
 			
-			UpvoteChecker upvoteChecker = new UpvoteChecker();
-			upvoteChecker.CheckUpvotes("me_irl");
+			//UpvoteChecker upvoteChecker = new UpvoteChecker();
+			//upvoteChecker.CheckUpvotes("me_irl");
 			
 			
 			//RedditAPI redditapi = new RedditAPI();

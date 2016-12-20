@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.tmoon8730.api.RedditAPI;
+import com.tmoon8730.api.RedditPost;
 
 
 public class RedditDownloader {
@@ -34,23 +35,26 @@ public class RedditDownloader {
 	 * 
 	 * tl;dr Download those memes brah
 	 */
-/*	public void download(){
+	public void download(){
 		// TODO: Change this to only use memes with a memeFlag of true
-		RedditEmbedded redditEmbedded = redditAPI.getRedditPost();
-		RedditValue[] redditPosts = redditEmbedded.get_embedded().getRedditpost();
-		log.info("found " + redditPosts.length + " posts");
-		for(RedditValue value: redditPosts){
-			String imageUrl = value.getImageUrl();
-			log.info("Trying to download: " + imageUrl);
-			try{
-				parseInput(imageUrl);
-			}catch(IOException e){
-				e.printStackTrace();
+		RedditPost[] posts = redditAPI.getAllPosts();
+		log.info("found " + posts.length + " posts");
+		for(RedditPost value: posts){
+			if(value.isMemeFlag()){
+				String imageUrl = value.getImageUrl();
+				log.info("Trying to download: " + imageUrl);
+				try{
+					parseInput(imageUrl);
+				}catch(IOException e){
+					e.printStackTrace();
+				}
+				value.setMemeFlag(false);
+				value.setUpvoteTrend(0);
+				redditAPI.updatePost(value);
 			}
-			
 		}
 	}
-	*/
+	
 	private void parseInput(String sourceUrl) throws IOException{
 		// Download the image directly if the url contains png or jpg
 		if(sourceUrl.contains("png") || sourceUrl.contains("jpg")){
@@ -97,7 +101,7 @@ public class RedditDownloader {
 			// If the ImageIO.read did not work then the image will be null so skip it
 			if(image != null){
 				// Replace the '/' chars in the url to create a temp filename
-				String filename = imageURL.replace('/', '$').replace(':','$').substring(4);
+				String filename = imageURL.replace('/', '_').replace(':','_').substring(4);
 				log.info("filename: " + filename);
 				// Get the type off the end of the url
 				String type = filename.substring(filename.length() - 3);
