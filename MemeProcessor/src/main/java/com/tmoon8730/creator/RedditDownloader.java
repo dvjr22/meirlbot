@@ -43,30 +43,33 @@ public class RedditDownloader {
 			if(value.isMemeFlag()){
 				String imageUrl = value.getImageUrl();
 				log.info("Trying to download: " + imageUrl);
+				String filename = "";
 				try{
-					parseInput(imageUrl);
+					filename = parseInput(imageUrl);
 				}catch(IOException e){
 					e.printStackTrace();
 				}
 				value.setMemeFlag(false);
 				value.setUpvoteTrend(0);
+				value.setImageLocation(filename);
+				log.info("Updating post with values " + value.toString());
 				redditAPI.updatePost(value);
 			}
 		}
 	}
 	
-	private void parseInput(String sourceUrl) throws IOException{
+	private String parseInput(String sourceUrl) throws IOException{
+		String filename = "";
 		// Download the image directly if the url contains png or jpg
 		if(sourceUrl.contains("png") || sourceUrl.contains("jpg")){
 			log.info("download directly " + sourceUrl);
 			// TODO: Place the code below in its own method 
-			downloadImage(sourceUrl);
+			filename = downloadImage(sourceUrl);
 		}
 		// Assuming its an imgur albumn so parse through the html to find the img src
 		else
 		{
 			log.info("html parse download" + sourceUrl);
-			
 			// Load the html code
 			Document doc = Jsoup.connect(sourceUrl).get();
 			
@@ -81,10 +84,11 @@ public class RedditDownloader {
 				// unwanted image
 				if(imageURL.contains("imgur")){
 					log.info("  [x]: " + imageURL);
-					downloadImage(imageURL);
+					filename = downloadImage(imageURL);
 				}//END: if(imageUrl.contains...
 			}// END: for(Element link...	
 		}// END: if(sourceUrl.contains...
+		return filename;
 	}// END: public void downloadImage...
 	
 	
@@ -92,8 +96,9 @@ public class RedditDownloader {
 	 * Download the image
 	 * @param sourceUrl
 	 */
-	private void downloadImage(String imageURL){
+	private String downloadImage(String imageURL){
 		// Download the image
+		String filename = "";
 		BufferedImage image = null;
 		try{
 			URL url = new URL(imageURL);
@@ -101,10 +106,10 @@ public class RedditDownloader {
 			// If the ImageIO.read did not work then the image will be null so skip it
 			if(image != null){
 				// Replace the '/' chars in the url to create a temp filename
-				String filename = imageURL.replace('/', '_').replace(':','_').substring(4);
+				filename = imageURL.replace('/', '_').replace(':','_').substring(4);
 				log.info("filename: " + filename);
 				// Get the type off the end of the url
-				String type = filename.substring(filename.length() - 3);
+				String type =  filename.substring(filename.length() - 3);
 				log.info("type: " + type);
 				// Write the image to the /tmp/ directory
 				ImageIO.write(image, "png", new File("/tmp/images/" + filename));
@@ -116,5 +121,6 @@ public class RedditDownloader {
 		}catch(IOException e){
 			e.printStackTrace();
 		}//END: try{...
+		return "/tmp/images/" + filename;
 	}// END: private void...
 }

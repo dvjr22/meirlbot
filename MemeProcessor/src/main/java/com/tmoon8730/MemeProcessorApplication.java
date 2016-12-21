@@ -1,6 +1,8 @@
 package com.tmoon8730;
 
 
+import java.util.Scanner;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.tmoon8730.api.*;
 import com.tmoon8730.creator.RedditDownloader;
+import com.tmoon8730.creator.TesseractOCRProcessor;
 import com.tmoon8730.trend.*;
 
 @SpringBootApplication
-@EnableScheduling
 public class MemeProcessorApplication {
 	private static final Logger log = LoggerFactory.getLogger(MemeProcessorApplication.class);
 	public static void main(String[] args) {
@@ -27,11 +29,41 @@ public class MemeProcessorApplication {
 	public MemeProcessorApplication(UpvoteChecker upvoteChecker){
 		this.upvoteChecker = upvoteChecker;
 	}
-	
+	*/
 	@Bean
 	public CommandLineRunner run() throws Exception {
 		return args -> {
-		*/	
+			// NOTE: This is a temporary interface
+			// TODO: Schedule this instead of running this janky stupid interface
+			int option = 0;
+			
+			while(option != 99){
+				Scanner keyboard = new Scanner(System.in);
+				System.out.println("Operations: \n1) Run UpvoteChecker\n2) Run RedditDownloader\n3) Run Tesseract \n99) Exit");
+				System.out.println("Enter your testing operation: ");
+			    option = keyboard.nextInt();
+				
+				
+				switch(option){
+					case 1:
+						UpvoteChecker upvoteChecker = new UpvoteChecker();
+						upvoteChecker.CheckUpvotes("me_irl");
+					break;
+					case 2:
+						RedditDownloader rd = new RedditDownloader();
+						rd.download();
+					break;
+					case 3:
+						TesseractOCRProcessor tp = new TesseractOCRProcessor();
+						tp.OCRProcess();
+					break;
+					default:
+						System.out.println("Thats a stupid option");
+				}
+			}
+			
+			//Runtime rt = Runtime.getRuntime();
+			//Process pr = rt.exec("/usr/local/bin/tesseract /tmp/images/test.png /tmp/images/memeprocessoroutput");
 			
 			//RedditDownloader rd = new RedditDownloader();
 			//rd.download();
@@ -61,6 +93,6 @@ public class MemeProcessorApplication {
 			for(RedditPost p : posts){
 				System.out.println(p.toString());
 			}*/
-		//};
-//	}
+		};
+	}
 }
