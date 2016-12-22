@@ -19,9 +19,11 @@ public class TesseractOCRProcessor {
 	}
 	public void OCRProcess(){
 		RedditPost[] list = getList();
+		log.info("list length: " + list.length);
 		for(RedditPost p : list){
-			log.info("Processing file: " + p.getImageLocation());
-			processFile(p.getImageLocation());
+			log.info(p.toString());
+			//log.info("Processing file: " + p.getImageLocation());
+			//processFile(p.getImageLocation());
 		}
 	}
 	private RedditPost[] getList(){
@@ -29,7 +31,8 @@ public class TesseractOCRProcessor {
 		RedditPost[] returnList = new RedditPost[list.length];
 		int count = 0;
 		for(RedditPost p : list){
-			if(p.getImageLocation() != "" || p.getImageLocation() != null){
+			log.info("Checking " + !(p.getImageLocation().equals("")));
+			if(!(p.getImageLocation().equals(""))){
 				log.info("found post: " + p.toString());
 				returnList[count] = p;
 				count ++;
