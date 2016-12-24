@@ -6,6 +6,7 @@
 	</list>
 	<list key="installedFeatures">
 		<item value="com.ianbrandt.tools.m2e.mdp.feature:0.0.4.201409291703"/>
+		<item value="com.objectaid.uml.cls:1.1.13"/>
 		<item value="org.aspectj:1.8.9.201607291758"/>
 		<item value="org.eclipse.aether.maven.feature:3.1.0.20140706-2237"/>
 		<item value="org.eclipse.ajdt:2.2.4.201607291758"/>

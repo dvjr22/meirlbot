@@ -9,6 +9,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import com.tmoon8730.creator.KeywordProcessor;
 import com.tmoon8730.creator.RedditDownloader;
 import com.tmoon8730.creator.TesseractOCRProcessor;
 import com.tmoon8730.trend.*;
@@ -32,9 +34,9 @@ public class MemeProcessorApplication {
 			// NOTE: This is a temporary interface
 			// TODO: Schedule this instead of running this janky stupid interface
 			int option = 0;
-			
+			Scanner keyboard = new Scanner(System.in);
 			while(option != 99){
-				Scanner keyboard = new Scanner(System.in);
+				
 				System.out.println("Operations: \n1) Run UpvoteChecker\n2) Run RedditDownloader\n3) Run Tesseract \n99) Exit");
 				System.out.println("Enter your testing operation: ");
 			    option = keyboard.nextInt();
@@ -57,6 +59,7 @@ public class MemeProcessorApplication {
 						System.out.println("Thats a stupid option");
 				}
 			}
+			keyboard.close();
 			
 			//Runtime rt = Runtime.getRuntime();
 			//Process pr = rt.exec("/usr/local/bin/tesseract /tmp/images/test.png /tmp/images/memeprocessoroutput");

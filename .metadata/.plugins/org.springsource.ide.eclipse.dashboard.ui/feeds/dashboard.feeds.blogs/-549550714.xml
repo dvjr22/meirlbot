@@ -5,7 +5,250 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-12-21T19:34:16Z</updated>
+  <updated>2016-12-23T07:56:00Z</updated>
+  <entry>
+    <title>Spring Data Release Train Ingalls RC1 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/12/23/spring-data-release-train-ingalls-rc1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Oliver Gierke</name>
+    </author>
+    <id>tag:spring.io,2016-12-21:2748</id>
+    <updated>2016-12-23T07:56:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the Spring Data team I&amp;rsquo;d like to announce the first (and final) release candidate of Spring Data train &lt;a href="https://de.wikipedia.org/wiki/Daniel_Henry_Holmes_Ingalls,_Jr."&gt;Ingalls&lt;/a&gt;. The release ships over 310 issues fixed (some of them previously released with Hopper service releases). The most important new features are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Upgrade to Spring 4.3(.5) as baseline - &lt;a href="https://github.com/spring-projects/spring-data-build/issues/294"&gt;#294&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Support to easily expose domain events as Spring application events from aggregate roots - &lt;a href="https://jira.spring.io/browse/DATACMNS-928"&gt;DATACMNS-928&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Support for exists projection from derived query methods - &lt;a href="https://jira.spring.io/browse/DATACMNS-875"&gt;DATACMNS-875&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Support for Javaslang&amp;rsquo;s &lt;code&gt;Option&lt;/code&gt;, collection and map types on repository query methods - &lt;a href="https://jira.spring.io/browse/DATACMNS-937"&gt;DATACMNS-937&lt;/a&gt;, &lt;a href="https://jira.spring.io/browse/DATACMNS-940"&gt;DATACMNS-940&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Added Spring Data LDAP module taking over the repository implementation of Spring LDAP.&lt;/li&gt;
+  &lt;li&gt;Support for MongoDB aggregation operators added in latest releases - &lt;a href="https://jira.spring.io/browse/DATAMONGO-1539"&gt;DATAMONGO-1536&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Stream execution now rejects invocation without surrounding transaction in JPA - &lt;a href="https://jira.spring.io/browse/DATAJPA-1023"&gt;DATAJPA-1023&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Support for annotation based indexing and expirations in Gemfire - &lt;a href="https://jira.spring.io/browse/SGF-106"&gt;SGF-106&lt;/a&gt;, &lt;a href="https://jira.spring.io/browse/SGF-516"&gt;SGF-516&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Support for CORS configuration in Spring Data REST - &lt;a href="https://jira.spring.io/browse/DATAREST-573"&gt;DATAREST-573&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The release of course contains a lot more features. Find the complete list of fixed tickets here and a more curated change log for the most significant features in Ingall in our &lt;a href="https://github.com/spring-projects/spring-data-commons/wiki/Release-Train-Ingalls"&gt;release train wiki&lt;/a&gt;. We&amp;rsquo;re shooting for a GA release mid to end of January with a couple of bug fixes and documentation polishing applied. So it&amp;rsquo;s the perfect time to give the current release a spin and help us ironing out glitches.&lt;/p&gt;
+&lt;p&gt;As always, feedback is appreciated via the &lt;a href="https://jira.spring.io"&gt;bug tracker&lt;/a&gt;, the &lt;a href="https://gitter.im/spring-projects/spring-data"&gt;Gitter channel&lt;/a&gt;, on StackOverflow or even &lt;a href="https://twitter.com/springdata"&gt;Twitter&lt;/a&gt;. To round things off, here&amp;rsquo;s the list&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Data Commons 1.13 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-commons/1.13.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.13.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.13.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.13.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data JPA 1.11 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-jpa/1.11.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.11.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.11.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.11.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data KeyValue 1.2 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-keyvalue/1.2.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.2.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.2.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.2.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data for Apache Cassandra 1.5 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-cassandra/1.5.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.5.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.5.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.5.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data for Apache Solr 2.1 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-solr/2.1.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/2.1.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/2.1.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/2.1.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Gemfire 1.9 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-gemfire/1.9.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.9.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.9.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.9.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Neo4j 4.2 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-neo4j/4.2.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/4.2.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/4.2.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/4.2.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data MongoDB 1.10 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-mongodb/1.10.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.10.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.10.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.10.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data LDAP 1.0 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-ldap/1.0.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/ldap/docs/1.0.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/ldap/docs/1.0.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/ldap/docs/1.0.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Envers 1.1 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-envers/1.1.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/envers/docs/1.1.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/envers/docs/1.1.0.RC1/reference/html"&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data REST 2.6 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-rest-webmvc/2.6.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.6.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.6.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.6.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Redis 1.8 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-redis/1.8.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.8.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.8.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.8.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Elasticsearch 2.1 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-elasticsearch/2.1.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.1.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.1.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/2.1.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Couchbase 2.2 RC1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-couchbase/2.2.0.RC1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.2.0.RC1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.2.0.RC1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/2.2.0.RC1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 1.4.3 Available Now</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/12/23/spring-boot-1-4-3-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Phil Webb</name>
+    </author>
+    <id>tag:spring.io,2016-12-23:2753</id>
+    <updated>2016-12-23T03:14:39Z</updated>
+    <content type="html">&lt;p&gt;It is my pleasure to announce that Spring Boot &lt;code&gt;1.4.3&lt;/code&gt; has been released and is available now from &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.springframework.boot%22"&gt;Maven Central&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Spring Boot 1.4.3 includes &lt;a href="https://github.com/spring-projects/spring-boot/milestone/75?closed=1"&gt;over 70 fixes, improvements and 3rd party dependency updates&lt;/a&gt;! Thanks to all that have contributed!&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask at &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>CVE-2016-9879: Spring Security 3.2.10, 4.1.4, 4.2.1 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/12/22/cve-2016-9879-spring-security-3-2-10-4-1-4-4-2-1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2016-12-22:2751</id>
+    <updated>2016-12-22T22:12:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;On behalf of the community, I&amp;#8217;m pleased to announce the release of Spring Security 3.2.10, 4.1.4, and 4.2.1 which fix CVE-2016-9879. Users are encouraged to update immediately.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;It is important to note that Spring Framework 3.2.x has &lt;a href="https://spring.io/blog/2016/12/21/spring-framework-4-3-5-4-2-9-and-3-2-18-available-now"&gt;reached EOL&lt;/a&gt;. As with Spring Framework, we expect all users to upgrade to 4.2.1+ for further support. Detailed instructions (including samples) on migrating both XML and Java Config based projects can be found in the &lt;a href="https://docs.spring.io/spring-security/site/docs/4.2.x/reference/html/m3to4.html"&gt;reference appendix&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="cve-2016-9879-encoded-in-path-variables"&gt;&lt;a class="anchor" href="#cve-2016-9879-encoded-in-path-variables"&gt;&lt;/a&gt;CVE-2016-9879 - Encoded "/" in path variables&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Severity:&lt;/strong&gt; High&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Vendor:&lt;/strong&gt; Pivotal&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Versions affected:&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Security 3.2.0 - 3.2.9&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Security 4.0.x - 4.1.3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Security 4.2.0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Older unsupported versions are also affected&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Spring Security does not consider URL path parameters when processing security constraints. By adding an URL path parameter with an encoded "/" to a request, an attacker may be able to bypass a security constraint. The root cause of this issue is a lack of clarity regarding the handling of path parameters in the Servlet Specification (see below). Some Servlet containers include path parameters in the value returned for getPathInfo() and some do not. Spring Security uses the value returned by getPathInfo() as part of the process of mapping requests to security constraints. The unexpected presence of path parameters can cause a constraint to be bypassed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Users of Apache Tomcat (all current versions) are not affected by this vulnerability since Tomcat follows the guidance previously provided by the Servlet Expert group and strips path parameters from the value returned by getContextPath(), getServletPath() and getPathInfo().&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Users of other Servlet containers based on Apache Tomcat may or may not be affected depending on whether or not the handling of path parameters has been modified.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Users of IBM WebSphere Application Server 8.5.x are known to be affected.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Users of other containers that implement the Servlet specification may be affected.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Mitigation&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Adopting one of the following mitigations will protect against this vulnerability
+- use a Servlet container known not to include path parameters in the return values for getServletPath() and getPathInfo()
+- upgrade to Spring Security 3.2.10, 4.1.4 or 4.2.1 will reject the request with a RequestRejectedException if the presence of an encoded "/" is detected. If you wish to disable this feature (i.e. your container does not include path parameters in servletPath and pathInfo) it can be disabled by setting the DefaultHttpFirewall.allowUrlEncodedSlash = true.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;An application that uses the following intercept URL pattern:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;&amp;lt;intercept-url access="authenticated" pattern="/a/b/**" /&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;to protect URLs such as:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;/a/b/c&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;can be exploited by an attacker that uses a URL of the form:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;/a;%2f1/b/c&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://www.securityfocus.com/archive/1/archive/1/514517/100/0/threaded"&gt;CVE-2010-3700&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-security/issues/4169"&gt;spring-projects/spring-security#4169&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;Credit&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The issue was identified by Shumpei Asahara &amp;amp; Yuji Ito from NTT DATA Corporation and responsibly reported to Pivotal.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-security/"&gt;Project Site&lt;/a&gt; |
+&lt;a href="http://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/"&gt;Reference&lt;/a&gt;
+|
+&lt;a href="http://docs.spring.io/spring-security/site/docs/current/guides/html5/"&gt;Guides&lt;/a&gt;
+| &lt;a href="http://stackoverflow.com/questions/tagged/spring-security"&gt;Help&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring LDAP 2.2.1 &amp; 2.3 RC1 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/12/22/spring-ldap-2-2-1-2-3-rc1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2016-12-22:2752</id>
+    <updated>2016-12-22T18:02:49Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;On behalf of the community, I&amp;#8217;m pleased to announce the release of Spring LDAP 2.2.1 and 2.3 RC1.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;A special thanks to &lt;a href="https://twitter.com/mp911de"&gt;Mark Paluch&lt;/a&gt; for getting spring-data-ldap aligned on the Spring Data side!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="spring-ldap-2-3-rc1"&gt;&lt;a class="anchor" href="#spring-ldap-2-3-rc1"&gt;&lt;/a&gt;Spring LDAP 2.3 RC1&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This release brings in a new era for Spring Data compatibility. Integration for Spring LDAP and Spring Data has been moved to &lt;a href="http://projects.spring.io/spring-data-ldap/"&gt;spring-data-ldap&lt;/a&gt; so that it can partake in the Spring Data release train and ensure compatibility with the latest and greatest Spring Data code base. For additional details refer to the &lt;a href="https://github.com/spring-projects/spring-ldap/milestone/25?closed=1"&gt;changelog&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="spring-ldap-2-2-1"&gt;&lt;a class="anchor" href="#spring-ldap-2-2-1"&gt;&lt;/a&gt;Spring LDAP 2.2.1&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This release contains some minor bug fixes along with an update to make updates to newer versions of Spring Data more seamless. For additional details refer to the &lt;a href="https://github.com/spring-projects/spring-ldap/milestone/23?closed=1"&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-ldap/"&gt;Project Site&lt;/a&gt; |
+&lt;a href="http://docs.spring.io/spring-ldap/site/docs/current/reference/htmlsingle/"&gt;Reference&lt;/a&gt;
+| &lt;a href="http://stackoverflow.com/questions/tagged/spring-ldap"&gt;Help&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Tool Suite 3.8.3 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/12/22/spring-tool-suite-3-8-3-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Martin Lippert</name>
+    </author>
+    <id>tag:spring.io,2016-12-22:2750</id>
+    <updated>2016-12-22T15:37:00Z</updated>
+    <content type="html">&lt;p&gt;Dear Spring Community,&lt;/p&gt;
+&lt;p&gt;I am happy to announce the 3.8.3 release of the Spring Tool Suite, our Eclipse-based tooling.&lt;/p&gt;
+&lt;p&gt;STS 3.8.3 focuses on adopting Eclipse Neon.2 and fixing existing issues. The list of changes include:&lt;/p&gt;
+&lt;ul&gt;&#xD;
+&lt;li&gt;Updated to Eclipse Neon.2&lt;/li&gt;&#xD;
+&lt;li&gt;Added support for one-time passcode for Cloud Foundry targets in the Spring Boot Dashboard&lt;/li&gt;&#xD;
+&lt;li&gt;Added support for WAR packaging of Spring Boot apps when deploying them to CF in the Spring Boot Dashboard&lt;/li&gt;&#xD;
+&lt;li&gt;Added support for health-check in Cloud Foundry manifest files&lt;/li&gt;&#xD;
+&lt;li&gt;Fixed a number of most-reported errors from the automated error reporting&lt;/li&gt;&#xD;
+&lt;li&gt;and more...&lt;/li&gt;&#xD;
+&lt;/ul&gt;
+&lt;p&gt;To download the distributions, please go visit:&lt;/p&gt;
+&lt;ul&gt;&#xD;
+&lt;li&gt;Spring Tool Suite: &lt;a href="https://spring.io/tools/sts/all"&gt;https://spring.io/tools/sts/all&lt;/a&gt;&lt;/li&gt;&#xD;
+&lt;/ul&gt;
+&lt;p&gt;Detailed new and noteworthy notes can be found here: &lt;a href="http://docs.spring.io/sts/nan/v383/NewAndNoteworthy.html"&gt;STS 3.8.3 New &amp;amp; Noteworthy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring Framework 4.3.5, 4.2.9 and 3.2.18 available now</title>
     <link rel="alternate" href="https://spring.io/blog/2016/12/21/spring-framework-4-3-5-4-2-9-and-3-2-18-available-now" />
@@ -14,10 +257,10 @@
       <name>Stéphane Nicoll</name>
     </author>
     <id>tag:spring.io,2016-12-21:2741</id>
-    <updated>2016-12-21T19:34:16Z</updated>
+    <updated>2016-12-21T19:34:00Z</updated>
     <content type="html">&lt;p&gt;It is my pleasure to announce that the Spring Framework &lt;a href="https://jira.spring.io/secure/ReleaseNote.jspa?projectId=10000&amp;version=15779"&gt;4.3.5&lt;/a&gt;, &lt;a href="https://jira.spring.io/secure/ReleaseNote.jspa?projectId=10000&amp;version=15723"&gt;4.2.9&lt;/a&gt; and &lt;a href="https://jira.spring.io/secure/ReleaseNote.jspa?projectId=10000&amp;version=15566"&gt;3.2.18&lt;/a&gt; maintenance releases &lt;a href="http://projects.spring.io/spring-framework"&gt;are available now&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;4.3.5 is a significant refinement release with 37 enhancements (including e.g. WebSocket support for the recently released Jetty 9.4) and several bug fixes, serving as the basis for the upcoming Spring Boot 1.4.3 release.&lt;/p&gt;
-&lt;p&gt;Please note that the 4.2.9 and 3.2.18 bug fix releases are the last in their respective line, with 4.2.x being superseded by 4.3.x now and 3.2.x reaching its EOL point. Going forward, we expect all users to upgrade to 4.3.6+ for further support.&lt;/p&gt;
+&lt;p&gt;Please note that the 4.2.9 and 3.2.18 bug fix releases are the last in their respective line, with 4.2.x being superseded by 4.3.x now and 3.2.x reaching its EOL point. Going forward, we expect all users to upgrade to 4.3.5+ for further support.&lt;/p&gt;
 &lt;p&gt;All three releases also fix a path traversal vulnerability (CVE-2016-9878) in &lt;code&gt;ResourceServlet&lt;/code&gt;.&lt;br/&gt;If you happen to be among its rare users, please upgrade ASAP. Note that this functionality has been superseded for years already and will get removed in 5.0, so we actually recommend a migration to Spring MVC&amp;rsquo;s resource handling features within a &lt;code&gt;DispatcherServlet&lt;/code&gt; setup.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework"&gt;GitHub&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/SPR"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/htmlsingle/"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
@@ -440,89 +683,5 @@ Receiver.create(receiverOptions)                                        &lt;b cl
     <content type="html">&lt;p&gt;Speaker: &lt;a href="https://www.twitter.com/starbuxman"&gt;Josh Long&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Hi Spring fans! In this installment of Spring Tips we&amp;rsquo;ll pull back the curtain to reveal what&amp;rsquo;s happening in Spring Boot&amp;rsquo;s auto-configuration &amp;ldquo;magic&amp;rdquo; to make debugging approachable.&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Sw7I70vjN0E" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - December 13th, 2016</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/12/13/this-week-in-spring-december-13th-2016" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2016-12-13:2729</id>
-    <updated>2016-12-13T09:37:00Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This year has &lt;em&gt;flown&lt;/em&gt; so quickly by! Can you believe we&amp;rsquo;re less than 19 days until 2017? I&amp;rsquo;m utterly stunned. I suppose I shouldn&amp;rsquo;t be, though, given the breakneck speed of progress and new software releases from the Spring team and the community. What a good problem to have! &lt;/p&gt;
-&lt;p&gt;This week, after returning from Australia early Sunday morning, I hacked with my buddy &lt;a href="http://twitter.com/jmckenty"&gt;Josh McKenty&lt;/a&gt;, I spoke with my buddy &lt;a href="http://twitter.com/jbaruch"&gt;Baruch&lt;/a&gt; at the San Francisco Java User Group on Monday, will speak with my buddy &lt;a href="http://twitter.com/mraible"&gt;Matt Raible&lt;/a&gt; at the Denver Java User Group on Wednesday (don&amp;rsquo;t miss it!), and will speak in Saint Louis on Thursday and Hartford on Friday. It&amp;rsquo;s going to be a fun week and if you&amp;rsquo;re around, &lt;a href="http://twitter.com/starbuxman"&gt;don&amp;rsquo;t hesitate to say hi&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;As usual, we&amp;rsquo;ve got a &lt;em&gt;lot&lt;/em&gt; to cover this week so let&amp;rsquo;s get to it! &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The DISID corporation has announced &lt;a href="https://spring.io/blog/2016/12/12/spring-roo-2-0-0-m3-released"&gt;Spring Roo 2.0.0.M3&lt;/a&gt;. This release includes improved entity entity relationship support, master-detail views generation, easily-created DTOs, default queries using QueryDSL in custom Spring Data repositories, smarter security integration, renewed Spring Web Flow support, REST-API scaffolding, and so much more!&lt;/li&gt;
-  &lt;li&gt;Last week, continuing the Spring Tips series, &lt;a href="https://spring.io/blog/2016/12/07/spring-tips-bootiful-dashboards"&gt;I looked at two dashboard options for Spring Boot and Spring Cloud-based applications&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Kroger gave a &lt;a href="https://spring.io/blog/2016/12/13/springone-platform-2016-replay-easy-consumption-of-microservices"&gt;great developer tools talk&lt;/a&gt; at SpringOne Platform 2016 about how to take my one of my favorite places on the internet - &lt;a href="http://start.spring.io"&gt;Initialzr&lt;/a&gt; and made it their own.&lt;/li&gt;
-  &lt;li&gt;Spring Boot fans should really enjoy Martin, Kris and Andy talking about how Spring Tool Suite helps work with Spring Boot, Cloud Foundry and just plain ole writing code. &lt;a href="https://spring.io/blog/2016/12/13/springone-platform-2016-replay-next-level-spring-boot-tooling"&gt;Check out the replay!&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;This SpringOne Platform 2016 replay is a bit different from all the rest - it&amp;rsquo;s about &lt;a href="https://spring.io/blog/2016/12/13/springone-platform-2016-replay-no-outage-database-development-with-spring-boot-and-liquibase"&gt;the data our apps deal with&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I liked &lt;a href="https://jaxenter.de/docker-paas-devops-49924"&gt;Bethan Brown&amp;rsquo;s talk&lt;/a&gt; comparing and contrasting opinionated platform vs unstructured platforms and how they are only part of a continuum of decisions to make in traditional organizations.&lt;/li&gt;
-  &lt;li&gt;I liked Spring community hero &lt;a href="http://info.michael-simons.eu/2016/12/10/java-2016-recap/"&gt;Michael Simon&amp;rsquo;s 2016 recap&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I dig this great talk by Stormpath&amp;rsquo;s Claire Hunsaker and Micah Silverman on building &lt;a href="https://www.youtube.com/watch?v=-7zBwk0N0Vk"&gt;secure multi-tenant Spring Boot applications&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Want a good startup to bet your career on? You should look into Pivotal, which made &lt;a href="http://www.businessinsider.com/51-enterprise-startups-to-bet-your-career-on-in-2017-2016-11"&gt;Business Insider&amp;rsquo;s 51 enterprise startups to bet your career on in 2017&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Dan Woods spoke at SpringOne Platform 2016 about the Ratpack web framework and Spring Boot. &lt;a href="https://spring.io/blog/2016/12/13/springone-platform-2016-replay-high-performance-microservices-with-ratpack-and-spring-boot"&gt;Check out the talk!&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Mkyong had a very nice piece on &lt;a href="http://www.mkyong.com/spring-boot/spring-boot-jetty-as-embedded-server/"&gt;using Jetty as an embedded web server in a Spring Boot application&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Boot ninjas Brian Clozel and Stephane Nicoll&amp;rsquo;s talk, &lt;a href="https://www.infoq.com/presentations/spring-boot-dev-tools-productivity"&gt;&lt;em&gt;10 ways to get super productive with Spring Boot&lt;/em&gt;&lt;/a&gt;, is now available online.&lt;/li&gt;
-  &lt;li&gt;have you &lt;em&gt;seen&lt;/em&gt; all the cool new features in &lt;a href="https://www.jetbrains.com/help/idea/2016.3/spring-boot.html"&gt;IntelliJ for Spring and Spring Boot applications&lt;/a&gt;??&lt;/li&gt;
-  &lt;li&gt;Rafal Borowiec&amp;rsquo;s put together a nice post on &lt;a href="https://www.javacodegeeks.com/2016/12/spring-boot-thymeleaf-reload-templates-static-resources-without-restarting-application.html"&gt;reloading static resources and templates in a Spring Boot application&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne Platform 2016 Replay: High Performance Microservices with Ratpack and Spring Boot</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/12/13/springone-platform-2016-replay-high-performance-microservices-with-ratpack-and-spring-boot" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-12-14:2734</id>
-    <updated>2016-12-13T09:35:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne Platform 2016.&lt;br/&gt;Speaker: Dan Woods&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/high-performance-microservices-with-ratpack-and-spring-boot-64889596"&gt;http://www.slideshare.net/SpringCentral/high-performance-microservices-with-ratpack-and-spring-boot-64889596&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Ratpack and Spring Boot are a match made in microservice heaven. Each brings its respective strengths to the task of building a compelling service for the cloud. Spring Boot&amp;rsquo;s incorporation of the Spring and Spring Cloud ecosystems make it an excellent choice for building service components; Ratpack&amp;rsquo;s nature as a reactive web framework and its emphasis on performance and efficiency make it a premiere choice for a durable web tier. When the two frameworks join forces, developers become unstoppable. This talk will showcase Ratpack and Spring Boot&amp;rsquo;s complementary integrations, and demonstrate, through live coding, building a high performance microservice.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/8t6gWXH1_5M" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne Platform 2016 Replay: No outage database development with Spring Boot and Liquibase</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/12/13/springone-platform-2016-replay-no-outage-database-development-with-spring-boot-and-liquibase" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-12-14:2733</id>
-    <updated>2016-12-13T09:33:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne Platform 2016.&lt;br/&gt;Speakers: Barrington-Hughes, Ramaswamy, Premier Healthcare Inc&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/no-outage-database-development-with-spring-boot-and-liquibase"&gt;http://www.slideshare.net/SpringCentral/no-outage-database-development-with-spring-boot-and-liquibase&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Pavi and I work on a project in Premier where we&amp;rsquo;ve embedded Liquibase into the start of our Spring Boot applications to upgrade our database in-direct coupling with the code we are deploying.&lt;/p&gt;
-&lt;p&gt;Using a measured and planned approach to agile database development and careful refactoring of the database with more frequent but smaller changes, we facilitate having no outage deployments along with database schema upgrades.&lt;/p&gt;
-&lt;p&gt;This talk touches on some key concepts in agile database refactoring with working examples of embedded Liquibase change sets within a Spring Boot application, demonstrating a no outage deployment using nginx to simulate a blue green deployment. While upgrading blue, green would still be available and functioning. Performing the cutover etc.&lt;/p&gt;
-&lt;p&gt;Tying these concepts together was very cool for us and greatly reduced the friction and risk of deploying a code update.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/PIogUMe8Wlw" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne Platform 2016 Replay: Next Level Spring Boot Tooling</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/12/13/springone-platform-2016-replay-next-level-spring-boot-tooling" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-12-14:2732</id>
-    <updated>2016-12-13T09:31:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne Platform 2016.&lt;br/&gt;Speakers: Martin Lippert, Kris De Volder, Andy Clement&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/next-level-spring-boot-tooling"&gt;http://www.slideshare.net/SpringCentral/next-level-spring-boot-tooling&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The recent releases of the widely used Spring tooling for Eclipse have focused a lot on making Spring Boot app and microservice development easier and more effective. In this talk we will showcase the latest features for working with Spring Boot - using live demos and live coding. We will show the easiest ways to get started with Spring Boot, move on to advanced features for dealing with Spring Boot properties in property and YAML files (including greatly improved content-assist, validations, hover help), and demo the Spring Boot dashboard. This major innovation in the Spring tooling makes it extremely easy to deal with potentially many Spring Boot microservice projects in your workspace. We will demo all the new features, including advanced editing of Cloud Foundry manifest files and the ability to detect and merge configuration changes between your cloud runtime and your workspace projects. The talk is all about being more effective in your IDE when working with Spring Boot and turning your IDE into a microservice development center when working with Spring Boot, Spring Cloud, and a cloud-native runtime like Cloud Foundry.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/SxOB54wZ1To" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne Platform 2016 Replay: Easy Consumption of Microservices</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/12/13/springone-platform-2016-replay-easy-consumption-of-microservices" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-12-14:2731</id>
-    <updated>2016-12-13T09:30:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne Platform 2016.&lt;br/&gt;Speakers: - Ted Tollefson, Shawn Sherwood, Kroger&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/easy-consumption-of-microservices"&gt;http://www.slideshare.net/SpringCentral/easy-consumption-of-microservices&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Cloud Foundry makes it easy to deploy and run microservices. Now that you have your microservice running, how do you make it easy for other teams to consume it? Spring Initializr, Spring Boot, Spring Cloud Netflix and Cloud Foundry can be used together to make the consumption side easy and efficient. Client libraries can be offered in Spring Initializr. The generated Spring Boot application can be deployed to Cloud Foundry. Service discovery can be provided with Spring Cloud Netflix. The consuming project team can simply write their business logic. This talk will cover the steps to extend Initializr to accomplish easy microservice consumption.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/3mhx5XUYmGw" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
   </entry>
 </feed>
