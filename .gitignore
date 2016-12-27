@@ -107,7 +107,7 @@ MongoDB/data/
 logs/
 
 #Ignore STS stuff
-.metadata
+.metadata/
 
 #Ignore Servers
 Servers/
