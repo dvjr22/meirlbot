@@ -50,6 +50,7 @@ public class TesseractOCRProcessor {
 			rt.exec("/usr/local/bin/tesseract " + filename + " " + filename);
 			log.info("Writing file to " + filename + ".txt");
 		} catch (IOException e) {
+			// print the log message
 			log.info("Error processing file " + filename);
 			e.printStackTrace();
 		}

@@ -108,6 +108,7 @@ logs/
 
 #Ignore STS stuff
 .metadata/
+.recommenders/
 
 #Ignore Servers
 Servers/
