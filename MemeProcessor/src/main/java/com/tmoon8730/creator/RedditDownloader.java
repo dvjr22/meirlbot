@@ -18,7 +18,7 @@ import com.tmoon8730.api.RedditAPI;
 import com.tmoon8730.api.RedditPost;
 
 
-public class RedditDownloader {
+public class RedditDownloader implements ImageDownloader{
 	
 	private static final Logger log = LoggerFactory.getLogger(RedditDownloader.class);
 	
@@ -35,6 +35,7 @@ public class RedditDownloader {
 	 * 
 	 * tl;dr Download those memes brah
 	 */
+	@Override
 	public void download(){
 		// TODO: Change this to only use memes with a memeFlag of true
 		RedditPost[] posts = redditAPI.getAllPosts();
@@ -123,4 +124,10 @@ public class RedditDownloader {
 		}//END: try{...
 		return "/tmp/images/" + filename;
 	}// END: private void...
+
+	@Override
+	public void download(String[] terms) {
+		// TODO Auto-generated method stub
+		
+	}
 }

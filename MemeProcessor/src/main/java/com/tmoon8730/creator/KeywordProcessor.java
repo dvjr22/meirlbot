@@ -14,7 +14,9 @@ public class KeywordProcessor {
 		 for(String s: textFileNames){
 			 String rawData = loadFile(s); // Get the data from the text files
 			 String cleanedData = cleanData(rawData); // Clean the data for junk text thrown in from the OCR
-			 data.add(cleanedData);
+			 // Add the cleaned data to the array list only if its not equal to an empty string
+			 if(!cleanedData.equals(""))
+				 data.add(cleanedData);
 		 }
 		 return data;
 	 }

@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.tmoon8730.api.FlickrAPI;
+import com.tmoon8730.creator.FlickrImageDownloader;
 import com.tmoon8730.creator.KeywordProcessor;
 import com.tmoon8730.creator.RedditDownloader;
 import com.tmoon8730.creator.TesseractOCRProcessor;
@@ -55,6 +57,10 @@ public class MemeProcessorApplication {
 						TesseractOCRProcessor tp = new TesseractOCRProcessor();
 						tp.OCRProcess();
 					break;
+					case 4:
+						FlickrAPI f = new FlickrAPI();
+						FlickrImageDownloader fid = new FlickrImageDownloader();
+						fid.downloadImage(f.getForTerm("cat"));
 					default:
 						System.out.println("Thats a stupid option");
 				}
