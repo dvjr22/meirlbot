@@ -1,9 +1,0 @@
-start mongo with mongod command
-
-connection credentials
-
-http://localhost:27017
-mongodb://localhost:27017/
-
-Main database: meirlbot_mongodb
-main collection: redditposts
